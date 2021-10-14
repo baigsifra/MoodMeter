@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgbrown"
     tools:context=".Home">
 
     <Button
         android:id="@+id/seeDataBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="dataPage"
-        android:text="Button"
+        android:text="See Data"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -23,26 +23,38 @@
         android:id="@+id/logMoodBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="logMoodPage"
-        android:text="Button"
+        android:text="Log Mood"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.33"
+        app:strokeColor="#C35F5F" />
 
     <Button
         android:id="@+id/viewPetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="petPage"
-        android:text="Button"
+        android:backgroundTint="@color/darkblue"
+        android:text="View Pet"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.478" />
+
+    <ImageView
+        android:id="@+id/templogo"
+        android:layout_width="126dp"
+        android:layout_height="186dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        app:srcCompat="@drawable/octopus" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
