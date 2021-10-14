@@ -10,6 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MoodMeter">
         <activity
+            android:name=".Data"
+            android:exported="true" />
+        <activity
+            android:name=".Shop"
+            android:exported="true" />
+        <activity
+            android:name=".Pet"
+            android:exported="true" />
+        <activity
+            android:name=".Record"
+            android:exported="true" />
+        <activity
+            android:name=".Home"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
