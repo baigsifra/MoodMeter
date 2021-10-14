@@ -12,5 +12,4 @@ public class Welcome extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
     }
 
-    // hey broski it's me, my Name is Jeff
 }
