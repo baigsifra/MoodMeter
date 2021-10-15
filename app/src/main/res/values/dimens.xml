@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="buttonWidth">200dp</dimen>
+    <dimen name="buttonHeight">60dp</dimen>
+    <dimen name="imageWidth">150dp</dimen>
+    <dimen name="imageHeight">200dp</dimen>
+    <dimen name="textWidth">160dp</dimen>
+    <dimen name="textHeight">60dp</dimen>
+    <dimen name="bottomMargin">20dp</dimen>
+    <dimen name="screenMargin">15dp</dimen>
+    <dimen name="topPadding">10dp</dimen>
+    <dimen name="editTextPadding">10dp</dimen>
+</resources>
