@@ -9,19 +9,6 @@
     tools:context=".Welcome">
 
 
-    <ImageView
-        android:id="@+id/logotemp2"
-        android:layout_width="@dimen/imageWidth"
-        android:layout_height="@dimen/imageHeight"
-        android:paddingTop="@dimen/topPadding"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.004"
-        app:srcCompat="@drawable/octopusfiinal" />
-
     <Button
         android:id="@+id/signUpBtn"
         android:layout_width="@dimen/buttonWidth"
@@ -65,4 +52,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.381" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/imageWidth"
+        android:layout_height="@dimen/imageHeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
+        app:srcCompat="@drawable/octopusorangehat" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

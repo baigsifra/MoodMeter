@@ -27,6 +27,7 @@
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:background="@drawable/button_style"
+        android:backgroundTint="#B3D4E6"
         android:text="Log Mood"
         android:textAllCaps="false"
         android:textSize="30sp"
@@ -54,17 +55,15 @@
         app:layout_constraintVertical_bias="0.659" />
 
     <ImageView
-        android:id="@+id/logotemp"
-        android:paddingTop="@dimen/topPadding"
-        app:srcCompat="@drawable/octopusfiinal"
+        android:id="@+id/imageView2"
         android:layout_width="@dimen/imageWidth"
         android:layout_height="@dimen/imageHeight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.005"
-        />
+        app:srcCompat="@drawable/octopusorangehat" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
