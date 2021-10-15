@@ -20,7 +20,8 @@
             android:exported="true" />
         <activity
             android:name=".Record"
-            android:exported="true" />
+            android:exported="true"
+            />
         <activity
             android:name=".Home"
             android:exported="true" />
