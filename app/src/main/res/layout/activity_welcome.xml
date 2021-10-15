@@ -43,8 +43,8 @@
 
     <TextView
         android:id="@+id/appName"
-        android:layout_width="@dimen/textWidth"
-        android:layout_height="@dimen/textHeight"
+        android:layout_width="@dimen/textWidthwel"
+        android:layout_height="@dimen/textHeightwel"
         android:text="addnamehere!!"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

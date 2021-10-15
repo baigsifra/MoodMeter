@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- home.xml and welcome.xml button/image dimens -->
     <dimen name="buttonWidth">200dp</dimen>
     <dimen name="buttonHeight">60dp</dimen>
     <dimen name="imageWidth">150dp</dimen>
     <dimen name="imageHeight">200dp</dimen>
-    <dimen name="textWidth">160dp</dimen>
-    <dimen name="textHeight">60dp</dimen>
+    <!-- welcome.xml textview dimens -->
+    <dimen name="textWidthwel">160dp</dimen>
+    <dimen name="textHeightwel">60dp</dimen>
+    <!-- login.xml and signup.xml edittext dimens -->
+    <dimen name="editTextWidth">170dp</dimen>
+    <dimen name="editTextHeight">50dp</dimen>
+    <!-- general margin/padding dimens -->
     <dimen name="bottomMargin">20dp</dimen>
     <dimen name="screenMargin">15dp</dimen>
     <dimen name="topPadding">10dp</dimen>
-    <dimen name="editTextPadding">10dp</dimen>
 </resources>
