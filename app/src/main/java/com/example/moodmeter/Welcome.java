@@ -8,10 +8,21 @@ import android.widget.EditText;
 
 public class Welcome extends AppCompatActivity {
 
+    String username;
+    String email;
+    String password;
+    String confirmPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
     }
 
     public void toLogin(View v){
@@ -28,6 +39,12 @@ public class Welcome extends AppCompatActivity {
         EditText email = findViewById(R.id.signUpEmailET);
         EditText password = findViewById(R.id.signUpPasswordET);
         EditText confirmPassword = findViewById(R.id.signUpConfirmPasswordET);
+    }
 
+    public void signUp(View v){
+
+    }
+
+    public void login(View v){
     }
 }
