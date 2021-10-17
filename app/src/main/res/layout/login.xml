@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bgbrown">
 
     <EditText
         android:id="@+id/loginPasswordET"
@@ -37,6 +38,8 @@
         android:layout_width="@dimen/textWidthlog"
         android:layout_height="@dimen/textHeightlog"
         android:text="Please enter your username and password below."
+        android:textColor="#000000"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -48,8 +51,10 @@
         android:id="@+id/submitLoginBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
-        android:text="Button"
         android:background="@drawable/button_style"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
