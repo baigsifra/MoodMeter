@@ -7,6 +7,7 @@
     android:background="@color/bgbrown"
     tools:context=".Record">
 
+
     <com.google.android.material.slider.Slider
         android:id="@+id/continuousSlider2"
         android:layout_width="match_parent"
@@ -16,13 +17,11 @@
         android:valueTo="100.0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.181"
         app:values="@array/initial_range_slider_values" />
-
-
 
     <com.google.android.material.slider.Slider
         android:id="@+id/continuousSlider"
