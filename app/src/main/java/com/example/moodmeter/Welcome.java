@@ -27,6 +27,7 @@ public class Welcome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
     }
 
     @Override
@@ -47,7 +48,6 @@ public class Welcome extends AppCompatActivity {
 
     public void toSignUp(View V){
         setTitle("Sign Up");
-        Log.i("Megan", "Failed");
         setContentView(R.layout.sign_up);
         EditText usernameET = findViewById(R.id.signUpUsernameET);
         EditText emailET = findViewById(R.id.signUpEmailET);
@@ -58,14 +58,13 @@ public class Welcome extends AppCompatActivity {
         password = passwordET.getText().toString();
         confirmPassword = confirmPasswordET.getText().toString();
         Log.i("Megan", "Sign up Screen");
-        signUp(username, email, password, confirmPassword);
     }
 
-    public void signUp(String username, String email, String password, String confirmPassword){
+    public void signUp(View v){
         // add error messages
         if(username != null && email != null && password != null && confirmPassword != null){
             if(password.equals(confirmPassword)){
-                mAuth.createUserWithEmailAndPassword(email, password)
+                mAuth.createUserWithEmailAndPassword(email,password)
                         .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -73,6 +72,7 @@ public class Welcome extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.i("Firebase Auth", "createUserWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.i("Firebase Auth", "createUserWithEmail:failure", task.getException());
