@@ -60,6 +60,7 @@ public class Welcome extends AppCompatActivity {
                 String signUpEmail = signUpEmailET.getText().toString();
                 String signUpPassword = signUpPasswordET.getText().toString();
                 signUp(signUpEmail, signUpPassword);
+                break;
             case R.id.submitLoginBtn:
                 EditText loginEmailET = findViewById(R.id.loginEmailET);
                 EditText loginPasswordET = findViewById(R.id.loginPasswordET);
@@ -77,11 +78,12 @@ public class Welcome extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
+                                // Sign up success, update UI with the signed-in user's information
                                 Log.i("Megan", "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                            } else {
-                                // If sign in fails, display a message to the user.
+//                                FirebaseUser user = mAuth.getCurrentUser();
+                            }
+                            else {
+                                // If sign up fails, display a message to the user.
                                 Log.i("Megan", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(Welcome.this, "Authentication failed.",
                                         Toast.LENGTH_SHORT).show();
