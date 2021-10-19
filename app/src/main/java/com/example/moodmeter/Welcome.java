@@ -66,6 +66,7 @@ public class Welcome extends AppCompatActivity {
                 EditText loginPasswordET = findViewById(R.id.loginPasswordET);
                 String loginEmail = loginEmailET.getText().toString();
                 String loginPassword = loginPasswordET.getText().toString();
+                break;
         }
     }
 
