@@ -67,7 +67,6 @@
         android:layout_height="@dimen/editTextHeight"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="sgdhgjk1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
