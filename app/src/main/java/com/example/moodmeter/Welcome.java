@@ -57,41 +57,58 @@ public class Welcome extends AppCompatActivity {
                 EditText signUpEmailET = findViewById(R.id.signUpEmailET);
                 EditText signUpPasswordET = findViewById(R.id.signUpPasswordET);
                 EditText confirmPasswordET = findViewById(R.id.signUpConfirmPasswordET);
+                String signUpUsername = usernameET.getText().toString();
                 String signUpEmail = signUpEmailET.getText().toString();
                 String signUpPassword = signUpPasswordET.getText().toString();
-                signUp(signUpEmail, signUpPassword);
+                String confirmPassword = confirmPasswordET.getText().toString();
+                if(confirmPassword.equals(signUpPassword)) {
+                    signUp(signUpEmail, signUpPassword);
+                }
                 break;
             case R.id.submitLoginBtn:
                 EditText loginEmailET = findViewById(R.id.loginEmailET);
                 EditText loginPasswordET = findViewById(R.id.loginPasswordET);
                 String loginEmail = loginEmailET.getText().toString();
                 String loginPassword = loginPasswordET.getText().toString();
+                login(loginEmail,loginPassword);
                 break;
         }
     }
 
     public void signUp(String email, String password) {
 
-        // If the email and password passed in are not null, then try to create a User
         if (email != null && password != null) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                // Sign up success, update UI with the signed-in user's information
                                 Log.i("Megan", "createUserWithEmail:success");
-//                                FirebaseUser user = mAuth.getCurrentUser();
+                                FirebaseUser user = mAuth.getCurrentUser();
                             }
                             else {
-                                // If sign up fails, display a message to the user.
                                 Log.i("Megan", "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(Welcome.this, "Authentication failed.",
+                                Toast.makeText(Welcome.this, "Sign In Failed.",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         }
+    }
+
+    public void login(String email, String password) {
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                            Toast.makeText(Welcome.this, "Login Failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
 
