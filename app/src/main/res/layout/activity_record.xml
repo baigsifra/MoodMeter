@@ -8,70 +8,67 @@
     tools:context=".Record">
 
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/continuousSlider2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:value="1.0"
-        android:valueFrom="0.0"
-        android:valueTo="100.0"
+    <TextView
+        android:id="@+id/angryCalmNum"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="num"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.957"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.181"
-        app:values="@array/initial_range_slider_values" />
+        app:layout_constraintVertical_bias="0.463" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/continuousSlider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:value="1.0"
-        android:valueFrom="0.0"
-        android:valueTo="100.0"
+    <SeekBar
+        android:id="@+id/highLowSlider"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:max="10"
+        android:progress="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.345"
-        app:values="@array/initial_range_slider_values" />
+        app:layout_constraintVertical_bias="0.332" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/continuousSlider3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:value="1.0"
-        android:valueFrom="0.0"
-        android:valueTo="100.0"
+    <SeekBar
+        android:id="@+id/angryCalmSlider"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:max="10"
+        android:progress="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.357"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:values="@array/initial_range_slider_values"/>
+        app:layout_constraintVertical_bias="0.464" />
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="290dp"
-        android:layout_height="223dp"
+        android:layout_width="253dp"
+        android:layout_height="187dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=" "
+        android:text="log journal here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintVertical_bias="0.774" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:background="@drawable/button_style"
-        android:text="Button"
+        android:text="Submit"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -92,6 +89,124 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.055" />
+
+    <SeekBar
+        android:id="@+id/sadHappySlider"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:max="10"
+        android:progress="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
+
+    <TextView
+        android:id="@+id/sadTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sad"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <TextView
+        android:id="@+id/highEnergyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Energy"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.33" />
+
+    <TextView
+        android:id="@+id/angryTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angry"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.453" />
+
+    <TextView
+        android:id="@+id/calmTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calm"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
+
+    <TextView
+        android:id="@+id/lowEnergyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Energy"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.017"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.332" />
+
+    <TextView
+        android:id="@+id/happyTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Happy"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+    <TextView
+        android:id="@+id/sadHappyNum"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="num"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.22" />
+
+    <TextView
+        android:id="@+id/lowHighNum"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:text="num"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.957"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.338" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
