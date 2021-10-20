@@ -3,6 +3,7 @@ package com.example.moodmeter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +20,7 @@ public class Welcome extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,12 +33,10 @@ public class Welcome extends AppCompatActivity {
     public void onStart(){
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            // Take any action needed here when screen loads and a user is logged in
-//        }
-//        else {
-//            // Take any action needed here when screen loads and a user is NOT logged in
-//        }
+        if(currentUser != null){
+            Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+            startActivity(homeIntent);
+        }
     }
 
     public void toLogin(View v){
@@ -63,6 +63,7 @@ public class Welcome extends AppCompatActivity {
                 String confirmPassword = confirmPasswordET.getText().toString();
                 if(confirmPassword.equals(signUpPassword)) {
                     signUp(signUpEmail, signUpPassword);
+                    // add way to store password
                 }
                 break;
             case R.id.submitLoginBtn:
@@ -85,7 +86,11 @@ public class Welcome extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 Log.i("Megan", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                                startActivity(homeIntent);
+
                             }
+                            // add more specific error messages
                             else {
                                 Log.i("Megan", "createUserWithEmail:failure", task.getException());
                                 Toast.makeText(Welcome.this, "Sign In Failed.",
@@ -102,8 +107,12 @@ public class Welcome extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                            startActivity(homeIntent);
 
-                        } else {
+                        }
+                        // add more specific error messages
+                        else {
                             Toast.makeText(Welcome.this, "Login Failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
