@@ -56,4 +56,20 @@ public class Day implements Parcelable, Comparable<Day>
         this.energy = energy;
         this.peacefulness = peacefulness;
     }
+
+    @Override
+    /**
+     * This is what is used when we send the Event object through an intent
+     * It is also a method that is part of the Parcelable interface and is needed
+     * to set up the object that is being sent.  Then, when it is received, the
+     * other Event constructor that accepts a Parcel reference can "unpack it"
+     *
+     */
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(date);
+        dest.writeString(journalEntry);
+        dest.writeDouble(happiness);
+        dest.writeDouble(energy);
+        dest.writeDouble(peacefulness);
+    }
 }
