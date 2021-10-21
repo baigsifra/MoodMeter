@@ -19,14 +19,14 @@ import com.google.firebase.auth.FirebaseUser;
 public class Welcome extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-
+    private FirestoreHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         mAuth = FirebaseAuth.getInstance();
-
+        dbHelper = new FirestoreHelper();
     }
 
     @Override
@@ -62,7 +62,7 @@ public class Welcome extends AppCompatActivity {
                 String signUpPassword = signUpPasswordET.getText().toString();
                 String confirmPassword = confirmPasswordET.getText().toString();
                 if(confirmPassword.equals(signUpPassword)) {
-                    signUp(signUpEmail, signUpPassword);
+                    signUp(signUpEmail, signUpPassword, signUpUsername);
                     // add way to store password
                 }
                 break;
@@ -76,7 +76,7 @@ public class Welcome extends AppCompatActivity {
         }
     }
 
-    public void signUp(String email, String password) {
+    public void signUp(String email, String password, String uid) {
 
         if (email != null && password != null) {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -88,7 +88,7 @@ public class Welcome extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent homeIntent = new Intent(getApplicationContext(), Home.class);
                                 startActivity(homeIntent);
-
+                                dbHelper.addUser(email, uid);
                             }
                             // add more specific error messages
                             else {

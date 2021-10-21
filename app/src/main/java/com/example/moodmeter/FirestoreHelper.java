@@ -46,6 +46,11 @@ public class FirestoreHelper {
             }
         });
     }
+
+    public void addUser(String email, String uid) {
+        db.collection("Users").document("At9syheaOZBNLP8lTSW7").set(email);
+    }
+
 }
 
 // Ifra: change the db to users, and grab everything below it. figure out how to add one day in the right spot
