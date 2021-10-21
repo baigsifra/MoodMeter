@@ -119,6 +119,12 @@ public class Welcome extends AppCompatActivity {
                     }
                 });
     }
+/**
+    public void signOut(String email, String password) {
+        mAuth.signOut();
+        authStatusTV.setText("Signed out");
+    }
+ **/
 
 
 }
