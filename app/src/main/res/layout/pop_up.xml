@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- AASHIKA PLEASE FIX THIS!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#62def8">
+    android:background="@color/white">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_margin="30dp"
-        android:textSize="22sp"
-        android:text="This is a popup window."/>
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text= "You earned x coins, see pet?"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/noPetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="toData"
+        android:text="No" />
+
+    <Button
+        android:id="@+id/yesPetBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toPet"
+        android:text="Yes" />
 
 </RelativeLayout>

@@ -2,7 +2,7 @@ package com.example.moodmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -19,7 +19,8 @@ public class Record extends AppCompatActivity {
         setContentView(R.layout.activity_record);
     }
 
-    public void submitRecord(View view) {
+    //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
+    public void submitRecord(View v) {
 
         // inflate the layout of the popup window
         LayoutInflater inflater = (LayoutInflater)
@@ -29,12 +30,12 @@ public class Record extends AppCompatActivity {
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        boolean focusable = false; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
 
         // show the popup window
-        // which view you pass in doesn't matter, it is only used for the window tolken
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        // which view you pass in doesn't matter, it is only used for the window token
+        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
         // dismiss the popup window when touched
         popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -45,4 +46,15 @@ public class Record extends AppCompatActivity {
             }
         });
     }
+
+    public void toPet(View v){
+        Intent petIntent = new Intent(this, Pet.class);
+        startActivity(petIntent);
+    }
+
+    public void toData(View v){
+        Intent dataIntent = new Intent(this, Data.class);
+        startActivity(dataIntent);
+    }
+
 }

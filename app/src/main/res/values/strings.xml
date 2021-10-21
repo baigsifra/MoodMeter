@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Mood Meter</string>
+    <string name="ten">10</string>
+    <string name="twenty">20</string>
+    <string name="thirty">30</string>
+    <string name="forty">40</string>
+    <string name="fifty">50</string>
+    <string name="sixty">60</string>
+    <string name="seventy">70</string>
+    <string name="eighty">80</string>
+    <string name="ninety">90</string>
+    <string name="hundred">100</string>
 </resources>
