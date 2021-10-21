@@ -13,9 +13,20 @@
         android:id="@+id/signUpBtn"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
+        android:layout_marginLeft="@dimen/leftMarginBtn"
+        android:layout_marginTop="@dimen/topMarginBtn"
+        android:layout_marginRight="@dimen/rightMarginBtn"
+        android:layout_marginBottom="@dimen/bottomMarginBtn"
+
         android:background="@drawable/button_style"
         android:fontFamily="@font/yatra_one"
         android:onClick="toSignUp"
+        android:paddingLeft="@dimen/leftPaddingBtn"
+
+        android:paddingTop="@dimen/topPaddingBtn"
+        android:paddingRight="@dimen/rightPaddingBtn"
+
+        android:paddingBottom="@dimen/bottomPaddingBtn"
         android:text="Sign Up"
         android:textAllCaps="false"
         android:textSize="30sp"
@@ -28,11 +39,23 @@
 
     <Button
         android:id="@+id/loginBtn"
+
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
+        android:layout_marginLeft="@dimen/leftMarginBtn"
+        android:layout_marginTop="@dimen/topMarginBtn"
+        android:layout_marginRight="@dimen/rightMarginBtn"
+        android:layout_marginBottom="@dimen/bottomMarginBtn"
+
         android:background="@drawable/button_style"
         android:fontFamily="@font/yatra_one"
         android:onClick="toLogin"
+        android:paddingLeft="@dimen/leftPaddingBtn"
+
+        android:paddingTop="@dimen/topPaddingBtn"
+        android:paddingRight="@dimen/rightPaddingBtn"
+
+        android:paddingBottom="@dimen/bottomPaddingBtn"
         android:text="Log In"
         android:textAllCaps="false"
         android:textSize="35sp"
@@ -47,9 +70,15 @@
         android:id="@+id/appName"
         android:layout_width="@dimen/textWidthwel"
         android:layout_height="@dimen/textHeightwel"
+        android:layout_marginLeft="@dimen/leftMarginTV"
+
+        android:layout_marginTop="@dimen/topMarginTV"
+        android:layout_marginRight="@dimen/rightMarginTV"
+        android:layout_marginBottom="@dimen/bottomMarginTV"
         android:text="Mood Tracker "
         android:textColor="#020202"
         android:textSize="24sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -60,7 +89,18 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="@dimen/imageWidth"
+
         android:layout_height="@dimen/imageHeight"
+        android:layout_marginLeft="@dimen/leftMarginBtn"
+        android:layout_marginTop="@dimen/topMarginBtn"
+        android:layout_marginRight="@dimen/rightMarginBtn"
+
+        android:layout_marginBottom="@dimen/bottomMarginBtn"
+        android:paddingLeft="@dimen/leftPaddingBtn"
+
+        android:paddingTop="@dimen/topPaddingBtn"
+        android:paddingRight="@dimen/rightPaddingBtn"
+        android:paddingBottom="@dimen/bottomPaddingBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.478"

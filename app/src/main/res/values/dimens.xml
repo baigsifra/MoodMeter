@@ -14,8 +14,20 @@
     <dimen name="editTextHeight">50dp</dimen>
     <dimen name="textWidthlog">250dp</dimen>
     <dimen name="textHeightlog">60dp</dimen>
-    <!-- general margin/padding dimens -->
-    <dimen name="bottomMargin">20dp</dimen>
-    <dimen name="screenMargin">15dp</dimen>
-    <dimen name="topPadding">10dp</dimen>
+    <!-- general margin dimens for buttons + images -->
+    <dimen name="bottomMarginBtn">20dp</dimen>
+    <dimen name="topMarginBtn">10dp</dimen>
+    <dimen name="leftMarginBtn">10dp</dimen>
+    <dimen name="rightMarginBtn">10dp</dimen>
+    <!--general padding dimens for buttons + images -->
+    <dimen name="bottomPaddingBtn">10dp</dimen>
+    <dimen name="topPaddingBtn">10dp</dimen>
+    <dimen name="leftPaddingBtn">10dp</dimen>
+    <dimen name="rightPaddingBtn">10dp</dimen>
+    <!-- general margin for textview -->
+    <dimen name="bottomMarginTV">20dp</dimen>
+    <dimen name="topMarginTV">10dp</dimen>
+    <dimen name="leftMarginTV">10dp</dimen>
+    <dimen name="rightMarginTV">10dp</dimen>
+
 </resources>
