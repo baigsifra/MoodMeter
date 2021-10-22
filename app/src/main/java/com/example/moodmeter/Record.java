@@ -10,14 +10,41 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class Record extends AppCompatActivity {
+
+    private SeekBar sadHappySlider;
+    private TextView sadHappyNum;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
+        sadHappySlider = findViewById(R.id.sadHappySlider);
+        sadHappySlider.setProgress(50);
+        sadHappyNum = findViewById(R.id.sadHappyNum);
+        sadHappySlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                sadHappyNum.setText("" + i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
     }
+
+
 
     //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
     public void submitRecord(View v) {
