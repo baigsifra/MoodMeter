@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- AASHIKA PLEASE FIX THIS!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/lightgreen"
+    android:paddingLeft="20dp"
+    android:paddingRight="10dp">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/popUpTV"
+        android:layout_width="280dp"
+
+        android:layout_height="79dp"
         android:layout_centerInParent="true"
-        android:layout_marginStart="30dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:text= "You earned x coins, see pet?"
+        android:paddingLeft="0dp"
+        android:paddingRight="80dp"
+        android:text="Congrats! You earned x coins! View pet?"
+        android:textColor="#000000"
         android:textSize="22sp" />
 
     <Button
         android:id="@+id/noPetBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_height="40dp"
+        android:layout_alignRight="@id/popUpTV"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/button_style"
         android:onClick="toData"
         android:text="No" />
 
     <Button
         android:id="@+id/yesPetBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignRight="@id/popUpTV"
+        android:layout_marginLeft="-9dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
         android:onClick="toPet"
         android:text="Yes" />
 
