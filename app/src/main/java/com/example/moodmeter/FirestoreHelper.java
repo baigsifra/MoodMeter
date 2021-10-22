@@ -20,7 +20,6 @@ import java.util.Collections;
 public class FirestoreHelper {
     private final FirebaseFirestore db;     // ref to entire database
     private CollectionReference daysRef;  // ref to collection
-    static private int counter = 1;
 
     private ArrayList<Day> daysArrayList= new ArrayList<>();  // arrayList of all Days in db
 
@@ -48,10 +47,8 @@ public class FirestoreHelper {
         });
     }
 
-        public void addUser(User user) {
-        String userid = "user" + counter;
-        db.collection("Users").document(userid).set(user);
-        counter++;
+    public void addUser(String email, User user) {
+        db.collection("Users").document(email).set(user);
     }
 
 }
