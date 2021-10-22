@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Home extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private FirestoreHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +45,11 @@ public class Home extends AppCompatActivity {
 
     public void toRecord(View v){
         logMoodPage();
+    }
+
+    public void signOut(View v) {
+        mAuth.signOut();
+        Intent homeIntent = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(homeIntent);
     }
 }
