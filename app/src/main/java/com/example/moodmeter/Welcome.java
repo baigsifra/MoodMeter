@@ -88,7 +88,7 @@ public class Welcome extends AppCompatActivity {
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent homeIntent = new Intent(getApplicationContext(), Home.class);
                                 startActivity(homeIntent);
-                                dbHelper.addUser(email, uid);
+                                dbHelper.addUser(new User(email, uid));
                             }
                             // add more specific error messages
                             else {

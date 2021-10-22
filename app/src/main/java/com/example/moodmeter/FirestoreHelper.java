@@ -47,8 +47,8 @@ public class FirestoreHelper {
         });
     }
 
-    public void addUser(String email, String uid) {
-        db.collection("Users").document("At9syheaOZBNLP8lTSW7").set(email);
+        public void addUser(User user) {
+        db.collection("Users").document("user1").set(user);
     }
 
 }
