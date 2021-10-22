@@ -1,5 +1,6 @@
 package com.example.moodmeter;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
@@ -46,10 +49,18 @@ public class Home extends AppCompatActivity {
     public void toRecord(View v){
         logMoodPage();
     }
+    /**
 
     public void signOut(View v) {
-        mAuth.signOut();
-        Intent homeIntent2 = new Intent(getApplicationContext(), Welcome.class);
-        startActivity(homeIntent2);
+        mAuth.getInstance()
+                .signOut(this)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        // user is now signed out
+                        startActivity(new Intent(Home.this, Welcome.class));
+                        finish();
+                    }
+            }
     }
+     **/
 }
