@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
 
     public void signOut(View v) {
         mAuth.signOut();
-        Intent homeIntent = new Intent(getApplicationContext(), Welcome.class);
-        startActivity(homeIntent);
+        Intent homeIntent2 = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(homeIntent2);
     }
 }
