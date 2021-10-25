@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+
 
 public class Home extends AppCompatActivity {
 
@@ -49,18 +53,13 @@ public class Home extends AppCompatActivity {
     public void toRecord(View v){
         logMoodPage();
     }
-    /**
+
 
     public void signOut(View v) {
-        mAuth.getInstance()
-                .signOut(this)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    public void onComplete(@NonNull Task<Void> task) {
-                        // user is now signed out
-                        startActivity(new Intent(Home.this, Welcome.class));
-                        finish();
-                    }
-            }
+        mAuth.getInstance().signOut();
+
+        Intent welcomeIntent = new Intent(getApplicationContext(), Welcome.class);
+        startActivity(welcomeIntent);
+
     }
-     **/
 }
