@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,6 +18,10 @@ public class Record extends AppCompatActivity {
 
     private SeekBar sadHappySlider;
     private TextView sadHappyNum;
+    private SeekBar lowHighSlider;
+    private TextView lowHighNum;
+    private SeekBar angryCalmSlider;
+    private TextView angryCalmNum;
 
 
     @Override
@@ -30,6 +35,46 @@ public class Record extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 sadHappyNum.setText("" + i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        lowHighSlider = findViewById(R.id.lowHighSlider);
+        lowHighSlider.setProgress(50);
+        lowHighNum = findViewById(R.id.lowHighNum);
+        lowHighSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                lowHighNum.setText("" + i);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        angryCalmSlider = findViewById(R.id.angryCalmSlider);
+        angryCalmSlider.setProgress(50);
+        angryCalmNum = findViewById(R.id.angryCalmNum);
+        angryCalmSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                angryCalmNum.setText("" + i);
             }
 
             @Override
@@ -72,6 +117,11 @@ public class Record extends AppCompatActivity {
                 return true;
             }
         });
+
+        double sadHappyVal = sadHappySlider.getProgress();
+        double lowHighVal = lowHighSlider.getProgress();
+        double angryCalmVal = angryCalmSlider.getProgress();
+        double avgMood = (0.45 * sadHappyVal) + (0.45 * lowHighVal) + (0.1 * angryCalmVal);
     }
 
     public void toPet(View v){
