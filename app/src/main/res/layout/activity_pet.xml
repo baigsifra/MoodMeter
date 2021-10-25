@@ -5,17 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgbrown"
-    android:paddingLeft="70dp"
-    android:paddingTop="10dp"
+    android:paddingTop="20dp"
     tools:context=".Pet">
 
     <Button
-        android:id="@+id/popUpTV"
+        android:id="@+id/storeBtn"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
-        android:layout_toEndOf="@id/octopusPet"
         android:background="@drawable/button_style"
+        android:layout_toLeftOf="@id/moneyPetTV"
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="15sp" />
@@ -32,10 +31,29 @@
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_toRightOf="@id/popUpTV"
+        android:layout_alignParentRight="true"
         android:paddingLeft="5dp"
         android:text="$____"
         android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/petNameTV"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@id/octopusPet"
+        android:text="petname"
+        android:textColor="@color/black" />
+
+    <View
+        android:id="@+id/linePet"
+        android:layout_width="450dp"
+        android:layout_height="2dp"
+        android:layout_centerVertical="true"
+        android:layout_alignBottom="@id/petNameTV"
+        android:background="@color/black" />
+
 
 
 </RelativeLayout>
