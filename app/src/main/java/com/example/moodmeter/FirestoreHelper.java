@@ -16,6 +16,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirestoreHelper {
     private final FirebaseFirestore db;     // ref to entire database
@@ -49,6 +51,11 @@ public class FirestoreHelper {
 
     public void addUser(String email, User user) {
         db.collection("Users").document(email).set(user);
+        Map<String, ArrayList<String>> docData = new HashMap<>();
+        docData.put("hats", new ArrayList<String>());
+        docData.put("furniture", new ArrayList<String>());
+        docData.put("backgrounds", new ArrayList<String>());
+        db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
     }
 
 }
