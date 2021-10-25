@@ -10,12 +10,13 @@
     tools:context=".Pet">
 
     <Button
-        android:id="@+id/popUpTV"
+        android:id="@+id/storeBtn"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:layout_toEndOf="@id/octopusPet"
         android:background="@drawable/button_style"
+        android:onClick="toStore"
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="15sp" />
@@ -32,7 +33,7 @@
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_toRightOf="@id/popUpTV"
+        android:layout_toRightOf="@id/storeBtn"
         android:paddingLeft="5dp"
         android:text="$____"
         android:textColor="@color/black" />

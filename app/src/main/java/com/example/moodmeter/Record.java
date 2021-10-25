@@ -118,6 +118,7 @@ public class Record extends AppCompatActivity {
             }
         });
 
+        // ifra and pranav use this and store in firebase hee hee :)
         double sadHappyVal = sadHappySlider.getProgress();
         double lowHighVal = lowHighSlider.getProgress();
         double angryCalmVal = angryCalmSlider.getProgress();

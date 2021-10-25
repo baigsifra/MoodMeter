@@ -7,7 +7,7 @@
     android:paddingRight="10dp">
 
     <TextView
-        android:id="@+id/popUpTV"
+        android:id="@+id/storeBtn"
         android:layout_width="280dp"
 
         android:layout_height="79dp"
@@ -24,7 +24,7 @@
         android:id="@+id/noPetBtn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@id/popUpTV"
+        android:layout_alignRight="@id/storeBtn"
         android:layout_marginTop="60dp"
         android:background="@drawable/button_style"
         android:onClick="toData"
@@ -34,7 +34,7 @@
         android:id="@+id/yesPetBtn"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_alignRight="@id/popUpTV"
+        android:layout_alignRight="@id/storeBtn"
         android:layout_marginLeft="-9dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/button_style"
