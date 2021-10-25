@@ -1,71 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgbrown"
+    android:paddingLeft="70dp"
+    android:paddingTop="10dp"
     tools:context=".Pet">
 
-    <View
-        android:id="@+id/linePet"
-        android:layout_width="450dp"
-        android:layout_height="2dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.545" />
+    <Button
+        android:id="@+id/popUpTV"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_toEndOf="@id/octopusPet"
+        android:background="@drawable/button_style"
+        android:text="Store"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
 
     <ImageView
         android:id="@+id/octopusPet"
-        android:layout_width="211dp"
-        android:layout_height="279dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126"
+        android:layout_width="210dp"
+        android:layout_height="230dp"
+        android:paddingTop="10dp"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/octopusorangehat" />
-
-    <TextView
-        android:id="@+id/storePetTV"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:text="Store"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
 
     <TextView
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
+        android:layout_toRightOf="@id/popUpTV"
+        android:paddingLeft="5dp"
         android:text="$____"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+        android:textColor="@color/black" />
 
-    <TextView
-        android:id="@+id/petNameTV"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.564"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
