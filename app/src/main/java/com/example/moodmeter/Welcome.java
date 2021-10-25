@@ -87,9 +87,9 @@ public class Welcome extends AppCompatActivity {
                                 Log.i("Megan", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent homeIntent = new Intent(getApplicationContext(), Home.class);
-                                startActivity(homeIntent);
-                                dbHelper.addUser(email, new User(uid));
+                                startActivity(homeIntent);  dbHelper.addUser(email, new User(uid));
                             }
+
                             // add more specific error messages
                             else {
                                 Log.i("Megan", "createUserWithEmail:failure", task.getException());
