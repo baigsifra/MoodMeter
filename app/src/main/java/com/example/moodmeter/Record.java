@@ -9,10 +9,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Record extends AppCompatActivity {
 
@@ -22,7 +26,7 @@ public class Record extends AppCompatActivity {
     private TextView lowHighNum;
     private SeekBar angryCalmSlider;
     private TextView angryCalmNum;
-
+    private FirestoreHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,7 @@ public class Record extends AppCompatActivity {
         sadHappySlider = findViewById(R.id.sadHappySlider);
         sadHappySlider.setProgress(50);
         sadHappyNum = findViewById(R.id.sadHappyNum);
+        dbHelper = new FirestoreHelper();
         sadHappySlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -122,7 +127,20 @@ public class Record extends AppCompatActivity {
         double sadHappyVal = sadHappySlider.getProgress();
         double lowHighVal = lowHighSlider.getProgress();
         double angryCalmVal = angryCalmSlider.getProgress();
+        EditText journalET = findViewById(R.id.journalET);
+        String journalEntry = journalET.getText().toString();
         double avgMood = (0.45 * sadHappyVal) + (0.45 * lowHighVal) + (0.1 * angryCalmVal);
+
+        /*
+        * https://www.javatpoint.com/java-get-current-date
+        * Link to how to format date
+        * */
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        System.out.println(dtf.format(now));
+
+        Day day = new Day()
     }
 
     public void toPet(View v){

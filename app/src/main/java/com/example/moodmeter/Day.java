@@ -6,6 +6,12 @@ import java.text.ParseException;
 
 public class Day implements Parcelable, Comparable<Day>
 {
+    private String date;
+    private String journalEntry;
+    private double happiness;
+    private double energy;
+    private double peacefulness;
+
     public String getDate() {
         return date;
     }
@@ -45,12 +51,6 @@ public class Day implements Parcelable, Comparable<Day>
     public void setPeacefulness(double peacefulness) {
         this.peacefulness = peacefulness;
     }
-
-    private String date;
-    private String journalEntry;
-    private double happiness;
-    private double energy;
-    private double peacefulness;
 
     // needed  for the Parcelable code to work
     public static final Parcelable.Creator<Day> CREATOR = new Parcelable.Creator<Day>() {
