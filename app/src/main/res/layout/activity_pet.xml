@@ -14,11 +14,8 @@
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_style"
-<<<<<<< HEAD
         android:layout_toLeftOf="@id/moneyPetTV"
-=======
         android:onClick="toStore"
->>>>>>> 20ffaf593f0d2b82c62a756ff51e15fabb8774ca
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="15sp" />
@@ -35,11 +32,8 @@
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
-<<<<<<< HEAD
         android:layout_alignParentRight="true"
-=======
         android:layout_toRightOf="@id/storeBtn"
->>>>>>> 20ffaf593f0d2b82c62a756ff51e15fabb8774ca
         android:paddingLeft="5dp"
         android:text="$____"
         android:textColor="@color/black" />
