@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -20,6 +22,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirestoreHelper {
+    User user;
+
     private final FirebaseFirestore db;     // ref to entire database
     private CollectionReference daysRef;  // ref to collection
 
@@ -56,6 +60,17 @@ public class FirestoreHelper {
         docData.put("furniture", new ArrayList<String>());
         docData.put("backgrounds", new ArrayList<String>());
         db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
+    }
+
+    public User retrieveUser(String email) {
+        DocumentReference docRef = db.collection("Users").document(email);
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                user = documentSnapshot.toObject(User.class);
+            }
+        });
+        return user;
     }
 
 }

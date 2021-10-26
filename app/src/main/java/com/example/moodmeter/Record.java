@@ -15,8 +15,10 @@ import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class Record extends AppCompatActivity {
 
@@ -124,6 +126,9 @@ public class Record extends AppCompatActivity {
         });
 
         // ifra and pranav use this and store in firebase hee hee :)
+        Date thisDate = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
         double sadHappyVal = sadHappySlider.getProgress();
         double lowHighVal = lowHighSlider.getProgress();
         double angryCalmVal = angryCalmSlider.getProgress();
@@ -136,11 +141,10 @@ public class Record extends AppCompatActivity {
         * Link to how to format date
         * */
 
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        System.out.println(dtf.format(now));
+        Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
 
-        Day day = new Day()
+        User user = dbHelper.retrieveUser("test4@gmail.com");
+        System.out.println(user.getMoney());
     }
 
     public void toPet(View v){
