@@ -49,8 +49,8 @@
         app:layout_constraintVertical_bias="0.188" />
 
     <ScrollView
-        android:layout_width="391dp"
-        android:layout_height="567dp"
+        android:layout_width="394dp"
+        android:layout_height="516dp"
         android:layout_marginTop="84dp"
         android:background="@color/lightpink"
         app:layout_constraintEnd_toEndOf="parent"
@@ -60,7 +60,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="177dp"
+                android:layout_height="176dp"
+                android:onClick="itemSelected"
+                app:srcCompat="@drawable/hat1" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="177dp"
+                android:layout_height="176dp"
+                android:onClick="itemSelected"
+                app:srcCompat="@drawable/hat2" />
+
+        </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/buyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:onClick="confirmBuy"
+        android:text="Buy?"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
