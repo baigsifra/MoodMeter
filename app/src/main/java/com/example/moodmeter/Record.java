@@ -15,6 +15,9 @@ import android.widget.PopupWindow;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -29,6 +32,7 @@ public class Record extends AppCompatActivity {
     private SeekBar angryCalmSlider;
     private TextView angryCalmNum;
     private FirestoreHelper dbHelper;
+    FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,8 +147,7 @@ public class Record extends AppCompatActivity {
 
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
 
-        User user = dbHelper.retrieveUser("test4@gmail.com");
-        System.out.println(user.getMoney());
+        User user = dbHelper.retrieveUser(currentUser.getEmail());
     }
 
     public void toPet(View v){

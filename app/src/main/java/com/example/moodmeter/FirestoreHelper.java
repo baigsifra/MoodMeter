@@ -62,6 +62,10 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
     }
 
+    public void addDay(String email, Day day) {
+        db.collection("Users").document(email).collection("Days").document();
+    }
+
     public User retrieveUser(String email) {
         DocumentReference docRef = db.collection("Users").document(email);
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
