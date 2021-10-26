@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/bgbrown"
     android:paddingTop="20dp"
-    tools:context=".Pet">
+    >
 
     <Button
         android:id="@+id/storeBtn"
@@ -15,38 +15,39 @@
         android:layout_centerHorizontal="true"
         android:background="@drawable/button_style"
         android:layout_toLeftOf="@id/moneyPetTV"
-        android:onClick="toStore"
         android:text="Store"
         android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:textSize="15sp"
 
+        />
     <ImageView
         android:id="@+id/octopusPet"
         android:layout_width="210dp"
         android:layout_height="230dp"
         android:paddingTop="10dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/octopusorangehat" />
+        app:srcCompat="@drawable/octopusorangehat"
+        />
 
     <TextView
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/storeBtn"
         android:paddingLeft="5dp"
         android:text="$____"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:layout_alignParentRight="true"
+        />
 
     <TextView
         android:id="@+id/petNameTV"
         android:layout_width="80dp"
         android:layout_height="30dp"
-        android:textSize="20sp"
-        android:layout_centerHorizontal="true"
         android:layout_alignBottom="@id/octopusPet"
-        android:text="petname"
-        android:textColor="@color/black" />
+        android:layout_centerHorizontal="true"
+        android:hint="petname"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
 
     <View
         android:id="@+id/linePet"
@@ -55,6 +56,7 @@
         android:layout_centerVertical="true"
         android:layout_alignBottom="@id/petNameTV"
         android:background="@color/black" />
+
 
 
 
