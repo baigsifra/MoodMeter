@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Data">
 
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="392dp"
+        android:layout_height="298dp"
+        android:layout_alignParentTop="true"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="4dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
