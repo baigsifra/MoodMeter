@@ -32,7 +32,7 @@ public class Record extends AppCompatActivity {
     private SeekBar angryCalmSlider;
     private TextView angryCalmNum;
     private FirestoreHelper dbHelper;
-    FirebaseUser currentUser= FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,7 +113,6 @@ public class Record extends AppCompatActivity {
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = false; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
 
         // show the popup window
@@ -131,7 +130,7 @@ public class Record extends AppCompatActivity {
 
         // ifra and pranav use this and store in firebase hee hee :)
         Date thisDate = new Date();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 
         double sadHappyVal = sadHappySlider.getProgress();
         double lowHighVal = lowHighSlider.getProgress();
@@ -144,9 +143,8 @@ public class Record extends AppCompatActivity {
         * https://www.javatpoint.com/java-get-current-date
         * Link to how to format date
         * */
-
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
-
+        dbHelper.addDay(currentUser.getEmail(), day, dateFormat.format(thisDate));
         User user = dbHelper.retrieveUser(currentUser.getEmail());
     }
 

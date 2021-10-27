@@ -62,8 +62,8 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
     }
 
-    public void addDay(String email, Day day) {
-        db.collection("Users").document(email).collection("Days").document();
+    public void addDay(String email, Day day, String date) {
+        db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
     public User retrieveUser(String email) {
