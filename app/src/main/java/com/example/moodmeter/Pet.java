@@ -1,4 +1,6 @@
 package com.example.moodmeter;
+import android.content.Intent;
+import android.view.View;
 import android.widget.TabHost;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,5 +24,10 @@ public class Pet extends AppCompatActivity {
         spec.setContent(R.id.tab3);
         spec.setIndicator("third");
         tabs.addTab(spec);
+    }
+
+    public void toStore(View v){
+        Intent shopIntent = new Intent(getApplicationContext(), Shop.class);
+        startActivity(shopIntent);
     }
 }

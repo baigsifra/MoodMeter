@@ -13,13 +13,13 @@
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/button_style"
         android:layout_toLeftOf="@id/moneyPetTV"
+        android:background="@drawable/button_style"
+        android:onClick="toStore"
         android:text="Store"
         android:textColor="@color/black"
-        android:textSize="15sp"
 
-        />
+        android:textSize="15sp" />
     <ImageView
         android:id="@+id/octopusPet"
         android:layout_width="210dp"
