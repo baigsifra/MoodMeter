@@ -27,7 +27,7 @@ public class Pet extends AppCompatActivity {
     }
 
     public void toStore(View v){
-        Intent shopIntent = new Intent(getApplicationContext(), Shop.class);
+        Intent shopIntent = new Intent(this, Shop.class);
         startActivity(shopIntent);
     }
 }

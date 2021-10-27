@@ -63,14 +63,14 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/hatIV1"
                 android:layout_width="177dp"
                 android:layout_height="176dp"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat1" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/hatIV2"
                 android:layout_width="177dp"
                 android:layout_height="176dp"
                 android:onClick="itemSelected"
