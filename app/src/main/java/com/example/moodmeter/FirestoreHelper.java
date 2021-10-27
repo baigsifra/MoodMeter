@@ -27,30 +27,10 @@ public class FirestoreHelper {
     private final FirebaseFirestore db;     // ref to entire database
     private CollectionReference daysRef;  // ref to collection
 
-    private ArrayList<Day> daysArrayList= new ArrayList<>();  // arrayList of all Days in db
+    private ArrayList<User> usersArrayList= new ArrayList<User>();  // arrayList of all Days in db
 
     public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
-        daysRef = db.collection("Users");
-
-        // This listener will listen for whenever the data is updated.  When that occurs, the arraylist
-        // is cleared out and it is refreshed with the updated data.
-
-        daysRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                // clear out the array list so that none of the events are duplicated in the display
-                daysArrayList.clear();
-
-                // this for each loop will get each Document Snapshot from the query, and one at a time,
-                // convert them to an object of the Event class and then add them to the array list
-
-                for (QueryDocumentSnapshot doc: value) {
-                    Day day = doc.toObject(Day.class);
-                    daysArrayList.add(day);
-                }
-            }
-        });
     }
 
     public void addUser(String email, User user) {
@@ -66,17 +46,4 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
-    public User retrieveUser(String email) {
-        DocumentReference docRef = db.collection("Users").document(email);
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                user = documentSnapshot.toObject(User.class);
-            }
-        });
-        return user;
-    }
-
 }
-
-// Ifra: change the db to users, and grab everything below it. figure out how to add one day in the right spot

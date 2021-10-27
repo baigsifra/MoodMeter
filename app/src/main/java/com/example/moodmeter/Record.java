@@ -137,8 +137,7 @@ public class Record extends AppCompatActivity {
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
         dbHelper.addDay(currentUser.getEmail(), day, dateFormat.format(thisDate));
-        User user = dbHelper.retrieveUser(currentUser.getEmail());
-        // journalET.setText("Money: " + user.getMoney() + " Username: " + user.getUid());
+        // User user = dbHelper.retrieveUser(currentUser.getEmail());
     }
 
     public void toPet(View v){
