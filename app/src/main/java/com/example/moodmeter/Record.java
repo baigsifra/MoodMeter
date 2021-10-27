@@ -119,14 +119,6 @@ public class Record extends AppCompatActivity {
         // which view you pass in doesn't matter, it is only used for the window token
         popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
 
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
-            }
-        });
 
         // ifra and pranav use this and store in firebase hee hee :)
         Date thisDate = new Date();
@@ -146,6 +138,7 @@ public class Record extends AppCompatActivity {
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
         dbHelper.addDay(currentUser.getEmail(), day, dateFormat.format(thisDate));
         User user = dbHelper.retrieveUser(currentUser.getEmail());
+        // journalET.setText("Money: " + user.getMoney() + " Username: " + user.getUid());
     }
 
     public void toPet(View v){
