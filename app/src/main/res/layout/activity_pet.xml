@@ -59,8 +59,9 @@
 
     <TabHost
         android:id="@+id/tabHostPet"
-        android:layout_width="420dip"
-        android:layout_height="300dip"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-4dp"
         android:layout_alignParentBottom="true">
 
         <LinearLayout

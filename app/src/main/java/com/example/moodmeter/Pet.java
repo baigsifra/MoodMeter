@@ -12,17 +12,17 @@ public class Pet extends AppCompatActivity {
         setContentView(R.layout.activity_pet);
         TabHost tabs = (TabHost) findViewById(R.id.tabHostPet);
         tabs.setup();
-        TabHost.TabSpec spec = tabs.newTabSpec("tag1");
+        TabHost.TabSpec spec = tabs.newTabSpec("Hats");
         spec.setContent(R.id.tab1);
-        spec.setIndicator("First");
+        spec.setIndicator("Hats");
         tabs.addTab(spec);
-        spec = tabs.newTabSpec("tag2");
+        spec = tabs.newTabSpec("Furniture");
         spec.setContent(R.id.tab2);
-        spec.setIndicator("second");
+        spec.setIndicator("Furniture");
         tabs.addTab(spec);
-        spec = tabs.newTabSpec("tag3");
+        spec = tabs.newTabSpec("Inventory");
         spec.setContent(R.id.tab3);
-        spec.setIndicator("third");
+        spec.setIndicator("Inventory");
         tabs.addTab(spec);
     }
 
