@@ -1,12 +1,15 @@
 package com.example.moodmeter;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -22,12 +25,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FirestoreHelper {
-    User user;
 
     private final FirebaseFirestore db;     // ref to entire database
     private CollectionReference daysRef;  // ref to collection
 
-    private ArrayList<User> usersArrayList= new ArrayList<User>();  // arrayList of all Days in db
+    private User user;
 
     public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
@@ -44,6 +46,26 @@ public class FirestoreHelper {
 
     public void addDay(String email, Day day, String date) {
         db.collection("Users").document(email).collection("Days").document(date).set(day);
+    }
+
+    public User getUser(String email) {
+        db.collection("Users").document(email).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            String uid = documentSnapshot.getString("uid");
+                            double money = documentSnapshot.getDouble("money");
+                            user = new User(uid, money);
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("Error: ", e.toString());
+            }
+        });
+        return user;
     }
 
 }

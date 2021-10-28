@@ -2,7 +2,7 @@ package com.example.moodmeter;
 
 public class User {
     private String uid;
-    private int money;
+    private double money;
 
     public User() {}
 
@@ -10,6 +10,12 @@ public class User {
         this.uid = uid;
         money = 0;
     }
+
+    public User(String uid, double money) {
+        this.uid = uid;
+        this.money = money;
+    }
+
     public String getUid() {
         return uid;
     }
@@ -18,7 +24,7 @@ public class User {
         this.uid = uid;
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
