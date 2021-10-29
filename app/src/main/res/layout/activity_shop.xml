@@ -7,6 +7,9 @@
     android:background="@color/bgbrown"
     tools:context=".Shop">
 
+    <!-- hatIV1 = 50 coins, hatIV2 = 100 coins,
+    hatIV3 and 4 = 200 coins, hatIV 5 and 6 = 300 coins-->
+
     <TextView
         android:id="@+id/storeTV"
         android:layout_width="70dp"
@@ -64,17 +67,45 @@
 
             <ImageView
                 android:id="@+id/hatIV1"
-                android:layout_width="177dp"
+                android:layout_width="176dp"
                 android:layout_height="176dp"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat1" />
 
             <ImageView
                 android:id="@+id/hatIV2"
-                android:layout_width="177dp"
+                android:layout_width="176dp"
                 android:layout_height="176dp"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat2" />
+
+            <ImageView
+                android:id="@+id/hatIV3"
+                android:layout_width="176dp"
+                android:layout_height="176dp"
+                android:onClick="itemSelected"
+                app:srcCompat="@drawable/hat3" />
+
+            <ImageView
+                android:id="@+id/hatIV4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="itemSelected"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/hatIV5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/hatIV6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:srcCompat="@tools:sample/avatars" />
 
         </LinearLayout>
     </ScrollView>
@@ -84,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:onClick="confirmBuy"
+        android:onClick="askBuy"
         android:text="Buy?"
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
