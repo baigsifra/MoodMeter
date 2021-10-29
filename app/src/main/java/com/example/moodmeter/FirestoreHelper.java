@@ -74,6 +74,7 @@ public class FirestoreHelper {
 
     public User returnUser(String email) {
         getUser(email);
+        Log.d("User", user.getUid());
         return user;
     }
 
