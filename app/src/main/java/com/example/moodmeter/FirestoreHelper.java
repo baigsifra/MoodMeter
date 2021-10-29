@@ -19,8 +19,10 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +39,9 @@ public class FirestoreHelper {
 
     public void addUser(String email, User user) {
         db.collection("Users").document(email).set(user);
+        Date thisDate = new Date();
+        SimpleDateFormat weekNum = new SimpleDateFormat("w");
+        // db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).set("");
         Map<String, ArrayList<String>> docData = new HashMap<>();
         docData.put("hats", new ArrayList<String>());
         docData.put("furniture", new ArrayList<String>());
@@ -55,8 +60,8 @@ public class FirestoreHelper {
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             String uid = documentSnapshot.getString("uid");
-                            double money = documentSnapshot.getDouble("money");
-                            user = new User(uid, money);
+                            String money = documentSnapshot.getString("money");
+                            user = new User(uid, Double.parseDouble(money));
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
