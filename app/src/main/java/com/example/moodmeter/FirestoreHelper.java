@@ -53,7 +53,7 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
-    public User getUser(String email) {
+    public void getUser(String email) {
         db.collection("Users").document(email).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -70,6 +70,10 @@ public class FirestoreHelper {
                 Log.d("Error: ", e.toString());
             }
         });
+    }
+
+    public User returnUser(String email) {
+        getUser(email);
         return user;
     }
 
