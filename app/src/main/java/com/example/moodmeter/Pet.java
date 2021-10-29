@@ -30,4 +30,5 @@ public class Pet extends AppCompatActivity {
         Intent shopIntent = new Intent(this, Shop.class);
         startActivity(shopIntent);
     }
+
 }
