@@ -29,5 +29,8 @@
     <dimen name="topMarginTV">10dp</dimen>
     <dimen name="leftMarginTV">10dp</dimen>
     <dimen name="rightMarginTV">10dp</dimen>
+    <!-- dimens for pop up screen -->
+    <dimen name="widthTVPopUp">280dp</dimen>
+    <dimen name="heightTVPopUp">80dp</dimen>
 
 </resources>
