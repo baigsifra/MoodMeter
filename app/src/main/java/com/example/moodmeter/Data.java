@@ -27,10 +27,10 @@ public class Data extends AppCompatActivity {
                 new DataPoint(3, 20),
                 new DataPoint(4, 6),
                 new DataPoint(5, 3),
-                new DataPoint(6, 6)
+                new DataPoint(8, 6)
         });
         graphView.setTitle("Example Graph");
-        graphView.setTitleTextSize(35);
+        graphView.setTitleTextSize(50);
         graphView.addSeries(series);
 }
 }
