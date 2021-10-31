@@ -119,7 +119,9 @@ public class Shop extends AppCompatActivity {
 
     public void confirmBuy(View v){
         money -= selectedItemCost;
-        
+        dbHelper.addInventory(selectedItemID);
+        TextView moneyTV = findViewById(R.id.moneyTV);
+        moneyTV.setText("$" + money);
         // add selectedItemID to firebase inventory
     }
 

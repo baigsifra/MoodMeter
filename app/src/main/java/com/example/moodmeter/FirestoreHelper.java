@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -32,6 +34,10 @@ public class FirestoreHelper {
     private CollectionReference daysRef;  // ref to collection
 
     private User user;
+    private static ArrayList<Integer> hats = new ArrayList<Integer>();
+    private static ArrayList<Integer> furniture = new ArrayList<Integer>();
+    private static ArrayList<Integer> backgrounds = new ArrayList<Integer>();
+
 
     public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
@@ -42,11 +48,35 @@ public class FirestoreHelper {
         Date thisDate = new Date();
         SimpleDateFormat weekNum = new SimpleDateFormat("w");
         // db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).set("");
-        Map<String, ArrayList<String>> docData = new HashMap<>();
-        docData.put("hats", new ArrayList<String>());
-        docData.put("furniture", new ArrayList<String>());
-        docData.put("backgrounds", new ArrayList<String>());
+        Map<String, ArrayList<Integer>> docData = new HashMap<>();
+        docData.put("hats", hats);
+        docData.put("furniture", furniture);
+        docData.put("backgrounds", backgrounds);
         db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
+    }
+
+    public void addInventory(int itemID){
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        Map<String, ArrayList<Integer>> docData = new HashMap<>();
+        if(itemID <= 6){
+            hats.add(itemID);
+            docData.put("hats", hats);
+            docData.put("furniture", furniture);
+            docData.put("backgrounds", backgrounds);
+        }
+        else if(itemID <= 12){
+            furniture.add(itemID);
+            docData.put("hats", hats);
+            docData.put("furniture", furniture);
+            docData.put("backgrounds", backgrounds);
+        }
+        else if(itemID <= 18){
+            backgrounds.add(itemID);
+            docData.put("hats", hats);
+            docData.put("furniture", furniture);
+            docData.put("backgrounds", backgrounds);
+        }
+        db.collection("Users").document(currentUser.getEmail()).collection("Inventory").document("inventory").set(docData);
     }
 
     public void addDay(String email, Day day, String date) {
