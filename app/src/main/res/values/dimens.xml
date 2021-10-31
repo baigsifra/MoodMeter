@@ -24,13 +24,38 @@
     <dimen name="topPaddingBtn">10dp</dimen>
     <dimen name="leftPaddingBtn">10dp</dimen>
     <dimen name="rightPaddingBtn">10dp</dimen>
-    <!-- general margin for textview -->
+    <!-- dimens for pop up screen -->
+    <dimen name="widthTVPopUp">280dp</dimen>
+    <dimen name="heightTVPopUp">80dp</dimen>
+    <!-- edit text padding/margin dimens -->
+    <dimen name="bottomMarginET">20dp</dimen>
+    <dimen name="topMarginET">10dp</dimen>
+    <dimen name="leftMarginET">10dp</dimen>
+    <dimen name="rightMarginET">10dp</dimen>
+    <dimen name="bottomPaddingET">10dp</dimen>
+    <dimen name="topPaddingET">10dp</dimen>
+    <dimen name="leftPaddingET">10dp</dimen>
+    <dimen name="rightPaddingET">10dp</dimen>
+    <!-- text view padding/dimens -->
     <dimen name="bottomMarginTV">20dp</dimen>
     <dimen name="topMarginTV">10dp</dimen>
     <dimen name="leftMarginTV">10dp</dimen>
     <dimen name="rightMarginTV">10dp</dimen>
-    <!-- dimens for pop up screen -->
-    <dimen name="widthTVPopUp">280dp</dimen>
-    <dimen name="heightTVPopUp">80dp</dimen>
+    <dimen name="bottomPaddingTV">10dp</dimen>
+    <dimen name="topPaddingTV">5dp</dimen>
+    <dimen name="leftPaddingTV">10dp</dimen>
+    <dimen name="rightPaddingTV">10dp</dimen>
+    <!-- pet screens dimens btn -->
+    <dimen name="widthPetBtn">70dp</dimen>
+    <dimen name="heightPetBtn">30dp</dimen>
+    <dimen name="leftMarginPetBtn">10dp</dimen>
+    <dimen name="rightMarginPetBtn">10dp</dimen>
+    <dimen name="topMarginPetBtn">0dp</dimen>
+    <dimen name="bottomMarginPetBtn">20dp</dimen>
+    <dimen name="leftPaddingPetBtn">5dp</dimen>
+    <dimen name="rightPaddingPetBtn">5dp</dimen>
+    <dimen name="topPaddingPetBtn">5dp</dimen>
+    <dimen name="bottomPaddingPetBtn">5dp</dimen>
+
 
 </resources>

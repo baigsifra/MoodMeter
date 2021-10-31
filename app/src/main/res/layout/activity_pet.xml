@@ -10,8 +10,17 @@
 
     <Button
         android:id="@+id/popupMessageTV"
-        android:layout_width="70dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/widthPetBtn"
+        android:layout_height="@dimen/heightPetBtn"
+        android:layout_marginLeft="@dimen/leftMarginPetBtn"
+        android:layout_marginRight="@dimen/rightMarginPetBtn"
+        android:layout_marginBottom="@dimen/bottomMarginPetBtn"
+        android:layout_marginTop="@dimen/topMarginPetBtn"
+        android:paddingBottom="@dimen/bottomPaddingPetBtn"
+        android:paddingTop="@dimen/topPaddingPetBtn"
+        android:paddingLeft="@dimen/leftPaddingPetBtn"
+        android:paddingRight="@dimen/rightPaddingPetBtn"
+
         android:layout_centerHorizontal="true"
         android:layout_toLeftOf="@id/moneyPetTV"
         android:background="@drawable/button_style"
@@ -20,24 +29,23 @@
         android:textColor="@color/black"
 
         android:textSize="15sp" />
+
     <ImageView
         android:id="@+id/octopusPet"
         android:layout_width="210dp"
         android:layout_height="230dp"
-        android:paddingTop="10dp"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@drawable/octopusorangehat"
-        />
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/octopusorangehat" />
 
     <TextView
         android:id="@+id/moneyPetTV"
         android:layout_width="40dp"
         android:layout_height="25dp"
+        android:layout_alignParentRight="true"
         android:paddingLeft="5dp"
         android:text="$____"
-        android:textColor="@color/black"
-        android:layout_alignParentRight="true"
-        />
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/petNameTV"
