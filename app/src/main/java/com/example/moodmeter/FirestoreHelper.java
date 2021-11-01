@@ -90,21 +90,17 @@ public class FirestoreHelper {
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                             String uid = documentSnapshot.getString("uid");
-                            String money = documentSnapshot.getString("money");
-                            user = new User(uid, Double.parseDouble(money));
+                            double money = documentSnapshot.getDouble("money");
+                            user = new User(uid, money);
                         }
                     }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.d("Error: ", e.toString());
-            }
-        });
+                });
     }
 
     public User returnUser(String email) {
         getUser(email);
-        Log.d("User", user.getUid());
+        Log.d("megan", user.getUid());
+        Log.d("megan", "" + user.getMoney());
         return user;
     }
 
