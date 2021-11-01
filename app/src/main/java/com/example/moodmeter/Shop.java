@@ -2,6 +2,7 @@ package com.example.moodmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -21,6 +23,8 @@ import org.w3c.dom.Text;
 public class Shop extends AppCompatActivity {
 
     private FirestoreHelper dbHelper;
+//    private ImageView hatIV1 = findViewById(R.id.hatIV1);
+//    private ImageView hatIV2 = findViewById(R.id.hatIV2);
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -45,10 +49,14 @@ public class Shop extends AppCompatActivity {
        buyButton.setVisibility(View.VISIBLE);
         switch(v.getId()) {
             case R.id.hatIV1:
+//                hatIV1.setBackgroundColor(getResources().getColor(R.color.darkblue));
+//                hatIV2.setBackgroundColor(Color.TRANSPARENT);
                 selectedItemID = 1;
                 selectedItemCost = 50;
                 break;
             case R.id.hatIV2:
+//                hatIV2.setBackgroundColor(getResources().getColor(R.color.darkblue));
+//                hatIV1.setBackgroundColor(Color.TRANSPARENT);
                 selectedItemID = 2;
                 selectedItemCost = 100;
                 break;

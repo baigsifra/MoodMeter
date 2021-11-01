@@ -69,6 +69,7 @@
                 android:id="@+id/hatIV1"
                 android:layout_width="176dp"
                 android:layout_height="176dp"
+                android:padding="@dimen/imagePadding"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat1" />
 
@@ -76,6 +77,7 @@
                 android:id="@+id/hatIV2"
                 android:layout_width="176dp"
                 android:layout_height="176dp"
+                android:padding="@dimen/imagePadding"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat2" />
 
@@ -83,6 +85,7 @@
                 android:id="@+id/hatIV3"
                 android:layout_width="176dp"
                 android:layout_height="176dp"
+                android:padding="@dimen/imagePadding"
                 android:onClick="itemSelected"
                 app:srcCompat="@drawable/hat3" />
 
@@ -90,6 +93,7 @@
                 android:id="@+id/hatIV4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/imagePadding"
                 android:onClick="itemSelected"
                 tools:srcCompat="@tools:sample/avatars" />
 
@@ -97,12 +101,14 @@
                 android:id="@+id/hatIV5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/imagePadding"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <ImageView
                 android:id="@+id/hatIV6"
+                android:padding="@dimen/imagePadding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 tools:srcCompat="@tools:sample/avatars" />

@@ -57,12 +57,15 @@ public class Welcome extends AppCompatActivity {
                 EditText signUpEmailET = findViewById(R.id.signUpEmailET);
                 EditText signUpPasswordET = findViewById(R.id.signUpPasswordET);
                 EditText confirmPasswordET = findViewById(R.id.signUpConfirmPasswordET);
+                EditText petNameET = findViewById(R.id.petNameET);
+
                 String signUpUsername = usernameET.getText().toString();
                 String signUpEmail = signUpEmailET.getText().toString();
                 String signUpPassword = signUpPasswordET.getText().toString();
                 String confirmPassword = confirmPasswordET.getText().toString();
+                String petName = petNameET.getText().toString();
                 if(confirmPassword.equals(signUpPassword)) {
-                    signUp(signUpEmail, signUpPassword, signUpUsername);
+                    signUp(signUpEmail, signUpPassword, signUpUsername, petName);
                     // add way to store password
                 }
                 break;
@@ -76,7 +79,7 @@ public class Welcome extends AppCompatActivity {
         }
     }
 
-    public void signUp(String email, String password, String uid) {
+    public void signUp(String email, String password, String uid, String pet) {
 
         if (email != null && password != null) {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -87,7 +90,7 @@ public class Welcome extends AppCompatActivity {
                                 Log.i("Megan", "createUserWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 Intent homeIntent = new Intent(getApplicationContext(), Home.class);
-                                startActivity(homeIntent);  dbHelper.addUser(email, new User(uid));
+                                startActivity(homeIntent);  dbHelper.addUser(email, new User(uid, pet));
                             }
 
                             // add more specific error messages

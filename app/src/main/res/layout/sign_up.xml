@@ -116,6 +116,28 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.7" />
 
+    <EditText
+        android:id="@+id/petNameET"
+        android:layout_width="@dimen/editTextWidth"
+        android:layout_height="@dimen/editTextHeight"
+        android:layout_marginLeft="@dimen/leftMarginET"
+        android:layout_marginTop="@dimen/topMarginET"
+        android:layout_marginRight="@dimen/rightMarginET"
+        android:layout_marginBottom="@dimen/bottomMarginET"
+        android:ems="10"
+        android:hint="pet name"
+        android:inputType="textPersonName"
+        android:paddingLeft="@dimen/leftPaddingET"
+        android:paddingTop="@dimen/topPaddingET"
+        android:paddingRight="@dimen/rightPaddingET"
+        android:paddingBottom="@dimen/bottomPaddingET"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.85" />
+
     <Button
         android:id="@+id/submitSignUpBtn"
         android:layout_width="@dimen/buttonWidth"
@@ -124,18 +146,18 @@
         android:layout_marginTop="@dimen/topMarginBtn"
         android:layout_marginRight="@dimen/rightMarginBtn"
         android:layout_marginBottom="@dimen/bottomMarginBtn"
+        android:background="@drawable/button_style"
+        android:onClick="accessAccount"
         android:paddingTop="@dimen/topPaddingBtn"
         android:paddingRight="@dimen/rightPaddingBtn"
         android:paddingBottom="@dimen/bottomPaddingBtn"
-        android:background="@drawable/button_style"
-        android:onClick="accessAccount"
         android:text="Submit"
         android:textAllCaps="false"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852" />
+        app:layout_constraintVertical_bias="0.978" />
 </androidx.constraintlayout.widget.ConstraintLayout>
