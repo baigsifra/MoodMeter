@@ -32,7 +32,8 @@ public class Record extends AppCompatActivity {
     private SeekBar angryCalmSlider;
     private TextView angryCalmNum;
     private FirestoreHelper dbHelper;
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+    private User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +137,14 @@ public class Record extends AppCompatActivity {
         * Link to how to format date
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
-        dbHelper.addDay(currentUser.getEmail(), day, dateFormat.format(thisDate));
+        dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
+
+        dbHelper.readData(new FirestoreHelper.MyCallback() {
+            @Override
+            public void onCallback(User user) {
+                Log.d("pranav", user.toString());
+            }
+        }, firebaseUser.getEmail());
     }
 
     public void toPet(View v){

@@ -52,4 +52,9 @@ public class User {
     public void setPet(String pet) {
         this.pet = pet;
     }
+
+    @Override
+    public String toString() {
+        return "Uid: "  + uid + ", money: " + money + ", Pet: " + pet;
+    }
 }

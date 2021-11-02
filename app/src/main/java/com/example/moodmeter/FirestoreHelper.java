@@ -31,7 +31,6 @@ import java.util.Map;
 public class FirestoreHelper {
 
     private final FirebaseFirestore db;     // ref to entire database
-    private CollectionReference daysRef;  // ref to collection
 
     private User user;
     private static ArrayList<Integer> hats = new ArrayList<Integer>();
@@ -83,7 +82,8 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
-    public void getUser(String email) {
+    public void readData(MyCallback myCallback, String email) {
+
         db.collection("Users").document(email).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -92,16 +92,14 @@ public class FirestoreHelper {
                             String uid = documentSnapshot.getString("uid");
                             double money = documentSnapshot.getDouble("money");
                             user = new User(uid, money);
+                            myCallback.onCallback(user);
                         }
                     }
                 });
     }
 
-    public User returnUser(String email) {
-        getUser(email);
-        Log.d("megan", user.getUid());
-        Log.d("megan", "" + user.getMoney());
-        return user;
+    public interface MyCallback {
+        void onCallback(User user);
     }
 
 }
