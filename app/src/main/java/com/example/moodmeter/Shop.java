@@ -18,13 +18,11 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.w3c.dom.Text;
 
 public class Shop extends AppCompatActivity {
 
     private FirestoreHelper dbHelper;
-//    private ImageView hatIV1 = findViewById(R.id.hatIV1);
-//    private ImageView hatIV2 = findViewById(R.id.hatIV2);
+
     FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
 
@@ -47,34 +45,48 @@ public class Shop extends AppCompatActivity {
     public void itemSelected(View v){
        Button buyButton = findViewById(R.id.buyButton);
        buyButton.setVisibility(View.VISIBLE);
+
         switch(v.getId()) {
             case R.id.hatIV1:
-//                hatIV1.setBackgroundColor(getResources().getColor(R.color.darkblue));
-//                hatIV2.setBackgroundColor(Color.TRANSPARENT);
+                imageBorderShow(findViewById(R.id.hatIV1));
                 selectedItemID = 1;
                 selectedItemCost = 50;
                 break;
             case R.id.hatIV2:
-//                hatIV2.setBackgroundColor(getResources().getColor(R.color.darkblue));
-//                hatIV1.setBackgroundColor(Color.TRANSPARENT);
+                imageBorderShow(findViewById(R.id.hatIV2));
                 selectedItemID = 2;
                 selectedItemCost = 100;
                 break;
             case R.id.hatIV3:
+                imageBorderShow(findViewById(R.id.hatIV3));
                 selectedItemID = 3;
                 selectedItemCost = 200;
             case R.id.hatIV4:
+                imageBorderShow(findViewById(R.id.hatIV4));
                 selectedItemID = 4;
                 selectedItemCost = 200;
             case R.id.hatIV5:
+                imageBorderShow(findViewById(R.id.hatIV5));
                 selectedItemID = 5;
                 selectedItemCost = 300;
             case R.id.hatIV6:
+                imageBorderShow(findViewById(R.id.hatIV6));
                 selectedItemID = 6;
                 selectedItemCost = 300;
         }
         Log.i("megan", "" + selectedItemID + " " + selectedItemCost);
 
+    }
+
+    public void imageBorderShow(ImageView itemChosen){
+        itemChosen.setBackgroundColor(getResources().getColor(R.color.darkblue));
+        Log.i("megan", "" + itemChosen);
+        ImageView[] shopIVs = {findViewById(R.id.hatIV1), findViewById(R.id.hatIV2), findViewById(R.id.hatIV3), findViewById(R.id.hatIV4), findViewById(R.id.hatIV5), findViewById(R.id.hatIV6)};
+        for(int i = 0; i < shopIVs.length; i++){
+            if(shopIVs[i] != itemChosen){
+                shopIVs[i].setBackgroundColor(Color.TRANSPARENT);
+            }
+        }
     }
 
     public void askBuy(View v){
