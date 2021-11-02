@@ -1,6 +1,8 @@
 package com.example.moodmeter;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,24 +21,23 @@ import com.jjoe64.graphview.series.Series;
 
 public class Data extends AppCompatActivity {
 
-    private GraphView logScatterPlot;
-    private SeekBar sadHappySliderDisplay;
-    private TextView sadHappyNumDisplay;
+    GraphView logScatterPlot;
+
+    SeekBar sadHappySliderDisplay;
+    TextView sadHappyNumDisplay;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
-
-        sadHappySliderDisplay = findViewById(R.id.sadHappySlider);
-        sadHappyNumDisplay = findViewById(R.id.sadHappyNum);
-        //sadHappyNumDisplay.setText("50");
+        sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
+        sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
         //initialize graph view
         logScatterPlot = findViewById(R.id.graph);
         // on below line we are adding data to our graph view.
-        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<DataPoint>(new DataPoint[]{
+        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{
                 new DataPoint(1, 1),
                 new DataPoint(2, 3),
                 new DataPoint(3, 20),
@@ -65,11 +66,14 @@ public class Data extends AppCompatActivity {
         logSeries.setOnDataPointTapListener(new OnDataPointTapListener() {
             @Override
             public void onTap(Series series, DataPointInterface dataPoint) {
+                sadHappySliderDisplay.setVisibility(View.VISIBLE);
+                sadHappyNumDisplay.setVisibility(View.VISIBLE);
+
                 Toast.makeText(Data.this, "Series1: On Data Point clicked: " + dataPoint, Toast.LENGTH_SHORT).show();
-                //Change code to set num equal to y-axis value
-                //sadHappySliderDisplay.setProgress(50);
-                //sadHappySliderDisplay.setEnabled(false);
-                //sadHappyNumDisplay.setText("50");
+                //set to y-axix var
+                sadHappySliderDisplay.setProgress(50);
+                sadHappyNumDisplay.setText(""+ 50);
+                sadHappySliderDisplay.setEnabled(false);
 
             }
         });
