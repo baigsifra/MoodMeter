@@ -19,7 +19,7 @@
         app:layout_constraintHorizontal_bias="0.957"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.463" />
+        app:layout_constraintVertical_bias="0.457" />
 
     <EditText
         android:id="@+id/journalET"
@@ -53,6 +53,15 @@
         android:id="@+id/textView"
         android:layout_width="@dimen/textWidthlog"
         android:layout_height="@dimen/textHeightlog"
+        android:paddingTop="@dimen/topPaddingTV"
+        android:paddingBottom="@dimen/bottomPaddingTV"
+        android:paddingLeft="@dimen/leftPaddingTV"
+        android:paddingRight="@dimen/rightPaddingTV"
+        android:layout_marginBottom="@dimen/bottomMarginTV"
+        android:layout_marginTop="@dimen/topMarginTV"
+        android:layout_marginLeft="@dimen/leftMarginTV"
+        android:layout_marginRight="@dimen/rightMarginTV"
+
         android:text="Enter your mood for today!"
         android:textColor="#000000"
         android:textSize="18sp"
@@ -71,10 +80,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <TextView
         android:id="@+id/highEnergyTV"
@@ -84,10 +93,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.803"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
+        app:layout_constraintVertical_bias="0.296" />
 
     <TextView
         android:id="@+id/angryTV"
@@ -100,7 +109,7 @@
         app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.453" />
+        app:layout_constraintVertical_bias="0.407" />
 
     <TextView
         android:id="@+id/calmTV"
@@ -110,10 +119,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.762"
+        app:layout_constraintHorizontal_bias="0.825"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.452" />
+        app:layout_constraintVertical_bias="0.409" />
 
     <TextView
         android:id="@+id/lowEnergyTV"
@@ -126,7 +135,7 @@
         app:layout_constraintHorizontal_bias="0.017"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.332" />
+        app:layout_constraintVertical_bias="0.296" />
 
     <TextView
         android:id="@+id/happyTV"
@@ -136,10 +145,10 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintHorizontal_bias="0.822"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <TextView
         android:id="@+id/sadHappyNum"
@@ -178,21 +187,26 @@
 
     <SeekBar
         android:id="@+id/lowHighSlider"
-        android:layout_width="144dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="199dp"
+        android:layout_height="34dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sadHappySlider" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.335" />
 
     <SeekBar
         android:id="@+id/angryCalmSlider"
-        android:layout_width="192dp"
+        android:layout_width="199dp"
         android:layout_height="34dp"
-        android:layout_marginStart="88dp"
         android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.415"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lowHighSlider" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.395" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

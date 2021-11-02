@@ -81,6 +81,30 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.659" />
 
+    <Button
+        android:id="@+id/signOutBtn"
+        android:layout_width="@dimen/buttonWidth"
+        android:layout_height="@dimen/buttonHeight"
+        android:layout_marginLeft="@dimen/leftMarginBtn"
+        android:layout_marginTop="@dimen/topMarginBtn"
+        android:layout_marginRight="@dimen/rightMarginBtn"
+        android:layout_marginBottom="@dimen/bottomMarginBtn"
+        android:paddingTop="@dimen/topPaddingBtn"
+        android:paddingRight="@dimen/rightPaddingBtn"
+        android:paddingBottom="@dimen/bottomPaddingBtn"
+
+        android:background="@drawable/button_style"
+        android:onClick="signOut"
+        android:text="Sign Out"
+        android:textAllCaps="false"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029" />
+
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="@dimen/imageWidth"
@@ -102,18 +126,6 @@
         app:layout_constraintVertical_bias="0.111"
         app:srcCompat="@drawable/octopusorangehat" />
 
-    <Button
-        android:id="@+id/signOutBtn"
-        android:layout_width="@dimen/buttonWidth"
-        android:layout_height="@dimen/buttonHeight"
-        android:background="@drawable/button_style"
-        android:onClick="signOut"
-        android:text="Sign Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.029" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
