@@ -44,8 +44,8 @@ public class FirestoreHelper {
 
     public void addUser(String email, User user) {
         db.collection("Users").document(email).set(user);
-        Date thisDate = new Date();
-        SimpleDateFormat weekNum = new SimpleDateFormat("w");
+        // Date thisDate = new Date();
+        // SimpleDateFormat weekNum = new SimpleDateFormat("w");
         // db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).set("");
         Map<String, ArrayList<Integer>> docData = new HashMap<>();
         docData.put("hats", hats);
@@ -79,7 +79,10 @@ public class FirestoreHelper {
     }
 
     public void addDay(String email, Day day, String date) {
-        db.collection("Users").document(email).collection("Days").document(date).set(day);
+        Date thisDate = new Date();
+        SimpleDateFormat weekNum = new SimpleDateFormat("w");
+        db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).collection("Days").document(date).set(day);
+        // db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
     public void readData(MyCallback myCallback, String email) {
