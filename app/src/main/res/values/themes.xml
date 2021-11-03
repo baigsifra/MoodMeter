@@ -2,12 +2,12 @@
     <!-- Base application theme. -->
     <style name="Theme.MoodMeter" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/darkblue</item>
-        <item name="colorPrimaryVariant">@color/darkblue</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimary">@color/darkpurpletwo</item>
+        <item name="colorPrimaryVariant">@color/darkpurpletwo</item>
+        <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/lightgreen</item>
-        <item name="colorSecondaryVariant">@color/lightgreen</item>
+        <item name="colorSecondary">@color/lightbluesecondary</item>
+        <item name="colorSecondaryVariant">@color/seagreen</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>

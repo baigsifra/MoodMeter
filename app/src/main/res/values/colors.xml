@@ -17,4 +17,9 @@
     <color name="darkerpink">#D88C9A</color>
     <color name= "darkeryellow">#F2D0A9</color>
     <color name="lightblue">#b3d4e6</color>
+    <color name="darkpurpletwo">#bb86fc</color>
+    <color name="darkbluevariant">#3700B3</color>
+    <color name= "lightbluesecondary">#03DAC6</color>
+    <color name="seagreen">#018786</color>
+
 </resources>
