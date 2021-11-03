@@ -61,18 +61,22 @@ public class Shop extends AppCompatActivity {
                 imageBorderShow(findViewById(R.id.hatIV3));
                 selectedItemID = 3;
                 selectedItemCost = 200;
+                break;
             case R.id.hatIV4:
                 imageBorderShow(findViewById(R.id.hatIV4));
                 selectedItemID = 4;
                 selectedItemCost = 200;
+                break;
             case R.id.hatIV5:
                 imageBorderShow(findViewById(R.id.hatIV5));
                 selectedItemID = 5;
                 selectedItemCost = 300;
+                break;
             case R.id.hatIV6:
                 imageBorderShow(findViewById(R.id.hatIV6));
                 selectedItemID = 6;
                 selectedItemCost = 300;
+                break;
         }
         Log.i("megan", "" + selectedItemID + " " + selectedItemCost);
 
