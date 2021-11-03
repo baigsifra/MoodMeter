@@ -102,12 +102,6 @@ public class Record extends AppCompatActivity {
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
 
         double coinsGained = 10;
-        dbHelper.readData(new FirestoreHelper.MyCallback() {
-            @Override
-            public void onCallback(User user) {
-                Log.d("pranav", user.toString());
-            }
-        }, firebaseUser.getEmail());
     }
 
     public void toPet(View v){

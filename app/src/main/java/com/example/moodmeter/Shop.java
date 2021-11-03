@@ -23,11 +23,12 @@ public class Shop extends AppCompatActivity {
 
     private FirestoreHelper dbHelper;
 
-    FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+    private User currentUser;
 
+    private double money = 0;
 
-    double money = 100;
     int selectedItemCost = 1;
     // 1,2,3,4,5,6 - 7,8,9,10,11,12 - 13,14,15,16,17,18 for each hat/furniture/scenery
     int selectedItemID = 0;
@@ -37,7 +38,21 @@ public class Shop extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop);
         dbHelper = new FirestoreHelper();
+
+        dbHelper.readData(new FirestoreHelper.MyCallback() {
+            @Override
+            public void onCallback(User user) {
+                Log.d("pranav", user.toString());
+                finished(user);
+            }
+        }, firebaseUser.getEmail());
+
 //        money = dbHelper.returnUser(currentUser.getEmail()).getMoney();
+    }
+
+    public void finished(User user) {
+        currentUser = new User(user.getUid(), user.getMoney());
+        money = currentUser.getMoney();
         TextView moneyTV = findViewById(R.id.moneyTV);
         moneyTV.setText("$" + money);
     }
