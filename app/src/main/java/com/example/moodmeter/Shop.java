@@ -27,7 +27,7 @@ public class Shop extends AppCompatActivity {
 
     private User currentUser;
 
-    private double money = 0;
+    private double money;
 
     int selectedItemCost = 1;
     // 1,2,3,4,5,6 - 7,8,9,10,11,12 - 13,14,15,16,17,18 for each hat/furniture/scenery
