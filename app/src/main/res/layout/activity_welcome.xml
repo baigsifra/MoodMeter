@@ -5,7 +5,7 @@
     android:id="@+id/templogo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgbrown"
+    android:background="#121212"
     tools:context=".Welcome">
 
 
@@ -53,7 +53,7 @@
         android:onClick="toLogin"
         android:text="Log In"
         android:textAllCaps="false"
-        android:textSize="35sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -71,7 +71,7 @@
         android:layout_marginBottom="@dimen/bottomMarginTV"
 
         android:text="Mood Tracker "
-        android:textColor="#020202"
+        android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

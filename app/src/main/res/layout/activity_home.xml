@@ -44,7 +44,6 @@
         android:paddingBottom="@dimen/bottomPaddingBtn"
 
         android:background="@drawable/button_style"
-        android:backgroundTint="#B3D4E6"
         android:onClick="toRecord"
         android:text="Log Mood"
         android:textAllCaps="false"
