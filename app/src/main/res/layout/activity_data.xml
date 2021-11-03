@@ -6,6 +6,71 @@
     android:layout_height="match_parent"
     tools:context=".Data">
 
+    <TextView
+        android:id="@+id/highEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="High Energy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.785"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/Calm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.674"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/lowEnergy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Low Energy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/Angry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Angry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.675"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/Happy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Happy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469"
+        android:visibility="gone"/>
+
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
         android:layout_width="392dp"
@@ -22,7 +87,7 @@
         android:layout_marginTop="328dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility = "gone" />/>
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/sadHappyNumDisplay"
@@ -32,9 +97,109 @@
         android:text="50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.817"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility = "gone"/>
+        app:layout_constraintVertical_bias="0.496"
+        android:visibility="gone"/>
+
+    <SeekBar
+        android:id="@+id/lowHighSliderDisplay"
+        android:layout_width="199dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="404dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/lowHighNumDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Num"
+        android:text="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.715"
+        android:visibility="gone"/>
+
+    <SeekBar
+        android:id="@+id/angryCalmSliderDisplay"
+        android:layout_width="199dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="480dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/angryCalmNumDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Num"
+        android:text="50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.922"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.604"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/Sad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471"
+        android:visibility="gone"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="326dp"
+
+        >
+
+        <TextView
+            android:id="@+id/journalEntry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/showJournalBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="See Your Journal Entry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

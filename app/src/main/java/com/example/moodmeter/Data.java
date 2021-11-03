@@ -25,6 +25,16 @@ public class Data extends AppCompatActivity {
 
     SeekBar sadHappySliderDisplay;
     TextView sadHappyNumDisplay;
+    SeekBar lowHighSliderDisplay;
+    TextView lowHighNumDisplay;
+    SeekBar angryCalmSliderDisplay;
+    TextView angryCalmNumDisplay;
+    TextView Sad;
+    TextView Happy;
+    TextView lowEnergy;
+    TextView highEnergy;
+    TextView Angry;
+    TextView Calm;
 
 
     @Override
@@ -33,6 +43,18 @@ public class Data extends AppCompatActivity {
         setContentView(R.layout.activity_data);
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
+        lowHighSliderDisplay = findViewById(R.id.lowHighSliderDisplay);
+        lowHighNumDisplay = findViewById(R.id.lowHighNumDisplay);
+        angryCalmSliderDisplay = findViewById(R.id.angryCalmSliderDisplay);
+        angryCalmNumDisplay = findViewById(R.id.angryCalmNumDisplay);
+        Sad = findViewById(R.id.Sad);
+        Happy = findViewById(R.id.Happy);
+        lowEnergy = findViewById(R.id.lowEnergy);
+        highEnergy = findViewById(R.id.highEnergy);
+        Angry = findViewById(R.id.Angry);
+        Calm = findViewById(R.id.Calm);
+
+
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
         //initialize graph view
         logScatterPlot = findViewById(R.id.graph);
@@ -68,15 +90,36 @@ public class Data extends AppCompatActivity {
             public void onTap(Series series, DataPointInterface dataPoint) {
                 sadHappySliderDisplay.setVisibility(View.VISIBLE);
                 sadHappyNumDisplay.setVisibility(View.VISIBLE);
+                lowHighSliderDisplay.setVisibility(View.VISIBLE);
+                lowHighNumDisplay.setVisibility(View.VISIBLE);
+                angryCalmSliderDisplay.setVisibility(View.VISIBLE);
+                angryCalmNumDisplay.setVisibility(View.VISIBLE);
 
-                Toast.makeText(Data.this, "Series1: On Data Point clicked: " + dataPoint, Toast.LENGTH_SHORT).show();
-                //set to y-axix var
+                Sad.setVisibility(View.VISIBLE);
+                Happy.setVisibility(View.VISIBLE);
+                lowEnergy.setVisibility(View.VISIBLE);
+                highEnergy.setVisibility(View.VISIBLE);
+                Angry.setVisibility(View.VISIBLE);
+                Calm.setVisibility(View.VISIBLE);
+
+                //Toast.makeText(Data.this, "Series1: On Data Point clicked: " + dataPoint, Toast.LENGTH_SHORT).show();
+                //set to y-axis var
                 sadHappySliderDisplay.setProgress(50);
                 sadHappyNumDisplay.setText(""+ 50);
                 sadHappySliderDisplay.setEnabled(false);
 
+                lowHighSliderDisplay.setProgress(50);
+                lowHighNumDisplay.setText(""+ 50);
+                lowHighSliderDisplay.setEnabled(false);
+
+                angryCalmSliderDisplay.setProgress(50);
+                angryCalmNumDisplay.setText(""+ 50);
+                angryCalmSliderDisplay.setEnabled(false);
             }
         });
 
-}
+    }
+    public void showJournal(View v){
+
+    }
 }
