@@ -78,8 +78,6 @@ public class Shop extends AppCompatActivity {
                 selectedItemCost = 300;
                 break;
         }
-        Log.i("megan", "" + selectedItemID + " " + selectedItemCost);
-
     }
 
     public void imageBorderShow(ImageView itemChosen){
