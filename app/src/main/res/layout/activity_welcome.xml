@@ -5,7 +5,7 @@
     android:id="@+id/templogo"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#121212"
+    android:background="@color/bgbrown"
     tools:context=".Welcome">
 
 
@@ -71,7 +71,7 @@
         android:layout_marginBottom="@dimen/bottomMarginTV"
 
         android:text="Mood Tracker "
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
