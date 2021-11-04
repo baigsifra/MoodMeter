@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/moneyTV"
-        android:layout_width="70dp"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:text="$_____"
         android:textColor="@color/black"
@@ -66,6 +66,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/darkpurple"
             android:orientation="vertical">
 
             <ImageView
