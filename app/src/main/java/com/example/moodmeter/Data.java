@@ -3,12 +3,14 @@ package com.example.moodmeter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.Viewport;
@@ -19,16 +21,20 @@ import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
-public class Data extends AppCompatActivity {
-
+public class Data extends AppCompatActivity
+{
+    //the graph view widget
     GraphView logScatterPlot;
 
+    //all seekbars and corresponding numerical output widgets
     SeekBar sadHappySliderDisplay;
     TextView sadHappyNumDisplay;
     SeekBar lowHighSliderDisplay;
     TextView lowHighNumDisplay;
     SeekBar angryCalmSliderDisplay;
     TextView angryCalmNumDisplay;
+
+    //All text widgets displaying ranges
     TextView Sad;
     TextView Happy;
     TextView lowEnergy;
@@ -36,17 +42,28 @@ public class Data extends AppCompatActivity {
     TextView Angry;
     TextView Calm;
 
+    //All journal entry widgets inside card view widget
+    TextView journalEntry;
+    CardView cardView;
+    Button exitJournal;
+    boolean isBtnClicked;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
+
+        //Assign XML elements to varaibles created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
         lowHighSliderDisplay = findViewById(R.id.lowHighSliderDisplay);
         lowHighNumDisplay = findViewById(R.id.lowHighNumDisplay);
         angryCalmSliderDisplay = findViewById(R.id.angryCalmSliderDisplay);
         angryCalmNumDisplay = findViewById(R.id.angryCalmNumDisplay);
+        exitJournal = findViewById(R.id.exitJournalBtn);
+
         Sad = findViewById(R.id.Sad);
         Happy = findViewById(R.id.Happy);
         lowEnergy = findViewById(R.id.lowEnergy);
@@ -54,12 +71,18 @@ public class Data extends AppCompatActivity {
         Angry = findViewById(R.id.Angry);
         Calm = findViewById(R.id.Calm);
 
+        journalEntry = findViewById(R.id.journalEntry);
+        cardView = findViewById(R.id.cardView);
+        isBtnClicked = false;
 
+        //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
-        //initialize graph view
+
         logScatterPlot = findViewById(R.id.graph);
-        // on below line we are adding data to our graph view.
-        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{
+
+        //Add data to the scatter plot
+        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]
+                {
                 new DataPoint(1, 1),
                 new DataPoint(2, 3),
                 new DataPoint(3, 20),
@@ -67,9 +90,15 @@ public class Data extends AppCompatActivity {
                 new DataPoint(5, 3),
                 new DataPoint(6, 6),
                 new DataPoint(7, 10)
-        });
+                });
+
+        //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
+
+        //Create viewport --> is essential
         Viewport vp = logScatterPlot.getViewport();
+
+        //Set x-axis, y-axis, ranges, names, etc.
         vp.setXAxisBoundsManual(true);
         vp.setMinX(1);
         vp.setMaxX(7);
@@ -79,15 +108,19 @@ public class Data extends AppCompatActivity {
         logScatterPlot.setTitle("Mood Graph: Weekly Summary");
         logScatterPlot.setTitleTextSize(50);
 
-
+    //Change the x-axis to literal elements rather than numerical values, and then render
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(logScatterPlot);
         staticLabelsFormatter.setHorizontalLabels(new String[]{"Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"});
         logScatterPlot.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
-        //change instead of toast to make it show data below
 
-        logSeries.setOnDataPointTapListener(new OnDataPointTapListener() {
+        //Function to check if a point on scatter plot is clicked
+        logSeries.setOnDataPointTapListener(new OnDataPointTapListener()
+        {
             @Override
-            public void onTap(Series series, DataPointInterface dataPoint) {
+            public void onTap(Series series, DataPointInterface dataPoint)
+            {
+                // Change color of the data point
+                //Sets all elements visible in XML
                 sadHappySliderDisplay.setVisibility(View.VISIBLE);
                 sadHappyNumDisplay.setVisibility(View.VISIBLE);
                 lowHighSliderDisplay.setVisibility(View.VISIBLE);
@@ -102,8 +135,7 @@ public class Data extends AppCompatActivity {
                 Angry.setVisibility(View.VISIBLE);
                 Calm.setVisibility(View.VISIBLE);
 
-                //Toast.makeText(Data.this, "Series1: On Data Point clicked: " + dataPoint, Toast.LENGTH_SHORT).show();
-                //set to y-axis var
+                //Sets the seekbars and numerical text views to equal the corresponding data value from firebase
                 sadHappySliderDisplay.setProgress(50);
                 sadHappyNumDisplay.setText(""+ 50);
                 sadHappySliderDisplay.setEnabled(false);
@@ -115,11 +147,29 @@ public class Data extends AppCompatActivity {
                 angryCalmSliderDisplay.setProgress(50);
                 angryCalmNumDisplay.setText(""+ 50);
                 angryCalmSliderDisplay.setEnabled(false);
+
+                //Checks if a point has been clicked in order to see if the journal button is applicable
+                isBtnClicked = true;
             }
         });
-
     }
-    public void showJournal(View v){
 
+    public void showJournal(View v)
+    {
+        //Need to see is a point has even been clicked
+        if(isBtnClicked)
+        {
+            journalEntry.setText("Hi This is my journal for today");
+            cardView.setVisibility(View.VISIBLE);
+            journalEntry.setVisibility(View.VISIBLE);
+            exitJournal.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void closeJournal(View v)
+    {
+        journalEntry.setText("");
+        cardView.setVisibility(View.INVISIBLE);
+        isBtnClicked = false;
     }
 }
