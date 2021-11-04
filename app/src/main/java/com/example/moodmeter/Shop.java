@@ -2,6 +2,7 @@ package com.example.moodmeter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +40,7 @@ public class Shop extends AppCompatActivity {
         setContentView(R.layout.activity_shop);
         dbHelper = new FirestoreHelper();
 
-        dbHelper.readData(new FirestoreHelper.MyCallback() {
+        dbHelper.getUser(new FirestoreHelper.MyCallback() {
             @Override
             public void onCallback(User user) {
                 Log.d("pranav", user.toString());
@@ -97,7 +98,6 @@ public class Shop extends AppCompatActivity {
 
     public void imageBorderShow(ImageView itemChosen){
         itemChosen.setBackgroundColor(getResources().getColor(R.color.darkblue));
-        Log.i("megan", "" + itemChosen);
         ImageView[] shopIVs = {findViewById(R.id.hatIV1), findViewById(R.id.hatIV2), findViewById(R.id.hatIV3), findViewById(R.id.hatIV4), findViewById(R.id.hatIV5), findViewById(R.id.hatIV6)};
         for(int i = 0; i < shopIVs.length; i++){
             if(shopIVs[i] != itemChosen){
@@ -120,6 +120,13 @@ public class Shop extends AppCompatActivity {
             // show the popup window
             // which view you pass in doesn't matter, it is only used for the window token
             popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+            Button okBtn = popupView.findViewById(R.id.okBtn);
+            okBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   popupWindow.dismiss();
+                }
+            });
 
             // dismiss the popup window when touched
             popupView.setOnTouchListener(new View.OnTouchListener() {
