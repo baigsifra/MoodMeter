@@ -85,7 +85,7 @@ public class FirestoreHelper {
         // db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
-    public void readData(MyCallback myCallback, String email) {
+    public void getUser(MyCallback myCallback, String email) {
 
         db.collection("Users").document(email).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -94,6 +94,7 @@ public class FirestoreHelper {
                         if (documentSnapshot.exists()) {
                             String uid = documentSnapshot.getString("uid");
                             double money = documentSnapshot.getDouble("money");
+
                             user = new User(uid, money);
                             myCallback.onCallback(user);
                         }
@@ -101,8 +102,29 @@ public class FirestoreHelper {
                 });
     }
 
+    public void getInventory(MyInventory myInventory, String email) {
+
+        db.document("Users/"+email+"/Inventory/inventory").get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        if (documentSnapshot.exists()) {
+                            ArrayList<String> items;
+                            Map<String, Object> dataToLoad = (HashMap<String, Object>) documentSnapshot.getData();
+
+                            myInventory.onInvCallback(dataToLoad);
+                        }
+                    }
+                });
+
+    }
+
     public interface MyCallback {
         void onCallback(User user);
+    }
+
+    public interface MyInventory {
+        void onInvCallback(Map<String, Object> data);
     }
 
 }
