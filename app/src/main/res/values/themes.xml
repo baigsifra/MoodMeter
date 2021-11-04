@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.MoodMeter" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lightblue</item>
-        <item name="colorPrimaryVariant">@color/lightblue</item>
+        <item name="colorPrimary">@color/darkblue</item>
+        <item name="colorPrimaryVariant">@color/darkblue</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/lightblue</item>
