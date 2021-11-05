@@ -19,12 +19,17 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 
 public class Shop extends AppCompatActivity {
 
     private FirestoreHelper dbHelper;
 
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+    private Map<String, Object> inventory;
 
     private User currentUser;
 
@@ -33,6 +38,10 @@ public class Shop extends AppCompatActivity {
     int selectedItemCost = 1;
     // 1,2,3,4,5,6 - 7,8,9,10,11,12 - 13,14,15,16,17,18 for each hat/furniture/scenery
     int selectedItemID = 0;
+
+    ArrayList<Integer> hats;
+    ArrayList<Integer> furniture;
+    ArrayList<Integer> backgrounds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +57,13 @@ public class Shop extends AppCompatActivity {
             }
         }, firebaseUser.getEmail());
 
-//        money = dbHelper.returnUser(currentUser.getEmail()).getMoney();
+        dbHelper.getInventory(new FirestoreHelper.MyInventory() {
+            @Override
+            public void onInvCallback(Map<String, Object> data) {
+                gotInventory(data);
+            }
+        }, firebaseUser.getEmail());
+
     }
 
     public void finished(User user) {
@@ -56,6 +71,12 @@ public class Shop extends AppCompatActivity {
         money = currentUser.getMoney();
         TextView moneyTV = findViewById(R.id.moneyTV);
         moneyTV.setText("$" + money);
+    }
+
+    public void gotInventory(Map<String, Object> myData){
+        hats = (ArrayList<Integer>)myData.get("hats");
+        furniture = (ArrayList<Integer>)myData.get("furniture");
+        backgrounds = (ArrayList<Integer>)myData.get("backgrounds");
     }
 
     public void itemSelected(View v){

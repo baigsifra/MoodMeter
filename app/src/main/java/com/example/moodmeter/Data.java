@@ -12,6 +12,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
@@ -24,6 +26,9 @@ import com.jjoe64.graphview.series.Series;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Data extends AppCompatActivity
 {
@@ -52,12 +57,28 @@ public class Data extends AppCompatActivity
     Button exitJournal;
     boolean isBtnClicked;
 
+    // firestore variables
+    private FirestoreHelper dbHelper;
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
+
+        dbHelper = new FirestoreHelper();
+
+        Date thisDate = new Date();
+        SimpleDateFormat weekNum = new SimpleDateFormat("w");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+
+        dbHelper.getDay(new FirestoreHelper.MyDay() {
+            @Override
+            public void onDayCallback(Day day) {
+                Log.d("pranav", day.toString());
+            }
+        }, firebaseUser.getEmail(), Integer.parseInt(weekNum.format(thisDate)), dateFormat.format(thisDate));
 
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
