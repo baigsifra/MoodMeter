@@ -10,4 +10,13 @@
     <string name="eighty">80</string>
     <string name="ninety">90</string>
     <string name="hundred">100</string>
+
+    <string name="graphDates">Graphs</string>
+    <string-array name="graphs">
+        <item>Week 1</item>
+        <item>Week 2</item>
+        <item>Week 3</item>
+        <item>Week 4</item>
+        <item>Week 5</item>
+    </string-array>
 </resources>
