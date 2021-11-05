@@ -140,4 +140,9 @@ public class Day implements Parcelable, Comparable<Day>
         else
             return (int)this.getHappiness() - (int)other.getHappiness();
     }
+
+    @Override
+    public String toString() {
+        return "Date: " + date + " Journal Entry: " + journalEntry + " Happiness: " + happiness + " Energy: " + energy + " Peacefulness: " + peacefulness;
+    }
 }
