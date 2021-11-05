@@ -21,6 +21,10 @@ import com.jjoe64.graphview.series.OnDataPointTapListener;
 import com.jjoe64.graphview.series.PointsGraphSeries;
 import com.jjoe64.graphview.series.Series;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+
 public class Data extends AppCompatActivity
 {
     //the graph view widget
@@ -55,7 +59,7 @@ public class Data extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data);
 
-        //Assign XML elements to varaibles created above
+        //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
         lowHighSliderDisplay = findViewById(R.id.lowHighSliderDisplay);
@@ -74,6 +78,11 @@ public class Data extends AppCompatActivity
         journalEntry = findViewById(R.id.journalEntry);
         cardView = findViewById(R.id.cardView);
         isBtnClicked = false;
+
+        Spinner graphDropdown = findViewById(R.id.graphDropdown);
+        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        graphDropdown.setAdapter(adapter);
 
         //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
