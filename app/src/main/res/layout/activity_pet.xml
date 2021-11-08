@@ -64,54 +64,31 @@
         android:layout_alignBottom="@id/petNameTV"
         android:background="@color/black" />
 
-    <TabHost
-        android:id="@+id/tabHostPet"
-        android:layout_width="fill_parent"
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="-4dp"
-        android:layout_alignParentBottom="true">
+        android:layout_marginTop="80dp"
+        android:background="@color/lightpink"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/darkpurple"
             android:orientation="vertical">
 
-            <TabWidget
-                android:id="@android:id/tabs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/hatIV1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="itemSelected"
+                android:padding="@dimen/imagePadding"
+                app:srcCompat="@drawable/hat1" />
 
-            <FrameLayout
-                android:id="@android:id/tabcontent"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </LinearLayout>
-            </FrameLayout>
         </LinearLayout>
-    </TabHost>
+    </ScrollView>
 
 
 </RelativeLayout>
