@@ -139,6 +139,29 @@ public class FirestoreHelper {
 
     }
 
+    public void getWeek(String email, int weekNum) {
+        db.collection("Users/"+email+"/Weeks/"+ weekNum + "/Days").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()) {
+                            ArrayList<Day> dayAL = new ArrayList<Day>();
+                            for(QueryDocumentSnapshot qdr: queryDocumentSnapshots) {
+                                String journalEntry = qdr.getString("journalEntry");
+                                String date = qdr.getString("date");
+                                double energy = qdr.getDouble("energy");
+                                double happiness = qdr.getDouble("happiness");
+                                double peacefulness = qdr.getDouble("peacefulness");
+                                Day day = new Day(date, journalEntry, happiness, energy, peacefulness);
+                                dayAL.add(day);
+                            }
+                            Week week = new Week(dayAL);
+
+                        }
+                    }
+                });
+    }
+
     public interface MyCallback {
         void onCallback(User user);
     }

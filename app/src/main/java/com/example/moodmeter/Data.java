@@ -80,6 +80,8 @@ public class Data extends AppCompatActivity
             }
         }, firebaseUser.getEmail(), Integer.parseInt(weekNum.format(thisDate)), dateFormat.format(thisDate));
 
+        dbHelper.getWeek(firebaseUser.getEmail(), 43);
+
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
