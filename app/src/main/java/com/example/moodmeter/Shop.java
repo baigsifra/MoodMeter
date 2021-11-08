@@ -70,7 +70,7 @@ public class Shop extends AppCompatActivity {
         currentUser = new User(user.getUid(), user.getMoney());
         money = currentUser.getMoney();
         TextView moneyTV = findViewById(R.id.moneyTV);
-        moneyTV.setText("$" + money);
+        moneyTV.setText("$" + (int)money);
     }
 
     public void gotInventory(Map<String, Object> myData){

@@ -17,6 +17,7 @@
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="25sp"
+        android:layout_gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -29,7 +30,7 @@
         android:id="@+id/moneyTV"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="$_____"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -39,29 +40,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.102" />
 
-    <View
-        android:id="@+id/lineShop"
-        android:layout_width="450dp"
-        android:layout_height="2dp"
-        android:background="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.188" />
-
     <!-- scroll view is wacky (doesn't scroll down and items not on screen initially
     are all showing up underneath each other-->
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:background="@color/lightpink"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="108dp"
+        android:background="@color/darkpurple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/storeTV"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/storeTV">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,16 +59,18 @@
 
             <ImageView
                 android:id="@+id/hatIV1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_width="150dp"
+                android:layout_height="0dp"
                 android:onClick="itemSelected"
                 android:padding="@dimen/imagePadding"
                 app:srcCompat="@drawable/hat1" />
 
             <ImageView
                 android:id="@+id/hatIV2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_weight="0.5"
                 android:onClick="itemSelected"
                 android:padding="@dimen/imagePadding"
                 app:srcCompat="@drawable/hat2" />
