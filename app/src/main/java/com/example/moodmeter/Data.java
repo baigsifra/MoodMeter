@@ -28,6 +28,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Data extends AppCompatActivity
@@ -57,7 +58,7 @@ public class Data extends AppCompatActivity
     Button exitJournal;
     boolean isBtnClicked;
 
-    // firestore variables
+    //firestore variables
     private FirestoreHelper dbHelper;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -77,6 +78,8 @@ public class Data extends AppCompatActivity
             @Override
             public void onWeekCallback(Week week) {
                 Log.d("pranav", week.toString());
+
+                getScatterData(week);
             }
         }, firebaseUser.getEmail(), 43);
 
@@ -111,17 +114,23 @@ public class Data extends AppCompatActivity
         logScatterPlot = findViewById(R.id.graph);
 
         //Add data to the scatter plot
-        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]
-                {
-                new DataPoint(1, 1),
-                new DataPoint(2, 3),
-                new DataPoint(3, 20),
-                new DataPoint(4, 6),
-                new DataPoint(5, 3),
-                new DataPoint(6, 6),
-                new DataPoint(7, 10)
-                });
 
+    }
+    public void getScatterData(Week week)
+    {
+        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
+        ArrayList<Day> dayAL = week.getDayArray();
+
+        for(Day d : dayAL)
+        {
+            int i = 1;
+            double avgMood = .45*d.getHappiness()+.45*d.getEnergy()+.1*d.getPeacefulness();
+            logSeries = new PointsGraphSeries<>(new DataPoint[]
+                    {
+                            new DataPoint(.2, 1)
+                    });
+            i++;
+        }
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
 
@@ -138,7 +147,7 @@ public class Data extends AppCompatActivity
         logScatterPlot.setTitle("Mood Graph: Weekly Summary");
         logScatterPlot.setTitleTextSize(50);
 
-    //Change the x-axis to literal elements rather than numerical values, and then render
+        //Change the x-axis to literal elements rather than numerical values, and then render
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(logScatterPlot);
         staticLabelsFormatter.setHorizontalLabels(new String[]{"Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"});
         logScatterPlot.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
