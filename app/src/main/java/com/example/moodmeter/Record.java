@@ -1,8 +1,10 @@
 package com.example.moodmeter;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -77,6 +79,7 @@ public class Record extends AppCompatActivity {
 
 
     //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void submitRecord(View v) {
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -88,6 +91,15 @@ public class Record extends AppCompatActivity {
 
         Date thisDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat dayIdStr = new SimpleDateFormat("EEEE");
+        double dayId;
+        if(dayIdStr.format(thisDate).equals("Sunday")) { dayId = 1; }
+        else if (dayIdStr.format(thisDate).equals("Monday")){ dayId = 2; }
+        else if (dayIdStr.format(thisDate).equals("Tuesday")){ dayId = 3; }
+        else if (dayIdStr.format(thisDate).equals("Wednesday")){ dayId = 4; }
+        else if (dayIdStr.format(thisDate).equals("Thursday")){ dayId = 5; }
+        else if (dayIdStr.format(thisDate).equals("Friday")){ dayId = 6; }
+        else { dayId = 7; }
 
         double sadHappyVal = sadHappySlider.getProgress();
         double lowHighVal = lowHighSlider.getProgress();
@@ -99,7 +111,7 @@ public class Record extends AppCompatActivity {
         * https://www.javatpoint.com/java-get-current-date
         * Link to how to format date
         * */
-        Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal);
+        Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
 
         double coinsGained = 10;

@@ -130,7 +130,8 @@ public class FirestoreHelper {
                             double energy = documentSnapshot.getDouble("energy");
                             double happiness = documentSnapshot.getDouble("happiness");
                             double peacefulness = documentSnapshot.getDouble("peacefulness");
-                            Day day = new Day(date, journalEntry, happiness, energy, peacefulness);
+                            double dayId = documentSnapshot.getDouble("dayId");
+                            Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
 
                             myDay.onDayCallback(day);
                         }
@@ -152,7 +153,8 @@ public class FirestoreHelper {
                                 double energy = qdr.getDouble("energy");
                                 double happiness = qdr.getDouble("happiness");
                                 double peacefulness = qdr.getDouble("peacefulness");
-                                Day day = new Day(date, journalEntry, happiness, energy, peacefulness);
+                                double dayId = qdr.getDouble("dayId");
+                                Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
                                 dayAL.add(day);
                             }
                             Week week = new Week(dayAL);

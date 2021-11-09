@@ -11,6 +11,7 @@ public class Day implements Parcelable, Comparable<Day>
     private double happiness;
     private double energy;
     private double peacefulness;
+    private double dayNumId;
 
     public String getDate() {
         return date;
@@ -52,6 +53,14 @@ public class Day implements Parcelable, Comparable<Day>
         this.peacefulness = peacefulness;
     }
 
+    public double getDayNumId() {
+        return dayNumId;
+    }
+
+    public void setDayNumId(double dayNumId) {
+        this.dayNumId = dayNumId;
+    }
+
     // needed  for the Parcelable code to work
     public static final Parcelable.Creator<Day> CREATOR = new Parcelable.Creator<Day>() {
         @Override
@@ -90,14 +99,16 @@ public class Day implements Parcelable, Comparable<Day>
      * @param happiness
      * @param energy
      * @param peacefulness
+     * @param dayNumId
      */
 
-    public Day(String date, String journalEntry, double happiness, double energy, double peacefulness) {
+    public Day(String date, String journalEntry, double happiness, double energy, double peacefulness, double dayNumId) {
         this.date = date;
         this.journalEntry = journalEntry;
         this.happiness = happiness;
         this.energy = energy;
         this.peacefulness = peacefulness;
+        this.dayNumId = dayNumId;
     }
 
     @Override
