@@ -73,14 +73,12 @@ public class Data extends AppCompatActivity
         SimpleDateFormat weekNum = new SimpleDateFormat("w");
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
 
-        dbHelper.getDay(new FirestoreHelper.MyDay() {
+        dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
-            public void onDayCallback(Day day) {
-                Log.d("pranav", day.toString());
+            public void onWeekCallback(Week week) {
+                Log.d("pranav", week.toString());
             }
-        }, firebaseUser.getEmail(), Integer.parseInt(weekNum.format(thisDate)), dateFormat.format(thisDate));
-
-        dbHelper.getWeek(firebaseUser.getEmail(), 43);
+        }, firebaseUser.getEmail(), 43);
 
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);

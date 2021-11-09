@@ -24,4 +24,12 @@ public class Week {
     public void setDayArray(ArrayList<Day> dayArray) {
         this.dayArray = dayArray;
     }
+
+    public String toString() {
+        String str = "";
+        for(Day d : dayArray) {
+            str += d.toString() + "\n";
+        }
+        return str;
+    }
 }
