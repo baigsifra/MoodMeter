@@ -12,19 +12,19 @@
         android:id="@+id/popupMessageTV"
         android:layout_width="@dimen/widthPetBtn"
         android:layout_height="@dimen/heightPetBtn"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/leftMarginPetBtn"
+        android:layout_marginTop="@dimen/topMarginPetBtn"
         android:layout_marginRight="@dimen/rightMarginPetBtn"
         android:layout_marginBottom="@dimen/bottomMarginPetBtn"
-        android:layout_marginTop="@dimen/topMarginPetBtn"
-        android:paddingBottom="@dimen/bottomPaddingPetBtn"
-        android:paddingTop="@dimen/topPaddingPetBtn"
-        android:paddingLeft="@dimen/leftPaddingPetBtn"
-        android:paddingRight="@dimen/rightPaddingPetBtn"
-
-        android:layout_centerHorizontal="true"
         android:layout_toLeftOf="@id/moneyPetTV"
         android:background="@drawable/button_style"
         android:onClick="toStore"
+
+        android:paddingLeft="@dimen/leftPaddingPetBtn"
+        android:paddingTop="@dimen/topPaddingPetBtn"
+        android:paddingRight="@dimen/rightPaddingPetBtn"
+        android:paddingBottom="@dimen/bottomPaddingPetBtn"
         android:text="Store"
         android:textColor="@color/black"
 
@@ -60,17 +60,18 @@
         android:id="@+id/linePet"
         android:layout_width="450dp"
         android:layout_height="2dp"
-        android:layout_centerVertical="true"
         android:layout_alignBottom="@id/petNameTV"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="-10dp"
         android:background="@color/black" />
 
-    <ScrollView
+    <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_alignTop="@id/linePet"
+        android:layout_marginTop="30dp"
         android:background="@color/lightpink"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="parent">
+        app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,16 +80,30 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/hatIV1"
+                android:id="@+id/hatPetIV1"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:onClick="itemSelected"
                 android:padding="@dimen/imagePadding"
                 app:srcCompat="@drawable/hat1" />
 
+            <ImageView
+                android:id="@+id/hatPetIV2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="itemSelected"
+                android:padding="@dimen/imagePadding"
+                app:srcCompat="@drawable/hat2" />
+
+            <ImageView
+                android:id="@+id/hatPetIV3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:onClick="itemSelected"
+                android:padding="@dimen/imagePadding"
+                app:srcCompat="@drawable/hat3" />
+
 
         </LinearLayout>
-    </ScrollView>
-
-
+    </HorizontalScrollView>
 </RelativeLayout>

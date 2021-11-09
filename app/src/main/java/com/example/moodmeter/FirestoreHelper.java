@@ -139,7 +139,7 @@ public class FirestoreHelper {
 
     }
 
-    public void getWeek(String email, int weekNum) {
+    public void getWeek(MyWeek myWeek, String email, int weekNum) {
         db.collection("Users/"+email+"/Weeks/"+ weekNum + "/Days").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -156,7 +156,7 @@ public class FirestoreHelper {
                                 dayAL.add(day);
                             }
                             Week week = new Week(dayAL);
-
+                            myWeek.onWeekCallback(week);
                         }
                     }
                 });
@@ -172,5 +172,9 @@ public class FirestoreHelper {
 
     public interface MyDay {
         void onDayCallback(Day day);
+    }
+
+    public interface MyWeek {
+        void onWeekCallback(Week week);
     }
 }
