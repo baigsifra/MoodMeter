@@ -57,6 +57,7 @@
     <dimen name="topPaddingPetBtn">5dp</dimen>
     <dimen name="bottomPaddingPetBtn">5dp</dimen>
     <dimen name="imagePadding">5dp</dimen>
+    <dimen name="shopIconSize">200dp</dimen>
 
 
 </resources>

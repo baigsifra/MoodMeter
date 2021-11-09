@@ -122,7 +122,7 @@ public class Shop extends AppCompatActivity {
         ImageView[] shopIVs = {findViewById(R.id.hatIV1), findViewById(R.id.hatIV2), findViewById(R.id.hatIV3), findViewById(R.id.hatIV4), findViewById(R.id.hatIV5), findViewById(R.id.hatIV6)};
         for(int i = 0; i < shopIVs.length; i++){
             if(shopIVs[i] != itemChosen){
-                shopIVs[i].setBackgroundColor(Color.TRANSPARENT);
+                shopIVs[i].setBackgroundColor(getResources().getColor(R.color.white));
             }
         }
     }
