@@ -17,10 +17,10 @@
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="25sp"
-        android:layout_gravity="center"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.027" />
@@ -30,20 +30,27 @@
         android:id="@+id/moneyTV"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text=""
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="$15"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.086" />
 
-    <!-- scroll view is wacky (doesn't scroll down and items not on screen initially
-    are all showing up underneath each other-->
+    <View
+        android:id="@+id/linePet"
+        android:layout_width="450dp"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_marginTop="108dp"
@@ -57,6 +64,7 @@
             android:background="@color/lightgreen"
             android:orientation="vertical">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -65,14 +73,15 @@
 
                 <ImageView
                     android:id="@+id/hatIV1"
-                    android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/shopIconSize"
-                    android:onClick="itemSelected"
-                    android:background="@color/white"
-                    android:layout_marginVertical="@dimen/imagePadding"
-                    android:layout_marginHorizontal="@dimen/imagePadding"
                     android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="@dimen/imagePadding"
+                    android:layout_marginBottom="@dimen/imagePadding"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat1" />
 
@@ -80,9 +89,12 @@
                     android:id="@+id/hatIV2"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/shopIconSize"
+                    android:layout_marginLeft="@dimen/imagePadding"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="@dimen/imagePadding"
                     android:layout_weight="1"
-                    android:layout_marginVertical="@dimen/imagePadding"
-                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:background="@color/white"
                     android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat2" />
@@ -99,8 +111,10 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/shopIconSize"
                     android:layout_marginVertical="@dimen/imagePadding"
-                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="@dimen/imagePadding"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat3" />
@@ -110,8 +124,10 @@
                     android:layout_width="0dp"
                     android:layout_height="@dimen/shopIconSize"
                     android:layout_marginVertical="@dimen/imagePadding"
-                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_marginLeft="@dimen/imagePadding"
+                    android:layout_marginRight="10dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat1" />
@@ -123,13 +139,16 @@
                 android:background="@color/lightgreen"
                 android:orientation="horizontal">
 
-            <ImageView
+                <ImageView
                     android:id="@+id/hatIV5"
                     android:layout_width="0dp"
-                android:layout_marginVertical="@dimen/imagePadding"
-                android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
                     android:layout_height="@dimen/shopIconSize"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="@dimen/imagePadding"
+                    android:layout_marginRight="@dimen/imagePadding"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat2" />
@@ -137,10 +156,13 @@
                 <ImageView
                     android:id="@+id/hatIV6"
                     android:layout_width="0dp"
-                    android:layout_marginVertical="@dimen/imagePadding"
-                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
                     android:layout_height="@dimen/shopIconSize"
+                    android:layout_marginLeft="@dimen/imagePadding"
+                    android:layout_marginTop="@dimen/imagePadding"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
                     android:layout_weight="1"
+                    android:background="@color/white"
                     android:onClick="itemSelected"
                     android:padding="@dimen/imagePadding"
                     app:srcCompat="@drawable/hat3" />

@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
@@ -34,9 +35,13 @@ public class Record extends AppCompatActivity {
     private TextView lowHighNum;
     private SeekBar angryCalmSlider;
     private TextView angryCalmNum;
+
     private FirestoreHelper dbHelper;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private User currentUser;
+    private ArrayList<Day> days;
+    private ArrayList<Double> dayIds;
+    private SimpleDateFormat weekFormat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,27 @@ public class Record extends AppCompatActivity {
         angryCalmSlider = findViewById(R.id.angryCalmSlider);
         angryCalmNum = findViewById(R.id.angryCalmNum);
         sliderFunction(angryCalmSlider, angryCalmNum);
+        weekFormat = new SimpleDateFormat("w");
+        Date thisDate = new Date();
+        String weekString = weekFormat.format(thisDate);
+        int weekNum = Integer.parseInt(weekString);
+        Log.d("Megan", "" + weekNum);
+        dbHelper = new FirestoreHelper();
+        dbHelper.getWeek(new FirestoreHelper.MyWeek() {
+            @Override
+            public void onWeekCallback(Week week) {
+                getFirebaseData(week);
+            }
+        }, firebaseUser.getEmail(), weekNum);
+    }
+
+    public void getFirebaseData(Week week){
+        days = week.getDayArray();
+        for(int i = 0; i <= days.size(); i++){
+            double dayId = days.get(i).getDayNumId();
+            dayIds.add(dayId);
+        }
+        Log.i("megan", "" + days);
     }
 
     public void sliderFunction(SeekBar SB, TextView TV){
