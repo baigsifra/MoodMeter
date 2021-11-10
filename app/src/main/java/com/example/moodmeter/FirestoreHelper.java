@@ -42,11 +42,9 @@ public class FirestoreHelper {
         db = FirebaseFirestore.getInstance();
     }
 
+    // will create a new user with the email as id and all basic information
     public void addUser(String email, User user) {
         db.collection("Users").document(email).set(user);
-        // Date thisDate = new Date();
-        // SimpleDateFormat weekNum = new SimpleDateFormat("w");
-        // db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).set("");
         Map<String, ArrayList<Integer>> docData = new HashMap<>();
         docData.put("hats", hats);
         docData.put("furniture", furniture);
@@ -78,11 +76,11 @@ public class FirestoreHelper {
         db.collection("Users").document(currentUser.getEmail()).collection("Inventory").document("inventory").set(docData);
     }
 
+    // will add a day in the current week
     public void addDay(String email, Day day, String date) {
         Date thisDate = new Date();
         SimpleDateFormat weekNum = new SimpleDateFormat("w");
         db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).collection("Days").document(date).set(day);
-        // db.collection("Users").document(email).collection("Days").document(date).set(day);
     }
 
     public void getUser(MyCallback myCallback, String email) {
@@ -130,7 +128,7 @@ public class FirestoreHelper {
                             double energy = documentSnapshot.getDouble("energy");
                             double happiness = documentSnapshot.getDouble("happiness");
                             double peacefulness = documentSnapshot.getDouble("peacefulness");
-                            double dayId = documentSnapshot.getDouble("dayId");
+                            double dayId = documentSnapshot.getDouble("dayNumId");
                             Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
 
                             myDay.onDayCallback(day);
@@ -153,7 +151,7 @@ public class FirestoreHelper {
                                 double energy = qdr.getDouble("energy");
                                 double happiness = qdr.getDouble("happiness");
                                 double peacefulness = qdr.getDouble("peacefulness");
-                                double dayId = qdr.getDouble("dayId");
+                                double dayId = qdr.getDouble("dayNumId");
                                 Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
                                 dayAL.add(day);
                             }
