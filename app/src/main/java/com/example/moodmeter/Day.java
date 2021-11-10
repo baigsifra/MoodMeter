@@ -154,6 +154,6 @@ public class Day implements Parcelable, Comparable<Day>
 
     @Override
     public String toString() {
-        return "Date: " + date + " Journal Entry: " + journalEntry + " Happiness: " + happiness + " Energy: " + energy + " Peacefulness: " + peacefulness;
+        return "Date: " + date + " Journal Entry: " + journalEntry + " Happiness: " + happiness + " Energy: " + energy + " Peacefulness: " + peacefulness + " dayId" + dayNumId;
     }
 }

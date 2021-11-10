@@ -83,6 +83,11 @@ public class Data extends AppCompatActivity
             }
         }, firebaseUser.getEmail(), 43);
 
+
+
+    }
+    public void getScatterData(Week week)
+    {
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
@@ -114,23 +119,27 @@ public class Data extends AppCompatActivity
         logScatterPlot = findViewById(R.id.graph);
 
         //Add data to the scatter plot
-
-    }
-    public void getScatterData(Week week)
-    {
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
+        ArrayList<Double> yPoints = new ArrayList<Double>();
+
         for(Day d : dayAL)
         {
-            int i = 1;
-            double avgMood = .45*d.getHappiness()+.45*d.getEnergy()+.1*d.getPeacefulness();
-            logSeries = new PointsGraphSeries<>(new DataPoint[]
-                    {
-                            new DataPoint(.2, 1)
-                    });
-            i++;
+            double happiness = d.getHappiness();
+            double energy = d.getEnergy();
+            double peacefulness = d.getPeacefulness();
+            double avgMood = (.45 * happiness) + (.45 * energy) + (.1 * peacefulness);
+            yPoints.add(avgMood);
         }
+
+        logSeries = new PointsGraphSeries<>(new DataPoint[]
+                {
+                        new DataPoint(1, yPoints.get(0)),
+                        new DataPoint(2, yPoints.get(1)),
+                        new DataPoint(3, yPoints.get(2))
+                });
+
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
 
