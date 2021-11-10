@@ -78,10 +78,16 @@ public class Data extends AppCompatActivity
             @Override
             public void onWeekCallback(Week week) {
                 Log.d("pranav", week.toString());
+
                 getScatterData(week);
             }
         }, firebaseUser.getEmail(), 43);
 
+
+
+    }
+    public void getScatterData(Week week)
+    {
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);
@@ -110,39 +116,28 @@ public class Data extends AppCompatActivity
         //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
 
-
+        logScatterPlot = findViewById(R.id.graph);
 
         //Add data to the scatter plot
-
-    }
-    public void getScatterData(Week week)
-    {
-        /**
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
-        int i = 1;
+
         for(Day d : dayAL)
         {
-            Log.d("ifra",i);
+            int i = 1;
             double avgMood = .45*d.getHappiness()+.45*d.getEnergy()+.1*d.getPeacefulness();
             logSeries = new PointsGraphSeries<>(new DataPoint[]
                     {
-                            new DataPoint(i, d.getHappiness())
+                            new DataPoint(1, 1),
+                            new DataPoint(2, 3),
+                            new DataPoint(3, 20),
+                            new DataPoint(4, 6),
+                            new DataPoint(5, 3),
+                            new DataPoint(6, 6),
+                            new DataPoint(7, 10)
                     });
             i++;
         }
-         **/
-        logScatterPlot = findViewById(R.id.graph);
-        PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]
-                {
-                        new DataPoint(1, 1),
-                        new DataPoint(2, 3),
-                        new DataPoint(3, 20),
-                        new DataPoint(4, 6),
-                        new DataPoint(5, 3),
-                        new DataPoint(6, 6),
-                        new DataPoint(7, 10)
-                });
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
 
