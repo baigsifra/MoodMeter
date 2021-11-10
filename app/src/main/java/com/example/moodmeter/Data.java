@@ -122,22 +122,28 @@ public class Data extends AppCompatActivity
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
+        ArrayList<Double> yPoints = new ArrayList<Double>();
+
         for(Day d : dayAL)
         {
-            int i = 1;
-            double avgMood = .45*d.getHappiness()+.45*d.getEnergy()+.1*d.getPeacefulness();
-            logSeries = new PointsGraphSeries<>(new DataPoint[]
-                    {
-                            new DataPoint(1, 1),
-                            new DataPoint(2, 3),
-                            new DataPoint(3, 20),
-                            new DataPoint(4, 6),
-                            new DataPoint(5, 3),
-                            new DataPoint(6, 6),
-                            new DataPoint(7, 10)
-                    });
-            i++;
+            double happiness = d.getHappiness();
+            double energy = d.getEnergy();
+            double peacefulness = d.getPeacefulness();
+            double avgMood = (.45 * happiness) + (.45 * energy) + (.1 * peacefulness);
+            yPoints.add(avgMood);
         }
+
+        logSeries = new PointsGraphSeries<>(new DataPoint[]
+                {
+                        new DataPoint(1, 1),
+                        new DataPoint(2, 3),
+                        new DataPoint(3, 20),
+                        new DataPoint(4, 6),
+                        new DataPoint(5, 3),
+                        new DataPoint(6, 6),
+                        new DataPoint(7, 10)
+                });
+
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
 
