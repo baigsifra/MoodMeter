@@ -27,7 +27,6 @@
         android:paddingBottom="@dimen/bottomPaddingPetBtn"
         android:text="Store"
         android:textColor="@color/black"
-
         android:textSize="15sp" />
 
     <ImageView
@@ -48,9 +47,9 @@
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/petNameTV"
+        android:id="@+id/invisibleignore"
         android:layout_width="80dp"
-        android:layout_height="30dp"
+        android:layout_height="40dp"
         android:layout_alignBottom="@id/octopusPet"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
@@ -60,50 +59,115 @@
         android:id="@+id/linePet"
         android:layout_width="450dp"
         android:layout_height="2dp"
-        android:layout_alignBottom="@id/petNameTV"
+        android:layout_alignBottom="@id/invisibleignore"
         android:layout_centerVertical="true"
         android:layout_marginBottom="-10dp"
+
         android:background="@color/black" />
 
-    <HorizontalScrollView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/linePet"
-        android:layout_marginTop="30dp"
-        android:background="@color/lightpink"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="240dp"
+        android:background="@color/lightgreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/darkpurple"
+            android:background="@color/lightgreen"
             android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/hatPetIV1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:onClick="itemSelected"
-                android:padding="@dimen/imagePadding"
-                app:srcCompat="@drawable/hat1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightgreen"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:id="@+id/hatPetIV2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:onClick="itemSelected"
-                android:padding="@dimen/imagePadding"
-                app:srcCompat="@drawable/hat2" />
+                <ImageView
+                    android:id="@+id/hatIV1"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:onClick="itemSelected"
+                    android:background="@color/white"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"
+                    android:layout_marginLeft="10dp"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat1" />
 
-            <ImageView
-                android:id="@+id/hatPetIV3"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:onClick="itemSelected"
-                android:padding="@dimen/imagePadding"
-                app:srcCompat="@drawable/hat3" />
+                <ImageView
+                    android:id="@+id/hatIV2"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:layout_weight="1"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:onClick="itemSelected"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat2" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightgreen"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/hatIV3"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:onClick="itemSelected"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat3" />
+
+                <ImageView
+                    android:id="@+id/hatIV4"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_weight="1"
+                    android:onClick="itemSelected"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/lightgreen"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/hatIV5"
+                    android:layout_width="0dp"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:layout_weight="1"
+                    android:onClick="itemSelected"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat2" />
+
+                <ImageView
+                    android:id="@+id/hatIV6"
+                    android:layout_width="0dp"
+                    android:layout_marginVertical="@dimen/imagePadding"
+                    android:layout_marginHorizontal="@dimen/imagePadding"                    android:background="@color/white"
+                    android:layout_height="@dimen/shopIconSize"
+                    android:layout_weight="1"
+                    android:onClick="itemSelected"
+                    android:padding="@dimen/imagePadding"
+                    app:srcCompat="@drawable/hat3" />
+            </LinearLayout>
 
         </LinearLayout>
-    </HorizontalScrollView>
+    </ScrollView>
 </RelativeLayout>

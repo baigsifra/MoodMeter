@@ -135,13 +135,9 @@ public class Data extends AppCompatActivity
 
         logSeries = new PointsGraphSeries<>(new DataPoint[]
                 {
-                        new DataPoint(1, 1),
-                        new DataPoint(2, 3),
-                        new DataPoint(3, 20),
-                        new DataPoint(4, 6),
-                        new DataPoint(5, 3),
-                        new DataPoint(6, 6),
-                        new DataPoint(7, 10)
+                        new DataPoint(1, yPoints.get(0)),
+                        new DataPoint(2, yPoints.get(1)),
+                        new DataPoint(3, yPoints.get(2))
                 });
 
         //Need to create a series (above) and add it too the scatterplot widget
