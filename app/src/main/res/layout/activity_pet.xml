@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgbrown"
-    android:paddingTop="20dp"
-    >
+    android:paddingTop="20dp">
+
 
     <Button
         android:id="@+id/popupMessageTV"
@@ -29,6 +29,7 @@
         android:textColor="@color/black"
         android:textSize="15sp" />
 
+
     <ImageView
         android:id="@+id/octopusPet"
         android:layout_width="210dp"
@@ -36,6 +37,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         app:srcCompat="@drawable/octopusorangehat" />
+
 
     <TextView
         android:id="@+id/moneyPetTV"
@@ -46,6 +48,7 @@
         android:text="$____"
         android:textColor="@color/black" />
 
+
     <TextView
         android:id="@+id/invisibleignore"
         android:layout_width="80dp"
@@ -55,15 +58,6 @@
         android:textColor="@color/black"
         android:textSize="20sp" />
 
-    <View
-        android:id="@+id/linePet"
-        android:layout_width="450dp"
-        android:layout_height="2dp"
-        android:layout_alignBottom="@id/invisibleignore"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="-10dp"
-
-        android:background="@color/black" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -170,4 +164,6 @@
 
         </LinearLayout>
     </ScrollView>
+
+
 </RelativeLayout>

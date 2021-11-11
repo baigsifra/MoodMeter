@@ -94,12 +94,12 @@ public class Day implements Parcelable, Comparable<Day>
     /**
      * This is the regular constructor used in the traditional sense
      * We use this one when we do not know the unique Firebase key yet for the Event
-     * @param date
-     * @param journalEntry
-     * @param happiness
-     * @param energy
-     * @param peacefulness
-     * @param dayNumId
+     * @param date - date in MM-DD-YYYY format
+     * @param journalEntry - journalEntry
+     * @param happiness - happiness
+     * @param energy - energy
+     * @param peacefulness - peacefulness
+     * @param dayNumId - day of the week (1=Sunday, 2=Monday...)
      */
 
     public Day(String date, String journalEntry, double happiness, double energy, double peacefulness, double dayNumId) {
@@ -138,7 +138,7 @@ public class Day implements Parcelable, Comparable<Day>
      *          * Stack Overflow.
      *          *
      *          * https://stackoverflow.com/questions/4778834/purpose-of-describecontents-of-parcelable-interface
-     * @return
+     * @return 0
      */
     @Override
     public int describeContents() {
@@ -154,6 +154,6 @@ public class Day implements Parcelable, Comparable<Day>
 
     @Override
     public String toString() {
-        return "Date: " + date + " Journal Entry: " + journalEntry + " Happiness: " + happiness + " Energy: " + energy + " Peacefulness: " + peacefulness + " dayId" + dayNumId;
+        return "Date: " + date + " Journal Entry: " + journalEntry + " Happiness: " + happiness + " Energy: " + energy + " Peacefulness: " + peacefulness + " dayId: " + dayNumId;
     }
 }

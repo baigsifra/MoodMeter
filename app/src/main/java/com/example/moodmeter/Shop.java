@@ -145,7 +145,7 @@ public class Shop extends AppCompatActivity {
             okBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                   popupWindow.dismiss();
+                    popupWindow.dismiss();
                 }
             });
 

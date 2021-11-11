@@ -122,6 +122,7 @@ public class Data extends AppCompatActivity
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
+        ArrayList<Integer> xPoints = new ArrayList<Integer>();
         ArrayList<Double> yPoints = new ArrayList<Double>();
 
         for(Day d : dayAL)
@@ -130,15 +131,17 @@ public class Data extends AppCompatActivity
             double energy = d.getEnergy();
             double peacefulness = d.getPeacefulness();
             double avgMood = (.45 * happiness) + (.45 * energy) + (.1 * peacefulness);
+            int id = (int)(d.getDayNumId());
+            xPoints.add(id);
             yPoints.add(avgMood);
         }
 
-        logSeries = new PointsGraphSeries<>(new DataPoint[]
-                {
-                        new DataPoint(1, yPoints.get(0)),
-                        new DataPoint(2, yPoints.get(1)),
-                        new DataPoint(3, yPoints.get(2))
-                });
+        DataPoint[] dpa = new DataPoint[xPoints.size()];
+        for(int i = 0; i < xPoints.size(); i++) {
+            dpa[i] = new DataPoint(xPoints.get(i), yPoints.get(i));
+        }
+
+        logSeries = new PointsGraphSeries<>(dpa);
 
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
@@ -183,17 +186,25 @@ public class Data extends AppCompatActivity
                 Angry.setVisibility(View.VISIBLE);
                 Calm.setVisibility(View.VISIBLE);
 
+                double xCoord = dataPoint.getX();
+                Day d = new Day();
+                for(Day dIW : dayAL) {
+                    if(dIW.getDayNumId() == xCoord) {
+                        d = new Day(dIW.getDate(), dIW.getJournalEntry(), dIW.getHappiness(), dIW.getEnergy(), dIW.getPeacefulness(), dIW.getDayNumId());
+                    }
+                }
+
                 //Sets the seekbars and numerical text views to equal the corresponding data value from firebase
-                sadHappySliderDisplay.setProgress(50);
-                sadHappyNumDisplay.setText(""+ 50);
+                sadHappySliderDisplay.setProgress((int)(d.getHappiness()));
+                sadHappyNumDisplay.setText(""+ (int)(d.getHappiness()));
                 sadHappySliderDisplay.setEnabled(false);
 
-                lowHighSliderDisplay.setProgress(50);
-                lowHighNumDisplay.setText(""+ 50);
+                lowHighSliderDisplay.setProgress((int)(d.getEnergy()));
+                lowHighNumDisplay.setText(""+ (int)(d.getEnergy()));
                 lowHighSliderDisplay.setEnabled(false);
 
-                angryCalmSliderDisplay.setProgress(50);
-                angryCalmNumDisplay.setText(""+ 50);
+                angryCalmSliderDisplay.setProgress((int)(d.getPeacefulness()));
+                angryCalmNumDisplay.setText(""+ (int)(d.getPeacefulness()));
                 angryCalmSliderDisplay.setEnabled(false);
 
                 //Checks if a point has been clicked in order to see if the journal button is applicable
@@ -221,3 +232,4 @@ public class Data extends AppCompatActivity
         isBtnClicked = false;
     }
 }
+
