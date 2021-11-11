@@ -40,7 +40,8 @@ public class Record extends AppCompatActivity {
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private User currentUser;
     private ArrayList<Day> days;
-    private ArrayList<Double> dayIds;
+    private ArrayList<Double> allDayIds;
+
     private SimpleDateFormat weekFormat;
 
     @Override
@@ -63,23 +64,32 @@ public class Record extends AppCompatActivity {
         Date thisDate = new Date();
         String weekString = weekFormat.format(thisDate);
         int weekNum = Integer.parseInt(weekString);
-        Log.d("Megan", "" + weekNum);
+        Log.i("Megan", "" + weekNum);
+        allDayIds =  new ArrayList<Double>();
         dbHelper = new FirestoreHelper();
-        dbHelper.getWeek(new FirestoreHelper.MyWeek() {
-            @Override
-            public void onWeekCallback(Week week) {
-                getFirebaseData(week);
-            }
-        }, firebaseUser.getEmail(), weekNum);
+        for(int i = 2; i >= 0; i--){
+            dbHelper.getWeek(new FirestoreHelper.MyWeek() {
+                @Override
+                public void onWeekCallback(Week week) {
+                    ArrayList<Double> dayIds =  new ArrayList<Double>();
+                    dayIds = getDayIds(week);
+//                    allDayIds.addAll(dayIds);
+                    Log.i("megan", "dayIds " + dayIds);
+                }
+            }, firebaseUser.getEmail(), weekNum-i);
+        }
+        Log.i("megan", "past 3 weeks" + allDayIds);
     }
 
-    public void getFirebaseData(Week week){
+    public ArrayList<Double> getDayIds(Week week){
+        ArrayList<Double> dayIds =  new ArrayList<Double>();
         days = week.getDayArray();
-        for(int i = 0; i <= days.size(); i++){
+        for(int i = 0; i < days.size(); i++){
             double dayId = days.get(i).getDayNumId();
             dayIds.add(dayId);
+//            Log.i("megan", "arr " + dayIds);
         }
-        Log.i("megan", "" + days);
+        return dayIds;
     }
 
     public void sliderFunction(SeekBar SB, TextView TV){
@@ -139,8 +149,6 @@ public class Record extends AppCompatActivity {
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
-
-        double coinsGained = 10;
     }
 
     public void toPet(View v){
