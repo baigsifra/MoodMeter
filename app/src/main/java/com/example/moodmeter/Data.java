@@ -122,6 +122,7 @@ public class Data extends AppCompatActivity
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
+        ArrayList<Integer> xPoints = new ArrayList<Integer>();
         ArrayList<Double> yPoints = new ArrayList<Double>();
 
         for(Day d : dayAL)
@@ -130,6 +131,8 @@ public class Data extends AppCompatActivity
             double energy = d.getEnergy();
             double peacefulness = d.getPeacefulness();
             double avgMood = (.45 * happiness) + (.45 * energy) + (.1 * peacefulness);
+            int id = (int)(d.getDayNumId());
+            xPoints.add(id);
             yPoints.add(avgMood);
         }
 
