@@ -62,6 +62,8 @@ public class Data extends AppCompatActivity
     private FirestoreHelper dbHelper;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+    String journ = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -71,8 +73,8 @@ public class Data extends AppCompatActivity
         dbHelper = new FirestoreHelper();
 
         Date thisDate = new Date();
-        SimpleDateFormat weekNum = new SimpleDateFormat("w");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
+        int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
 
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
@@ -81,7 +83,7 @@ public class Data extends AppCompatActivity
 
                 getScatterData(week);
             }
-        }, firebaseUser.getEmail(), 43);
+        }, firebaseUser.getEmail(), weekNum);
 
 
 
@@ -109,9 +111,29 @@ public class Data extends AppCompatActivity
         isBtnClicked = false;
 
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         graphDropdown.setAdapter(adapter);
+
+        ArrayList<Week> weekAl = new ArrayList<Week>();
+        for(Week w: weekAl)
+        {
+            //w.getId
+        }
+        graphDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                //TODO Auto-generated method stub
+                String ss = graphDropdown.getSelectedItem().toString();
+                //Toast.makeText(getBaseContext(), list.get(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                //TODO Auto-generated method stub
+            }
+        });
 
         //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
@@ -161,7 +183,7 @@ public class Data extends AppCompatActivity
 
         //Change the x-axis to literal elements rather than numerical values, and then render
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(logScatterPlot);
-        staticLabelsFormatter.setHorizontalLabels(new String[]{"Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"});
+        staticLabelsFormatter.setHorizontalLabels(new String[]{"S", "M", "T", "W", "Th", "F", "Sa"});
         logScatterPlot.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
         //Function to check if a point on scatter plot is clicked
@@ -194,6 +216,8 @@ public class Data extends AppCompatActivity
                     }
                 }
 
+                journ = d.getJournalEntry();
+
                 //Sets the seekbars and numerical text views to equal the corresponding data value from firebase
                 sadHappySliderDisplay.setProgress((int)(d.getHappiness()));
                 sadHappyNumDisplay.setText(""+ (int)(d.getHappiness()));
@@ -218,7 +242,7 @@ public class Data extends AppCompatActivity
         //Need to see is a point has even been clicked
         if(isBtnClicked)
         {
-            journalEntry.setText("Hi This is my journal for today");
+            journalEntry.setText(journ);
             cardView.setVisibility(View.VISIBLE);
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
