@@ -62,6 +62,8 @@ public class Data extends AppCompatActivity
     private FirestoreHelper dbHelper;
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+    String journ = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -109,7 +111,7 @@ public class Data extends AppCompatActivity
         isBtnClicked = false;
 
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
-        ArrayAdapter<CharSequence>adapter=ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         graphDropdown.setAdapter(adapter);
 
@@ -214,6 +216,8 @@ public class Data extends AppCompatActivity
                     }
                 }
 
+                journ = d.getJournalEntry();
+
                 //Sets the seekbars and numerical text views to equal the corresponding data value from firebase
                 sadHappySliderDisplay.setProgress((int)(d.getHappiness()));
                 sadHappyNumDisplay.setText(""+ (int)(d.getHappiness()));
@@ -238,7 +242,7 @@ public class Data extends AppCompatActivity
         //Need to see is a point has even been clicked
         if(isBtnClicked)
         {
-            journalEntry.setText("Hi This is my journal for today");
+            journalEntry.setText(journ);
             cardView.setVisibility(View.VISIBLE);
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
