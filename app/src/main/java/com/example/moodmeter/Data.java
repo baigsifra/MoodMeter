@@ -71,8 +71,8 @@ public class Data extends AppCompatActivity
         dbHelper = new FirestoreHelper();
 
         Date thisDate = new Date();
-        SimpleDateFormat weekNum = new SimpleDateFormat("w");
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
+        int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
 
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
@@ -81,7 +81,7 @@ public class Data extends AppCompatActivity
 
                 getScatterData(week);
             }
-        }, firebaseUser.getEmail(), 43);
+        }, firebaseUser.getEmail(), weekNum);
 
 
 
@@ -161,7 +161,7 @@ public class Data extends AppCompatActivity
 
         //Change the x-axis to literal elements rather than numerical values, and then render
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(logScatterPlot);
-        staticLabelsFormatter.setHorizontalLabels(new String[]{"Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"});
+        staticLabelsFormatter.setHorizontalLabels(new String[]{"S", "M", "T", "W", "Th", "F", "Sa"});
         logScatterPlot.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
 
         //Function to check if a point on scatter plot is clicked
