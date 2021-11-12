@@ -113,6 +113,26 @@ public class Data extends AppCompatActivity
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         graphDropdown.setAdapter(adapter);
 
+        ArrayList<Week> weekAl = new ArrayList<Week>();
+        for(Week w: weekAl)
+        {
+            //w.getId
+        }
+        graphDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+                //TODO Auto-generated method stub
+                String ss = graphDropdown.getSelectedItem().toString();
+                //Toast.makeText(getBaseContext(), list.get(position), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+                //TODO Auto-generated method stub
+            }
+        });
+
         //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
 
