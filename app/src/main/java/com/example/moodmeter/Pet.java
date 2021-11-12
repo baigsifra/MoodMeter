@@ -22,6 +22,8 @@ public class Pet extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
+
+
     }
 
     public void toStore(View v){
@@ -31,32 +33,32 @@ public class Pet extends AppCompatActivity {
 
     public void itemSelected(View v){
         switch(v.getId()) {
-            case R.id.hatIV1:
+            case R.id.hat1:
                 imageBorderShow(findViewById(R.id.hat1));
                 selectedItemID = 1;
                 selectedItemCost = 50;
                 break;
-            case R.id.hatIV2:
+            case R.id.hat2:
                 imageBorderShow(findViewById(R.id.hat2));
                 selectedItemID = 2;
                 selectedItemCost = 100;
                 break;
-            case R.id.hatIV3:
+            case R.id.hat3:
                 imageBorderShow(findViewById(R.id.hat3));
                 selectedItemID = 3;
                 selectedItemCost = 200;
                 break;
-            case R.id.hatIV4:
+            case R.id.hat4:
                 imageBorderShow(findViewById(R.id.hat4));
                 selectedItemID = 4;
                 selectedItemCost = 200;
                 break;
-            case R.id.hatIV5:
+            case R.id.hat5:
                 imageBorderShow(findViewById(R.id.hat5));
                 selectedItemID = 5;
                 selectedItemCost = 300;
                 break;
-            case R.id.hatIV6:
+            case R.id.hat6:
                 imageBorderShow(findViewById(R.id.hat6));
                 selectedItemID = 6;
                 selectedItemCost = 300;
