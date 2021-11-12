@@ -41,6 +41,7 @@ public class Record extends AppCompatActivity {
     private User currentUser;
     private ArrayList<Day> days;
     private ArrayList<Double> allDayIds;
+    private ArrayList<Double> currentWeekIds;
 
     private SimpleDateFormat weekFormat;
 
@@ -60,36 +61,35 @@ public class Record extends AppCompatActivity {
         angryCalmSlider = findViewById(R.id.angryCalmSlider);
         angryCalmNum = findViewById(R.id.angryCalmNum);
         sliderFunction(angryCalmSlider, angryCalmNum);
-        weekFormat = new SimpleDateFormat("w");
-        Date thisDate = new Date();
-        String weekString = weekFormat.format(thisDate);
-        int weekNum = Integer.parseInt(weekString);
-        Log.i("Megan", "" + weekNum);
         allDayIds =  new ArrayList<Double>();
+        currentWeekIds =  new ArrayList<Double>();
+        weekFormat = new SimpleDateFormat("w");
+        Date weekDateFormat = new Date();
+        String weekString = weekFormat.format(weekDateFormat);
+        int weekNum = Integer.parseInt(weekString);
         dbHelper = new FirestoreHelper();
         for(int i = 2; i >= 0; i--){
             dbHelper.getWeek(new FirestoreHelper.MyWeek() {
                 @Override
                 public void onWeekCallback(Week week) {
                     ArrayList<Double> dayIds =  new ArrayList<Double>();
-                    dayIds = getDayIds(week);
-//                    allDayIds.addAll(dayIds);
-                    Log.i("megan", "dayIds " + dayIds);
+                    getDayIds(week);
+//                  allDayIds.addAll(dayIds);
                 }
             }, firebaseUser.getEmail(), weekNum-i);
         }
-        Log.i("megan", "past 3 weeks" + allDayIds);
     }
 
-    public ArrayList<Double> getDayIds(Week week){
+
+    public void getDayIds(Week week){
         ArrayList<Double> dayIds =  new ArrayList<Double>();
         days = week.getDayArray();
         for(int i = 0; i < days.size(); i++){
             double dayId = days.get(i).getDayNumId();
-            dayIds.add(dayId);
-//            Log.i("megan", "arr " + dayIds);
+            allDayIds.add(dayId);
         }
-        return dayIds;
+        Log.i("megan", "dayIds " + dayIds);
+        Log.i("megan", "past 3 weeks" + allDayIds);
     }
 
     public void sliderFunction(SeekBar SB, TextView TV){
@@ -149,6 +149,14 @@ public class Record extends AppCompatActivity {
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
+
+        Log.i("megan", "FINAL" + allDayIds);
+        Log.i("megan", "CURRENTWEEK" + currentWeekIds);
+
+
+        // notes for megan to do at home, make it so you can only record once a day
+        // then just use allDayIds
+
     }
 
     public void toPet(View v){
