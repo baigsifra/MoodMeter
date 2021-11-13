@@ -63,6 +63,7 @@ public class Data extends AppCompatActivity
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     String journ = "";
+    ArrayList<Integer> idAL = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -78,13 +79,14 @@ public class Data extends AppCompatActivity
 
         dbHelper.getWeekIds(new FirestoreHelper.MyWeekIds() {
             @Override
-            public void onWeekIdsCallback(ArrayList<Integer> idAL) {
-                displayGraph(idAL);
+            public void onWeekIdsCallback(ArrayList<Integer> idALOne) {
+                idAL = idALOne
+                displayFirstGraph(idAL);
             }
         }, firebaseUser.getEmail());
     }
 
-    public void displayGraph(ArrayList<Integer> idAL)
+    public void displayFirstGraph(ArrayList<Integer> idAL)
     {
         Date thisDate = new Date();
         SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
@@ -92,7 +94,15 @@ public class Data extends AppCompatActivity
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
+                getScatterData(week, idAL);
+            }
+        }, firebaseUser.getEmail(), weekNum);
+    }
 
+    public void displayGraph(ArrayList<Integer> idAL, int weekNum) {
+        dbHelper.getWeek(new FirestoreHelper.MyWeek() {
+            @Override
+            public void onWeekCallback(Week week) {
                 getScatterData(week, idAL);
             }
         }, firebaseUser.getEmail(), weekNum);
@@ -124,7 +134,7 @@ public class Data extends AppCompatActivity
 
         ArrayList<String> spinnerArray = new ArrayList<String>();
 
-        for(int i = 0; i < idAL.size(); i++) {
+        for(int i = idAL.size() - 1; i >= 0; i--) {
             spinnerArray.add("Week" + (i + 1));
         }
 
@@ -138,7 +148,7 @@ public class Data extends AppCompatActivity
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 //TODO Auto-generated method stub
                 String ss = graphDropdown.getSelectedItem().toString();
-                Toast.makeText(getBaseContext(), spinnerArray.get(position), Toast.LENGTH_SHORT).show();
+                displayGraph(idAL, idAL.get(position));
             }
 
             @Override
