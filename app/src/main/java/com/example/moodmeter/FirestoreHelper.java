@@ -162,7 +162,7 @@ public class FirestoreHelper {
                 });
     }
 
-    public void getWeekIds(String email) {
+    public void getWeekIds(MyWeekIds myWeekIds, String email) {
       db.collection("Users/"+email+"/Weeks").get()
               .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                   @Override
@@ -170,8 +170,10 @@ public class FirestoreHelper {
                       if(!queryDocumentSnapshots.isEmpty()) {
                           ArrayList<Integer> idAL = new ArrayList<Integer>();
                           for(QueryDocumentSnapshot qdr : queryDocumentSnapshots) {
-                              
+                              int id = Integer.parseInt(qdr.getId());
+                              idAL.add(id);
                           }
+                          myWeekIds.onWeekIdsCallback(idAL);
                       }
                   }
               });
@@ -191,5 +193,9 @@ public class FirestoreHelper {
 
     public interface MyWeek {
         void onWeekCallback(Week week);
+    }
+
+    public interface MyWeekIds {
+        void onWeekIdsCallback(ArrayList<Integer> idAL);
     }
 }

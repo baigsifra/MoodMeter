@@ -76,19 +76,27 @@ public class Data extends AppCompatActivity
         SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
         int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
 
+        dbHelper.getWeekIds(new FirestoreHelper.MyWeekIds() {
+            @Override
+            public void onWeekIdsCallback(ArrayList<Integer> idAL) {
+                displayGraph(idAL);
+            }
+        }, firebaseUser.getEmail());
+    }
+
+    public void displayGraph(ArrayList<Integer> idAL)
+    {
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
                 Log.d("pranav", week.toString());
 
-                getScatterData(week);
+                getScatterData(week, idAL);
             }
         }, firebaseUser.getEmail(), weekNum);
-
-
-
     }
-    public void getScatterData(Week week)
+
+    public void getScatterData(Week week, ArrayList<Integer> idAL)
     {
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
@@ -112,18 +120,15 @@ public class Data extends AppCompatActivity
 
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
 
-        List<Object[]> spinnerArray = new ArrayList<Object[]>();
-        spinnerArray.add({"", });
+        List<String> spinnerArray = new ArrayList<String>();
+        for(int i = 0; i < idAL.size(); i++) {
+            spinnerArray.add("Week" + (i + 1));
+        }
 
-        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         graphDropdown.setAdapter(adapter);
 
-        ArrayList<Week> weekAl = new ArrayList<Week>();
-        for(Week w: weekAl)
-        {
-            //w.getId
-        }
         graphDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
         {
             @Override
