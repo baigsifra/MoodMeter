@@ -99,15 +99,6 @@ public class Data extends AppCompatActivity
         }, firebaseUser.getEmail(), weekNum);
     }
 
-    public void displayGraph(ArrayList<Integer> idAL, int weekNum) {
-        dbHelper.getWeek(new FirestoreHelper.MyWeek() {
-            @Override
-            public void onWeekCallback(Week week) {
-                getScatterData(week, idAL);
-            }
-        }, firebaseUser.getEmail(), weekNum);
-    }
-
     public void getScatterData(Week week, ArrayList<Integer> idAL)
     {
         //Assign XML elements to variables created above
@@ -148,7 +139,7 @@ public class Data extends AppCompatActivity
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 //TODO Auto-generated method stub
                 String ss = graphDropdown.getSelectedItem().toString();
-                displayGraph(idAL, idAL.get(position));
+                Toast.makeText(getBaseContext(), spinnerArray.get(position), Toast.LENGTH_SHORT).show();
             }
 
             @Override
