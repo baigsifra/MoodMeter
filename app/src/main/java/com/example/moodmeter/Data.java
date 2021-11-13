@@ -79,6 +79,7 @@ public class Data extends AppCompatActivity
         dbHelper.getWeekIds(new FirestoreHelper.MyWeekIds() {
             @Override
             public void onWeekIdsCallback(ArrayList<Integer> idAL) {
+                Log.d("pranav", "In onCreate: " + idAL.toString());
                 displayGraph(idAL);
             }
         }, firebaseUser.getEmail());
@@ -101,6 +102,7 @@ public class Data extends AppCompatActivity
 
     public void getScatterData(Week week, ArrayList<Integer> idAL)
     {
+        Log.d("pranav", "In getScatterData: " + idAL.toString());
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
         sadHappySliderDisplay = findViewById(R.id.sadHappySliderDisplay);

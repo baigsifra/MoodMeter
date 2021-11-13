@@ -173,6 +173,7 @@ public class FirestoreHelper {
                               int id = Integer.parseInt(qdr.getId());
                               idAL.add(id);
                           }
+                          Log.d("pranav", "In FirestoreHelper: " + idAL.toString());
                           myWeekIds.onWeekIdsCallback(idAL);
                       }
                   }
