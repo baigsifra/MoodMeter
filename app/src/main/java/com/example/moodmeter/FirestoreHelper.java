@@ -81,6 +81,9 @@ public class FirestoreHelper {
         Date thisDate = new Date();
         SimpleDateFormat weekNum = new SimpleDateFormat("w");
         String weekId = weekNum.format(thisDate);
+        Map<String, Object> weekIdMap = new HashMap<>();
+        weekIdMap.put("weekId", Integer.parseInt(weekId));
+        db.document("Users/"+email+"/Weeks/"+weekId).set(weekIdMap);
         db.collection("Users").document(email).collection("Weeks").document(weekId).collection("Days").document(date).set(day);
     }
 
