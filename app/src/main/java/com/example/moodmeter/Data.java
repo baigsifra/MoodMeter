@@ -63,7 +63,7 @@ public class Data extends AppCompatActivity
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     String journ = "";
-    ArrayList<Integer> idAL = new ArrayList<Integer>();
+    ArrayList<Integer> weekIdAL = new ArrayList<Integer>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -79,9 +79,9 @@ public class Data extends AppCompatActivity
 
         dbHelper.getWeekIds(new FirestoreHelper.MyWeekIds() {
             @Override
-            public void onWeekIdsCallback(ArrayList<Integer> idALOne) {
-                idAL = idALOne
-                displayFirstGraph(idAL);
+            public void onWeekIdsCallback(ArrayList<Integer> idAL) {
+                weekIdAL = idAL
+                displayFirstGraph(weekIdAL);
             }
         }, firebaseUser.getEmail());
     }
@@ -94,9 +94,43 @@ public class Data extends AppCompatActivity
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
-                getScatterData(week, idAL);
+                  createSpinner(idAL, weekNum);
             }
         }, firebaseUser.getEmail(), weekNum);
+    }
+
+    public void createSpinner(ArrayList<Integer> idAL, int weekNum) {
+      Spinner graphDropdown = findViewById(R.id.graphDropdown);
+
+      ArrayList<String> spinnerArray = new ArrayList<String>();
+
+      for(int i = idAL.size() - 1; i >= 0; i--) {
+          spinnerArray.add("Week" + (i + 1));
+      }
+
+      ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
+      adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+      graphDropdown.setAdapter(adapter);
+
+      graphDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+      {
+          @Override
+          public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+              //TODO Auto-generated method stub
+              String ss = graphDropdown.getSelectedItem().toString();
+              dbHelper.getWeek(new FirestoreHelper.MyWeek() {
+                  @Override
+                  public void onWeekCallback(Week week) {
+                      getScatterData(week, idAL);
+                  }
+              }, firebaseUser.getEmail(), idAL.get(position));
+          }
+
+          @Override
+          public void onNothingSelected(AdapterView<?> arg0) {
+              //TODO Auto-generated method stub
+          }
+      });
     }
 
     public void getScatterData(Week week, ArrayList<Integer> idAL)
@@ -120,33 +154,6 @@ public class Data extends AppCompatActivity
         journalEntry = findViewById(R.id.journalEntry);
         cardView = findViewById(R.id.cardView);
         isBtnClicked = false;
-
-        Spinner graphDropdown = findViewById(R.id.graphDropdown);
-
-        ArrayList<String> spinnerArray = new ArrayList<String>();
-
-        for(int i = idAL.size() - 1; i >= 0; i--) {
-            spinnerArray.add("Week" + (i + 1));
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        graphDropdown.setAdapter(adapter);
-
-        graphDropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-        {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                //TODO Auto-generated method stub
-                String ss = graphDropdown.getSelectedItem().toString();
-                Toast.makeText(getBaseContext(), spinnerArray.get(position), Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-                //TODO Auto-generated method stub
-            }
-        });
 
         //GraphView Initialization:
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
