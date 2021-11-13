@@ -52,7 +52,6 @@ public class Shop extends AppCompatActivity {
         dbHelper.getUser(new FirestoreHelper.MyCallback() {
             @Override
             public void onCallback(User user) {
-                Log.d("pranav", user.toString());
                 finished(user);
             }
         }, firebaseUser.getEmail());
