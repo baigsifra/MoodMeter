@@ -171,7 +171,6 @@ public class FirestoreHelper {
                       if(!queryDocumentSnapshots.isEmpty()) {
                           ArrayList<Integer> idAL = new ArrayList<Integer>();
                           for(QueryDocumentSnapshot qdr : queryDocumentSnapshots) {
-                              Log.d("pranav", "In FirestoreHelper for loop: " + qdr.toString());
                               int id = Integer.parseInt(qdr.getId());
                               idAL.add(id);
                           }
