@@ -162,6 +162,21 @@ public class FirestoreHelper {
                 });
     }
 
+    public void getWeekIds(String email) {
+      db.collection("Users/"+email+"/Weeks").get()
+              .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                  @Override
+                  public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                      if(!queryDocumentSnapshots.isEmpty()) {
+                          ArrayList<Integer> idAL = new ArrayList<Integer>();
+                          for(QueryDocumentSnapshot qdr : queryDocumentSnapshots) {
+                              
+                          }
+                      }
+                  }
+              });
+    }
+
     public interface MyCallback {
         void onCallback(User user);
     }

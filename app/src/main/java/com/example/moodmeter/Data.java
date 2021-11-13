@@ -111,6 +111,10 @@ public class Data extends AppCompatActivity
         isBtnClicked = false;
 
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
+
+        List<Object[]> spinnerArray = new ArrayList<Object[]>();
+        spinnerArray.add({"", });
+
         ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this, R.array.graphs, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         graphDropdown.setAdapter(adapter);
@@ -256,4 +260,3 @@ public class Data extends AppCompatActivity
         isBtnClicked = false;
     }
 }
-
