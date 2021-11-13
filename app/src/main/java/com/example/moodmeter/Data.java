@@ -123,6 +123,7 @@ public class Data extends AppCompatActivity
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
 
         ArrayList<String> spinnerArray = new ArrayList<String>();
+
         for(int i = 0; i < idAL.size(); i++) {
             spinnerArray.add("Week" + (i + 1));
         }
@@ -137,7 +138,7 @@ public class Data extends AppCompatActivity
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
                 //TODO Auto-generated method stub
                 String ss = graphDropdown.getSelectedItem().toString();
-                Toast.makeText(getBaseContext(), list.get(position), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), spinnerArray.get(position), Toast.LENGTH_SHORT).show();
             }
 
             @Override
