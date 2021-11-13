@@ -80,7 +80,8 @@ public class FirestoreHelper {
     public void addDay(String email, Day day, String date) {
         Date thisDate = new Date();
         SimpleDateFormat weekNum = new SimpleDateFormat("w");
-        db.collection("Users").document(email).collection("Weeks").document(weekNum.format(thisDate)).collection("Days").document(date).set(day);
+        String weekId = weekNum.format(thisDate);
+        db.collection("Users").document(email).collection("Weeks").document(weekId).collection("Days").document(date).set(day);
     }
 
     public void getUser(MyCallback myCallback, String email) {
@@ -170,6 +171,7 @@ public class FirestoreHelper {
                       if(!queryDocumentSnapshots.isEmpty()) {
                           ArrayList<Integer> idAL = new ArrayList<Integer>();
                           for(QueryDocumentSnapshot qdr : queryDocumentSnapshots) {
+                              Log.d("pranav", "In FirestoreHelper for loop: " + qdr.toString());
                               int id = Integer.parseInt(qdr.getId());
                               idAL.add(id);
                           }
