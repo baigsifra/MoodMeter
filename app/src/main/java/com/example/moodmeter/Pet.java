@@ -13,9 +13,6 @@ import android.widget.PopupWindow;
 
 public class Pet extends AppCompatActivity {
 
-    int selectedItemCost = 1;
-
-    int selectedItemID = 0;
 
 
     @Override
@@ -35,40 +32,46 @@ public class Pet extends AppCompatActivity {
         switch(v.getId()) {
             case R.id.hat1:
                 imageBorderShow(findViewById(R.id.hat1));
-                selectedItemID = 1;
-                selectedItemCost = 50;
                 break;
             case R.id.hat2:
                 imageBorderShow(findViewById(R.id.hat2));
-                selectedItemID = 2;
-                selectedItemCost = 100;
                 break;
             case R.id.hat3:
                 imageBorderShow(findViewById(R.id.hat3));
-                selectedItemID = 3;
-                selectedItemCost = 200;
                 break;
             case R.id.hat4:
                 imageBorderShow(findViewById(R.id.hat4));
-                selectedItemID = 4;
-                selectedItemCost = 200;
                 break;
             case R.id.hat5:
                 imageBorderShow(findViewById(R.id.hat5));
-                selectedItemID = 5;
-                selectedItemCost = 300;
                 break;
             case R.id.hat6:
                 imageBorderShow(findViewById(R.id.hat6));
-                selectedItemID = 6;
-                selectedItemCost = 300;
+                break;
+            case R.id.furniture1:
+                imageBorderShow(findViewById(R.id.furniture1));
+                break;
+            case R.id.furniture2:
+                imageBorderShow(findViewById(R.id.furniture2));
+                break;
+            case R.id.furniture3:
+                imageBorderShow(findViewById(R.id.furniture3));
+                break;
+            case R.id.furniture4:
+                imageBorderShow(findViewById(R.id.furniture4));
+                break;
+            case R.id.furniture5:
+                imageBorderShow(findViewById(R.id.furniture5));
+                break;
+            case R.id.furniture6:
+                imageBorderShow(findViewById(R.id.furniture6));
                 break;
         }
     }
 
     public void imageBorderShow(ImageView itemChosen){
         itemChosen.setBackgroundColor(getResources().getColor(R.color.darkblue));
-        ImageView[] shopIVs = {findViewById(R.id.hat1), findViewById(R.id.hat2), findViewById(R.id.hat3), findViewById(R.id.hat4), findViewById(R.id.hat5), findViewById(R.id.hat6)};
+        ImageView[] shopIVs = {findViewById(R.id.hat1), findViewById(R.id.hat2), findViewById(R.id.hat3), findViewById(R.id.hat4), findViewById(R.id.hat5), findViewById(R.id.hat6), findViewById(R.id.furniture1), findViewById(R.id.furniture2), findViewById(R.id.furniture3), findViewById(R.id.furniture4), findViewById(R.id.furniture5), findViewById(R.id.furniture6)};
         for(int i = 0; i < shopIVs.length; i++){
             if(shopIVs[i] != itemChosen){
                 shopIVs[i].setBackgroundColor(getResources().getColor(R.color.white));

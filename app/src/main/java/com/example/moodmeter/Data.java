@@ -80,7 +80,7 @@ public class Data extends AppCompatActivity
         dbHelper.getWeekIds(new FirestoreHelper.MyWeekIds() {
             @Override
             public void onWeekIdsCallback(ArrayList<Integer> idAL) {
-                weekIdAL = idAL
+                weekIdAL = idAL;
                 displayFirstGraph(weekIdAL);
             }
         }, firebaseUser.getEmail());
