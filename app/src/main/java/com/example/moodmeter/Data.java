@@ -86,6 +86,9 @@ public class Data extends AppCompatActivity
 
     public void displayGraph(ArrayList<Integer> idAL)
     {
+        Date thisDate = new Date();
+        SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
+        int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
@@ -120,7 +123,7 @@ public class Data extends AppCompatActivity
 
         Spinner graphDropdown = findViewById(R.id.graphDropdown);
 
-        List<String> spinnerArray = new ArrayList<String>();
+        ArrayList<String> spinnerArray = new ArrayList<String>();
         for(int i = 0; i < idAL.size(); i++) {
             spinnerArray.add("Week" + (i + 1));
         }
