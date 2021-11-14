@@ -81,7 +81,6 @@ public class Data extends AppCompatActivity
             @Override
             public void onWeekIdsCallback(ArrayList<Integer> idAL) {
                 weekIdAL = idAL;
-                Log.d("pranav", "inside getWeekIds: " + weekIdAL[0]);
                 displayFirstGraph(weekIdAL);
             }
         }, firebaseUser.getEmail());
@@ -92,9 +91,11 @@ public class Data extends AppCompatActivity
         Date thisDate = new Date();
         SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
         int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
+        Log.d("pranav", "inside displayFirstGraph b4 getWeek: " + weekNum);
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
+                Log.d("pranav", "inside displayFirstGraph getWeek before createSpinner: " + week.toString());
                 createSpinner(idAL, weekNum);
             }
         }, firebaseUser.getEmail(), weekNum);

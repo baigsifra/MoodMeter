@@ -143,13 +143,17 @@ public class FirestoreHelper {
     }
 
     public void getWeek(MyWeek myWeek, String email, int weekNum) {
+        Log.d("pranav", "inside getWeek FirestoreHelper before grabbing data");
         db.collection("Users/"+email+"/Weeks/"+ weekNum + "/Days").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
+                        Log.d("pranav", "inside getWeek FirestoreHelper after onSuccess");
                         if(!queryDocumentSnapshots.isEmpty()) {
+                            Log.d("pranav", "inside getWeek FirestoreHelper after !empty");
                             ArrayList<Day> dayAL = new ArrayList<Day>();
                             for(QueryDocumentSnapshot qdr: queryDocumentSnapshots) {
+                                Log.d("pranav", "inside getWeek FirestoreHelper inside for loop");
                                 String journalEntry = qdr.getString("journalEntry");
                                 String date = qdr.getString("date");
                                 double energy = qdr.getDouble("energy");
@@ -167,17 +171,13 @@ public class FirestoreHelper {
     }
 
     public void getWeekIds(MyWeekIds myWeekIds, String email) {
-      Log.d("pranav", "inside getWeekIds firestore helper before grabbing data: " + email);
       db.collection("Users/"+email+"/Weeks").get()
               .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                   @Override
                   public void onSuccess(@NonNull QuerySnapshot queryDocumentSnapshots) {
-                      Log.d("pranav", "inside getWeekIds FirestoreHelper in onSuccess");
                       if(!queryDocumentSnapshots.isEmpty()) {
-                          Log.d("pranav", "inside getWeekIds FirestoreHelper after !empty");
                           ArrayList<Integer> idAL = new ArrayList<Integer>();
                           for(QueryDocumentSnapshot qdr : queryDocumentSnapshots) {
-                              Log.d("pranav", "inside getWeekIds FirestoreHelper in for loop");
                               int id = Integer.parseInt(qdr.getId());
                               idAL.add(id);
                           }
