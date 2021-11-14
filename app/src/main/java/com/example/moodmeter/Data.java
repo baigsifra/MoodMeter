@@ -94,7 +94,7 @@ public class Data extends AppCompatActivity
         dbHelper.getWeek(new FirestoreHelper.MyWeek() {
             @Override
             public void onWeekCallback(Week week) {
-                  createSpinner(idAL, weekNum);
+                createSpinner(idAL, weekNum);
             }
         }, firebaseUser.getEmail(), weekNum);
     }
@@ -159,7 +159,7 @@ public class Data extends AppCompatActivity
         //source: https://www.geeksforgeeks.org/line-graph-view-in-android-with-example/
 
         logScatterPlot = findViewById(R.id.graph);
-
+        logScatterPlot.removeAllSeries();
         //Add data to the scatter plot
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
