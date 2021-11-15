@@ -41,18 +41,7 @@ public class Pet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
         dbHelper = new FirestoreHelper();
-        findViewById(R.id.hat1).setVisibility(View.GONE);
-        findViewById(R.id.hat2).setVisibility(View.GONE);
-        findViewById(R.id.hat3).setVisibility(View.GONE);
-        findViewById(R.id.hat4).setVisibility(View.GONE);
-        findViewById(R.id.hat5).setVisibility(View.GONE);
-        findViewById(R.id.hat6).setVisibility(View.GONE);
-        findViewById(R.id.furniture1).setVisibility(View.GONE);
-        findViewById(R.id.furniture2).setVisibility(View.GONE);
-        findViewById(R.id.furniture3).setVisibility(View.GONE);
-        findViewById(R.id.furniture4).setVisibility(View.GONE);
-        findViewById(R.id.furniture5).setVisibility(View.GONE);
-        findViewById(R.id.furniture6).setVisibility(View.GONE);
+
 
 
         dbHelper.getUser(new FirestoreHelper.MyCallback() {
@@ -73,8 +62,8 @@ public class Pet extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Log.i("megan", "hats before gotInventory" + hats)
-                gotInventory(hats);
+                Log.i("megan", "hats before gotInventory" + hats);
+//                gotInventory(hats);
             }
         }, firebaseUser.getEmail());
 
@@ -122,14 +111,18 @@ public class Pet extends AppCompatActivity {
     public void itemSelected(View v){
         switch(v.getId()) {
             case R.id.hat1:
-                imageBorderShow(findViewById(R.id.hat1));
-                ImageView hat1= (ImageView)findViewById(R.id.octopusPet);
-                hat1.setImageResource(R.drawable.octopusblue);
+                if(hats.contains(1));{
+                    imageBorderShow(findViewById(R.id.hat1));
+                    ImageView hat1= (ImageView)findViewById(R.id.octopusPet);
+                    hat1.setImageResource(R.drawable.octopusblue);
+                }
                 break;
             case R.id.hat2:
-                imageBorderShow(findViewById(R.id.hat2));
-                ImageView hat2= (ImageView)findViewById(R.id.octopusPet);
-                hat2.setImageResource(R.drawable.octopuscowboy);
+                if(hat.contains(2)) {
+                    imageBorderShow(findViewById(R.id.hat2));
+                    ImageView hat2 = (ImageView) findViewById(R.id.octopusPet);
+                    hat2.setImageResource(R.drawable.octopuscowboy);
+                }
                 break;
             case R.id.hat3:
                 imageBorderShow(findViewById(R.id.hat3));
