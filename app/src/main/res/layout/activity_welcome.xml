@@ -70,7 +70,7 @@
         android:layout_marginRight="@dimen/rightMarginTV"
         android:layout_marginBottom="@dimen/bottomMarginTV"
 
-        android:text="Mood Tracker "
+        android:text="Inkling"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"

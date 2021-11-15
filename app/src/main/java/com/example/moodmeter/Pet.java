@@ -68,12 +68,12 @@ public class Pet extends AppCompatActivity {
                 hats = (ArrayList<Integer>) data.get("hats");
                 furniture = (ArrayList<Integer>) data.get("furniture");
                 backgrounds = (ArrayList<Integer>) data.get("backgrounds");
-                Log.i("megan", "hats before gotInventory" + hats);
                 try {
                     Thread.sleep(7000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                Log.i("megan", "hats before gotInventory" + hats)
                 gotInventory(hats);
             }
         }, firebaseUser.getEmail());
@@ -88,7 +88,7 @@ public class Pet extends AppCompatActivity {
     }
 
     public void gotInventory(ArrayList<Integer> items) {
-        Log.i("megan", "hats in gotInventory" + hats);
+        Log.i("megan", "items in gotInventory" + items);
         Log.i("megan", "size " + items.size());
 
         for(int i = 0; i < items.size(); i++) {
