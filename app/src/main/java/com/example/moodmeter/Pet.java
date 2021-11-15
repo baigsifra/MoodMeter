@@ -64,7 +64,12 @@ public class Pet extends AppCompatActivity {
         dbHelper.getInventory(new FirestoreHelper.MyInventory() {
             @Override
             public void onInvCallback(Map<String, Object> data) {
-                gotInventory(data);
+                hats = (ArrayList<Integer>) data.get("hats");
+                furniture = (ArrayList<Integer>) data.get("furniture");
+                backgrounds = (ArrayList<Integer>) data.get("backgrounds");
+//                gotInventory(hats);
+                Log.i("megan", "hats " + hats);
+
             }
         }, firebaseUser.getEmail());
 
@@ -74,30 +79,32 @@ public class Pet extends AppCompatActivity {
     public void petFinished(User user) {
         currentUser = new User(user.getUid(), user.getMoney());
         money = currentUser.getMoney();
-        TextView moneyPetTV = findViewById(R.id.moneyPetTV);
-        moneyPetTV.setText("$" + (int)money);
+
     }
 
-    public void gotInventory(Map<String, Object> myData) {
-        hats = (ArrayList<Integer>) myData.get("hats");
-        furniture = (ArrayList<Integer>) myData.get("furniture");
-        backgrounds = (ArrayList<Integer>) myData.get("backgrounds");
-        Log.d("megan", "hats " + hats);
-//        for(int i = 0; i < hats.size(); i++) {
-//            if (hats.get(i).equals(1)) {
+    public void gotInventory(ArrayList<Integer> items) {
+
+        Log.i("megan", "hats " + hats);
+        Log.i("megan", "size " + items.size());
+//        for(int i = 0; i < items.size(); i++) {
+//            if (items.get(i) == (1)) {
 //                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-//            } else if (hats.get(i) == 2) {
+//            } else if (items.get(i) == 2) {
 //                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
-//            } else if (hats.get(i) == 3) {
+//            } else if (items.get(i) == 3) {
 //                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
-//            } else if (hats.get(i) == 4) {
+//            } else if (items.get(i) == 4) {
 //                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
-//            } else if (hats.get(i) == 5) {
+//            } else if (items.get(i) == 5) {
 //                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
-//            } else if (hats.get(i) == 6) {
+//            } else if (items.get(i) == 6) {
 //                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
 //            }
 //        }
+        if (items.get(0) == (1)) {
+                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+
+        }
     }
 
     public void checkOwnership(ArrayList<Integer> items){

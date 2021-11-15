@@ -41,7 +41,7 @@ public class Record extends AppCompatActivity {
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private User currentUser;
     private ArrayList<Day> days;
-    private ArrayList<Double> allDayIds;
+    private ArrayList<Integer> allDayIds;
 
 
     private SimpleDateFormat weekFormat;
@@ -66,7 +66,7 @@ public class Record extends AppCompatActivity {
 
         coinsEarned = 10;
 
-        allDayIds =  new ArrayList<Double>();
+        allDayIds =  new ArrayList<Integer>();
 
         weekFormat = new SimpleDateFormat("w");
 
@@ -96,7 +96,7 @@ public class Record extends AppCompatActivity {
     public void getDayIds(Week week){
         days = week.getDayArray();
         for(int i = days.size()-1; i >= 0; i--){
-            double dayId = days.get(i).getDayNumId();
+            int dayId = (int) days.get(i).getDayNumId();
             allDayIds.add(dayId);
         }
 
