@@ -99,7 +99,6 @@ public class Record extends AppCompatActivity {
             int dayId = (int) days.get(i).getDayNumId();
             allDayIds.add(dayId);
         }
-
     }
 
     public void finished(User user) {
@@ -131,7 +130,7 @@ public class Record extends AppCompatActivity {
     //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void submitRecord(View v) {
-
+        Log.d("ifra", allDayIds.toString());
 
         Date thisDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");

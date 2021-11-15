@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class Pet extends AppCompatActivity {
 
@@ -68,7 +69,11 @@ public class Pet extends AppCompatActivity {
                 furniture = (ArrayList<Integer>) data.get("furniture");
                 backgrounds = (ArrayList<Integer>) data.get("backgrounds");
                 Log.i("megan", "hats before gotInventory" + hats);
-                TimeUnit.SECONDS.sleep(1);
+                try {
+                    Thread.sleep(7000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 gotInventory(hats);
             }
         }, firebaseUser.getEmail());
