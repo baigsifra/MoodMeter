@@ -159,9 +159,12 @@ public class Record extends AppCompatActivity {
 
         double startPoint = dayId - 1;
 
-//        for(int i = 1; i < allDayIds.size(); i++) {
-//            if(startPoint == 7)
-//        }
+        for(int i = 1; i < allDayIds.size(); i++) {
+            if(startPoint == 7) {
+                startPoint = 0;
+            }
+
+        }
 
 //        for(int i = 1; i < allDayIds.size() - 1; i++){
 //            if(startPoint == 0) {
