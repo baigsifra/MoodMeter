@@ -167,6 +167,8 @@ public class Data extends AppCompatActivity
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
+        Log.d("pranav", "inside getScatterData: " + week.toString());
+
         ArrayList<Integer> xPoints = new ArrayList<Integer>();
         ArrayList<Double> yPoints = new ArrayList<Double>();
 
