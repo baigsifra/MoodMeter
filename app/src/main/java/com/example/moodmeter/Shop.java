@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -63,6 +64,10 @@ public class Shop extends AppCompatActivity {
             }
         }, firebaseUser.getEmail());
 
+        checkBought(hats);
+        checkBought(furniture);
+        checkBought(backgrounds);
+
     }
 
     public void finished(User user) {
@@ -76,6 +81,58 @@ public class Shop extends AppCompatActivity {
         hats = (ArrayList<Integer>)myData.get("hats");
         furniture = (ArrayList<Integer>)myData.get("furniture");
         backgrounds = (ArrayList<Integer>)myData.get("backgrounds");
+
+    }
+
+    public void checkBought(ArrayList<Integer> items){
+        if(items==null){
+            return;
+        }
+        for(int i = 0; i < items.size(); i++){
+//                String strId = "R.id.hatIV" + i;
+//                int id = this.getResources().getIdentifier(strId, "id", this.getPackageName());
+//                ImageView hatIV = findViewById(id);
+//                hatIV.setVisibility(View.GONE);
+                if(items.get(i) == 1){
+                    findViewById(R.id.hatIV1).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 2){
+                    findViewById(R.id.hatIV2).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 3){
+                    findViewById(R.id.hatIV3).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 4){
+                    findViewById(R.id.hatIV4).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 5){
+                    findViewById(R.id.hatIV5).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 6){
+                    findViewById(R.id.hatIV6).setVisibility(View.GONE);
+                }
+
+                if(items.get(i) == 7){
+                    findViewById(R.id.furniture1).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 8){
+                    findViewById(R.id.furniture2).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 9){
+                    findViewById(R.id.furniture3).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 10){
+                    findViewById(R.id.furniture4).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 11){
+                    findViewById(R.id.furniture5).setVisibility(View.GONE);
+                }
+                else if(items.get(i) == 12){
+                    findViewById(R.id.furniture6).setVisibility(View.GONE);
+                }
+
+
+        }
     }
 
     public void itemSelected(View v){
@@ -115,35 +172,38 @@ public class Shop extends AppCompatActivity {
                 break;
             case R.id.furniture1:
                 imageBorderShow(findViewById(R.id.furniture1));
-                selectedItemID = 6;
+                selectedItemID = 7;
                 selectedItemCost = 300;
                 break;
             case R.id.furniture2:
                 imageBorderShow(findViewById(R.id.furniture2));
-                selectedItemID = 6;
+                selectedItemID = 8;
                 selectedItemCost = 300;
                 break;
             case R.id.furniture3:
                 imageBorderShow(findViewById(R.id.furniture3));
-                selectedItemID = 6;
+                selectedItemID = 9;
                 selectedItemCost = 300;
                 break;
             case R.id.furniture4:
                 imageBorderShow(findViewById(R.id.furniture4));
-                selectedItemID = 6;
+                selectedItemID = 10;
                 selectedItemCost = 300;
                 break;
             case R.id.furniture5:
                 imageBorderShow(findViewById(R.id.furniture5));
-                selectedItemID = 6;
+                selectedItemID = 11;
                 selectedItemCost = 300;
                 break;
             case R.id.furniture6:
                 imageBorderShow(findViewById(R.id.furniture6));
-                selectedItemID = 6;
+                selectedItemID = 12;
                 selectedItemCost = 300;
                 break;
+
         }
+        buyButton.setText("Buy for " + selectedItemCost + " coins?");
+
     }
 
     public void imageBorderShow(ImageView itemChosen){
@@ -155,6 +215,7 @@ public class Shop extends AppCompatActivity {
             }
         }
     }
+
 
     public void askBuy(View v){
         if(selectedItemCost > money){
@@ -216,7 +277,6 @@ public class Shop extends AppCompatActivity {
         dbHelper.addInventory(selectedItemID);
         TextView moneyTV = findViewById(R.id.moneyTV);
         moneyTV.setText("$" + money);
-        // add selectedItemID to firebase inventory
     }
 
 }

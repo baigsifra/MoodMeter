@@ -1,5 +1,6 @@
 package com.example.moodmeter;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -10,16 +11,125 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class Pet extends AppCompatActivity {
 
+    private FirestoreHelper dbHelper;
 
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+    private Map<String, Object> inventory;
+
+    private User currentUser;
+
+    private double money;
+
+    ArrayList<Integer> hats;
+    ArrayList<Integer> furniture;
+    ArrayList<Integer> backgrounds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
+        dbHelper = new FirestoreHelper();
 
+        dbHelper.getUser(new FirestoreHelper.MyCallback() {
+            @Override
+            public void onCallback(User user) {
+                petFinished(user);
+            }
+        }, firebaseUser.getEmail());
+
+        dbHelper.getInventory(new FirestoreHelper.MyInventory() {
+            @Override
+            public void onInvCallback(Map<String, Object> data) {
+                gotInventory(data);
+            }
+        }, firebaseUser.getEmail());
+        checkOwnership(hats);
+        checkOwnership(furniture);
+        checkOwnership(backgrounds);
+        findViewById(R.id.hat1).setVisibility(View.GONE);
+        findViewById(R.id.hat2).setVisibility(View.GONE);
+        findViewById(R.id.hat3).setVisibility(View.GONE);
+        findViewById(R.id.hat4).setVisibility(View.GONE);
+        findViewById(R.id.hat5).setVisibility(View.GONE);
+        findViewById(R.id.hat6).setVisibility(View.GONE);
+        findViewById(R.id.furniture1).setVisibility(View.GONE);
+        findViewById(R.id.furniture2).setVisibility(View.GONE);
+        findViewById(R.id.furniture3).setVisibility(View.GONE);
+        findViewById(R.id.furniture4).setVisibility(View.GONE);
+        findViewById(R.id.furniture5).setVisibility(View.GONE);
+        findViewById(R.id.furniture6).setVisibility(View.GONE);
+
+    }
+
+    public void petFinished(User user) {
+        currentUser = new User(user.getUid(), user.getMoney());
+        money = currentUser.getMoney();
+        TextView moneyPetTV = findViewById(R.id.moneyPetTV);
+        moneyPetTV.setText("$" + (int)money);
+    }
+
+    public void gotInventory(Map<String, Object> myData) {
+        hats = (ArrayList<Integer>) myData.get("hats");
+        furniture = (ArrayList<Integer>) myData.get("furniture");
+        backgrounds = (ArrayList<Integer>) myData.get("backgrounds");
+    }
+
+    public void checkOwnership(ArrayList<Integer> items){
+        if(items==null){
+            return;
+        }
+        for(int i = 0; i < items.size(); i++){
+            if(items.get(i) == 1){
+                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 2){
+                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 3){
+                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 4){
+                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 5){
+                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 6){
+                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
+            }
+
+            if(items.get(i) == 7){
+                findViewById(R.id.furniture1).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 8){
+                findViewById(R.id.furniture2).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 9){
+                findViewById(R.id.furniture3).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 10){
+                findViewById(R.id.furniture4).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 11){
+                findViewById(R.id.furniture5).setVisibility(View.VISIBLE);
+            }
+            else if(items.get(i) == 12){
+                findViewById(R.id.furniture6).setVisibility(View.VISIBLE);
+            }
+
+
+        }
     }
 
     public void toStore(View v){

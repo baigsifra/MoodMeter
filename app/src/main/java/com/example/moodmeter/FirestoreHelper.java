@@ -52,6 +52,11 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Inventory").document("inventory").set(docData);
     }
 
+    public void addMoney(String email, double money){
+        db.collection("Users").document(email).update("money",money);
+
+    }
+
     public void addInventory(int itemID){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         Map<String, ArrayList<Integer>> docData = new HashMap<>();

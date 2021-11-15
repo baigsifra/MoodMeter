@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -41,9 +42,10 @@ public class Record extends AppCompatActivity {
     private User currentUser;
     private ArrayList<Day> days;
     private ArrayList<Double> allDayIds;
-    private ArrayList<Double> currentWeekIds;
+
 
     private SimpleDateFormat weekFormat;
+    private int coinsEarned;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,35 +63,47 @@ public class Record extends AppCompatActivity {
         angryCalmSlider = findViewById(R.id.angryCalmSlider);
         angryCalmNum = findViewById(R.id.angryCalmNum);
         sliderFunction(angryCalmSlider, angryCalmNum);
+
+        coinsEarned = 10;
+
         allDayIds =  new ArrayList<Double>();
-        currentWeekIds =  new ArrayList<Double>();
+
         weekFormat = new SimpleDateFormat("w");
+
+        dbHelper.getUser(new FirestoreHelper.MyCallback() {
+            @Override
+            public void onCallback(User user) {
+                finished(user);
+            }
+        }, firebaseUser.getEmail());
+
         Date weekDateFormat = new Date();
         String weekString = weekFormat.format(weekDateFormat);
         int weekNum = Integer.parseInt(weekString);
         dbHelper = new FirestoreHelper();
-        for(int i = 2; i >= 0; i--){
+        for(int i = 0; i <= 2; i++) {
             dbHelper.getWeek(new FirestoreHelper.MyWeek() {
                 @Override
                 public void onWeekCallback(Week week) {
-                    ArrayList<Double> dayIds =  new ArrayList<Double>();
                     getDayIds(week);
-//                  allDayIds.addAll(dayIds);
                 }
             }, firebaseUser.getEmail(), weekNum-i);
         }
     }
 
 
+
     public void getDayIds(Week week){
-        ArrayList<Double> dayIds =  new ArrayList<Double>();
         days = week.getDayArray();
-        for(int i = 0; i < days.size(); i++){
+        for(int i = days.size()-1; i >= 0; i--){
             double dayId = days.get(i).getDayNumId();
             allDayIds.add(dayId);
         }
-        Log.i("megan", "dayIds " + dayIds);
-        Log.i("megan", "past 3 weeks" + allDayIds);
+
+    }
+
+    public void finished(User user) {
+        currentUser = new User(user.getUid(), user.getMoney());
     }
 
     public void sliderFunction(SeekBar SB, TextView TV){
@@ -117,13 +131,7 @@ public class Record extends AppCompatActivity {
     //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void submitRecord(View v) {
-        LayoutInflater inflater = (LayoutInflater)
-                getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.pop_up, null);
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
-        popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
 
         Date thisDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
@@ -150,13 +158,64 @@ public class Record extends AppCompatActivity {
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
 
-        Log.i("megan", "FINAL" + allDayIds);
-        Log.i("megan", "CURRENTWEEK" + currentWeekIds);
+        Log.i("megan", "FINAL " + allDayIds);
+        double startPoint = dayId;
 
+        Log.i("megan", "TODAY " + startPoint);
 
-        // notes for megan to do at home, make it so you can only record once a day
-        // then just use allDayIds
+        for(int i = 0; i < allDayIds.size(); i++){
+            if(Double.compare(startPoint - 1.0, allDayIds.get(i)) == 0){
+                coinsEarned += 10;
+                if(startPoint == 1.0){
+                    startPoint = 7.0;
+                    Log.i("megan", "START " + startPoint);
+                }
+            }
+        }
 
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View submitPopupView = inflater.inflate(R.layout.pop_up, null);
+        TextView submitText = submitPopupView.findViewById(R.id.popupMessageTV);
+        Button yesBtn = submitPopupView.findViewById(R.id.yesPetBtn);
+        Button noBtn = submitPopupView.findViewById(R.id.noPetBtn);
+        Log.i("megan", "JE " + journalEntry);
+        if(journalEntry.equals("")){
+            yesBtn.setVisibility(View.GONE);
+            noBtn.setVisibility(View.GONE);
+            submitText.setText("Please add a journal entry!");
+            inflatePopup(submitPopupView, 1);
+        }
+        else if(dayId == allDayIds.get(0)){
+            yesBtn.setVisibility(View.GONE);
+            noBtn.setVisibility(View.GONE);
+            inflatePopup(submitPopupView, 1);
+            submitText.setText("Sorry! You already logged your mood today!");
+
+        }
+        else {
+            submitText.setText("Congrats! You earned " + coinsEarned + " coins! View pet?");
+            inflatePopup(submitPopupView, 0);
+        }
+        dbHelper.addMoney(firebaseUser.getEmail(), currentUser.getMoney() + coinsEarned);
+
+    }
+
+    public void inflatePopup(View popupView, int dismiss){
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        if (dismiss == 1){
+            popupView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popupWindow.dismiss();
+                    return true;
+                }
+            });
+        }
     }
 
     public void toPet(View v){
