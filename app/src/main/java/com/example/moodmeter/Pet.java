@@ -74,8 +74,7 @@ public class Pet extends AppCompatActivity {
     public void petFinished(User user) {
         currentUser = new User(user.getUid(), user.getMoney());
         money = currentUser.getMoney();
-        TextView moneyPetTV = findViewById(R.id.moneyPetTV);
-        moneyPetTV.setText("$" + (int)money);
+        
     }
 
     public void gotInventory(Map<String, Object> myData) {
