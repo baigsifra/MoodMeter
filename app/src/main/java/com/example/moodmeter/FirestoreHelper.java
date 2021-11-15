@@ -92,8 +92,8 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Weeks").document(weekId).collection("Days").document(date).set(day);
     }
 
+    // will return a User object based on firebase data
     public void getUser(MyCallback myCallback, String email) {
-
         db.collection("Users").document(email).get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -109,8 +109,8 @@ public class FirestoreHelper {
                 });
     }
 
+    // will return Map of inventory items from firebase data
     public void getInventory(MyInventory myInventory, String email) {
-
         db.document("Users/"+email+"/Inventory/inventory").get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
@@ -123,9 +123,9 @@ public class FirestoreHelper {
                         }
                     }
                 });
-
     }
 
+    // will return a Week object by grabbing all days of a week (determined by weekNum) from firestore
     public void getWeek(MyWeek myWeek, String email, int weekNum) {
         Log.d("pranav", "inside getWeek FirestoreHelper before grabbing data");
         db.collection("Users/"+email+"/Weeks/"+ weekNum + "/Days").get()
@@ -154,6 +154,7 @@ public class FirestoreHelper {
                 });
     }
 
+    // will return an arraylist of all weekIds (weekNum) that are in database
     public void getWeekIds(MyWeekIds myWeekIds, String email) {
       db.collection("Users/"+email+"/Weeks").get()
               .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
