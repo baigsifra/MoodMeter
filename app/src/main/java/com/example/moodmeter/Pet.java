@@ -88,10 +88,13 @@ public class Pet extends AppCompatActivity {
     }
 
     public void gotInventory(ArrayList<Integer> items) {
-
         Log.i("megan", "hats in gotInventory" + hats);
         Log.i("megan", "size " + items.size());
+
         for(int i = 0; i < items.size(); i++) {
+            Log.i("megan", "index " + i);
+            Log.i("megan", "index got " + items.get(i));
+
             if (items.get(i) == (1)) {
                 findViewById(R.id.hat1).setVisibility(View.VISIBLE);
             } else if (items.get(i) == 2) {
@@ -106,58 +109,8 @@ public class Pet extends AppCompatActivity {
                 findViewById(R.id.hat6).setVisibility(View.VISIBLE);
             }
         }
-        if (items.get(0) == (1)) {
-                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-
-        }
     }
 
-    public void checkOwnership(ArrayList<Integer> items){
-        if(items==null){
-            return;
-        }
-        for(int i = 0; i < items.size(); i++){
-            if(items.get(i) == 1){
-                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 2){
-                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 3){
-                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 4){
-                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 5){
-                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 6){
-                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
-            }
-
-            if(items.get(i) == 7){
-                findViewById(R.id.furniture1).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 8){
-                findViewById(R.id.furniture2).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 9){
-                findViewById(R.id.furniture3).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 10){
-                findViewById(R.id.furniture4).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 11){
-                findViewById(R.id.furniture5).setVisibility(View.VISIBLE);
-            }
-            else if(items.get(i) == 12){
-                findViewById(R.id.furniture6).setVisibility(View.VISIBLE);
-            }
-
-
-        }
-    }
 
     public void toStore(View v){
         Intent shopIntent = new Intent(this, Shop.class);
