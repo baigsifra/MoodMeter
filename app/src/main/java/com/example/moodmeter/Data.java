@@ -88,6 +88,7 @@ public class Data extends AppCompatActivity
 
     public void displayFirstGraph(ArrayList<Integer> idAL)
     {
+        createSpinner(idAL);
         Date thisDate = new Date();
         SimpleDateFormat weekNumFormat = new SimpleDateFormat("w");
         int weekNum = Integer.parseInt(weekNumFormat.format(thisDate));
@@ -96,12 +97,12 @@ public class Data extends AppCompatActivity
             @Override
             public void onWeekCallback(Week week) {
                 Log.d("pranav", "inside displayFirstGraph getWeek before createSpinner: " + week.toString());
-                createSpinner(idAL, weekNum);
+                getScatterData(week);
             }
         }, firebaseUser.getEmail(), weekNum);
     }
 
-    public void createSpinner(ArrayList<Integer> idAL, int weekNum) {
+    public void createSpinner(ArrayList<Integer> idAL) {
       Spinner graphDropdown = findViewById(R.id.graphDropdown);
 
       ArrayList<String> spinnerArray = new ArrayList<String>();
@@ -123,7 +124,7 @@ public class Data extends AppCompatActivity
               dbHelper.getWeek(new FirestoreHelper.MyWeek() {
                   @Override
                   public void onWeekCallback(Week week) {
-                      getScatterData(week, idAL);
+                      getScatterData(week);
                   }
               }, firebaseUser.getEmail(), idAL.get(position));
           }
@@ -135,7 +136,7 @@ public class Data extends AppCompatActivity
       });
     }
 
-    public void getScatterData(Week week, ArrayList<Integer> idAL)
+    public void getScatterData(Week week)
     {
         //Assign XML elements to variables created above
         sadHappyNumDisplay = findViewById(R.id.sadHappyNumDisplay);
