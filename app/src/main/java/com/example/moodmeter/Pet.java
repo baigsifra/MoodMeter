@@ -110,6 +110,7 @@ public class Pet extends AppCompatActivity {
 
     public void itemSelected(View v){
         switch(v.getId()) {
+            Log.i("megan", "Hats " + hats + "     Furniture " + furniture);
             case R.id.hat1:
                 if(hats.contains(1)){
                     imageBorderShow(findViewById(R.id.hat1));
