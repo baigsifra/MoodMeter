@@ -40,6 +40,19 @@ public class Pet extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pet);
         dbHelper = new FirestoreHelper();
+        findViewById(R.id.hat1).setVisibility(View.GONE);
+        findViewById(R.id.hat2).setVisibility(View.GONE);
+        findViewById(R.id.hat3).setVisibility(View.GONE);
+        findViewById(R.id.hat4).setVisibility(View.GONE);
+        findViewById(R.id.hat5).setVisibility(View.GONE);
+        findViewById(R.id.hat6).setVisibility(View.GONE);
+        findViewById(R.id.furniture1).setVisibility(View.GONE);
+        findViewById(R.id.furniture2).setVisibility(View.GONE);
+        findViewById(R.id.furniture3).setVisibility(View.GONE);
+        findViewById(R.id.furniture4).setVisibility(View.GONE);
+        findViewById(R.id.furniture5).setVisibility(View.GONE);
+        findViewById(R.id.furniture6).setVisibility(View.GONE);
+
 
         dbHelper.getUser(new FirestoreHelper.MyCallback() {
             @Override
@@ -54,21 +67,7 @@ public class Pet extends AppCompatActivity {
                 gotInventory(data);
             }
         }, firebaseUser.getEmail());
-        checkOwnership(hats);
-        checkOwnership(furniture);
-        checkOwnership(backgrounds);
-        findViewById(R.id.hat1).setVisibility(View.GONE);
-        findViewById(R.id.hat2).setVisibility(View.GONE);
-        findViewById(R.id.hat3).setVisibility(View.GONE);
-        findViewById(R.id.hat4).setVisibility(View.GONE);
-        findViewById(R.id.hat5).setVisibility(View.GONE);
-        findViewById(R.id.hat6).setVisibility(View.GONE);
-        findViewById(R.id.furniture1).setVisibility(View.GONE);
-        findViewById(R.id.furniture2).setVisibility(View.GONE);
-        findViewById(R.id.furniture3).setVisibility(View.GONE);
-        findViewById(R.id.furniture4).setVisibility(View.GONE);
-        findViewById(R.id.furniture5).setVisibility(View.GONE);
-        findViewById(R.id.furniture6).setVisibility(View.GONE);
+
 
     }
 
@@ -83,6 +82,22 @@ public class Pet extends AppCompatActivity {
         hats = (ArrayList<Integer>) myData.get("hats");
         furniture = (ArrayList<Integer>) myData.get("furniture");
         backgrounds = (ArrayList<Integer>) myData.get("backgrounds");
+        Log.d("megan", "hats " + hats);
+//        for(int i = 0; i < hats.size(); i++) {
+//            if (hats.get(i).equals(1)) {
+//                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+//            } else if (hats.get(i) == 2) {
+//                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
+//            } else if (hats.get(i) == 3) {
+//                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
+//            } else if (hats.get(i) == 4) {
+//                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
+//            } else if (hats.get(i) == 5) {
+//                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
+//            } else if (hats.get(i) == 6) {
+//                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
+//            }
+//        }
     }
 
     public void checkOwnership(ArrayList<Integer> items){

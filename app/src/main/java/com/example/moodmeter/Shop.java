@@ -3,6 +3,7 @@ package com.example.moodmeter;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.os.Bundle;
@@ -277,6 +278,9 @@ public class Shop extends AppCompatActivity {
         dbHelper.addInventory(selectedItemID);
         TextView moneyTV = findViewById(R.id.moneyTV);
         moneyTV.setText("$" + money);
+        Intent petIntent = new Intent(this, Pet.class);
+        startActivity(petIntent);
+        dbHelper.addMoney(firebaseUser.getEmail(), money);
     }
 
 }
