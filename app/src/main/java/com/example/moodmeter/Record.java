@@ -157,20 +157,25 @@ public class Record extends AppCompatActivity {
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
 
-        Log.i("megan", "FINAL " + allDayIds);
-        double startPoint = dayId;
+        double startPoint = dayId - 1;
 
-        Log.i("megan", "TODAY " + startPoint);
+//        for(int i = 1; i < allDayIds.size(); i++) {
+//            if(startPoint == 7)
+//        }
 
-        for(int i = 0; i < allDayIds.size(); i++){
-            if(Double.compare(startPoint - 1.0, allDayIds.get(i)) == 0){
-                coinsEarned += 10;
-                if(startPoint == 1.0){
-                    startPoint = 7.0;
-                    Log.i("megan", "START " + startPoint);
-                }
-            }
-        }
+//        for(int i = 1; i < allDayIds.size() - 1; i++){
+//            if(startPoint == 0) {
+//                startPoint = 7;
+//            }
+//            Log.d("ifra", "startPoint: " + startPoint);
+//            if(startPoint == 7 && allDayIds.get(i - 1) == 1 || startPoint + 1 == allDayIds.get(i - 1)) {
+//                coinsEarned += 10;
+//            }
+//            Log.d("ifra", "coinsEarned: " + coinsEarned);
+//            startPoint = allDayIds.get(i + 1);
+//        }
+//
+//        Log.d("ifra", "total amount of coins earned: " + coinsEarned);
 
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);

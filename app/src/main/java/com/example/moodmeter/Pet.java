@@ -111,7 +111,7 @@ public class Pet extends AppCompatActivity {
     public void itemSelected(View v){
         switch(v.getId()) {
             case R.id.hat1:
-                if(hats.contains(1));{
+                if(hats.contains(1)){
                     imageBorderShow(findViewById(R.id.hat1));
                     ImageView hat1= (ImageView)findViewById(R.id.octopusPet);
                     hat1.setImageResource(R.drawable.octopusblue);
@@ -237,13 +237,13 @@ public class Pet extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         View dontOwnview = inflater.inflate(R.layout.unable_buy, null);
-        TextView errorMessage = submitPopupView.findViewById(R.id.popupMessageTV);
+        TextView errorMessage = dontOwnview.findViewById(R.id.popupMessageTV);
         errorMessage.setText("Sorry! You don't yet own this item!");
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
-        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-            popupView.setOnTouchListener(new View.OnTouchListener() {
+        final PopupWindow popupWindow = new PopupWindow(dontOwnview, width, height, false);
+        popupWindow.showAtLocation(dontOwnview, Gravity.CENTER, 0, 0);
+        dontOwnview.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     popupWindow.dismiss();
@@ -251,7 +251,7 @@ public class Pet extends AppCompatActivity {
                 }
             });
         }
-    }
+
 
     public void imageBorderShow(ImageView itemChosen){
         itemChosen.setBackgroundColor(getResources().getColor(R.color.darkblue));
