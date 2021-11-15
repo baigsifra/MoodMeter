@@ -68,7 +68,8 @@ public class Pet extends AppCompatActivity {
                 furniture = (ArrayList<Integer>) data.get("furniture");
                 backgrounds = (ArrayList<Integer>) data.get("backgrounds");
                 Log.i("megan", "hats before gotInventory" + hats);
-                gotInventory(data);
+                TimeUnit.SECONDS.sleep(1);
+                gotInventory(hats);
             }
         }, firebaseUser.getEmail());
 
@@ -81,20 +82,29 @@ public class Pet extends AppCompatActivity {
 
     }
 
-    public void gotInventory(Map<String, Object> items) {
+    public void gotInventory(ArrayList<Integer> items) {
 
         Log.i("megan", "hats in gotInventory" + hats);
-
-        for(int i = 0; i <= 2; i++){
-            if (i == 0){
-                for(int i = 0, i < (ArrayList<Integer>)items.get(0).size(); i++){
-                    if ((ArrayList<Integer>)items.get(0).get(i) == (1)) {
-                        findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-                    }
-                }
+        Log.i("megan", "size " + items.size());
+        for(int i = 0; i < items.size(); i++) {
+            if (items.get(i) == (1)) {
+                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 2) {
+                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 3) {
+                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 4) {
+                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 5) {
+                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 6) {
+                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
             }
         }
+        if (items.get(0) == (1)) {
+                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
 
+        }
     }
 
     public void checkOwnership(ArrayList<Integer> items){
