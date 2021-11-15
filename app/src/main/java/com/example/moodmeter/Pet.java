@@ -58,7 +58,7 @@ public class Pet extends AppCompatActivity {
                 furniture = (ArrayList<Integer>) data.get("furniture");
                 backgrounds = (ArrayList<Integer>) data.get("backgrounds");
                 try {
-                    Thread.sleep(7000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -76,29 +76,29 @@ public class Pet extends AppCompatActivity {
 
     }
 
-    public void gotInventory(ArrayList<Integer> items) {
-        Log.i("megan", "items in gotInventory" + items);
-        Log.i("megan", "size " + items.size());
-
-        for(int i = 0; i < items.size(); i++) {
-            Log.i("megan", "index " + i);
-            Log.i("megan", "index got " + items.get(i));
-
-            if (items.get(i) == (1)) {
-                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-            } else if (items.get(i) == 2) {
-                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
-            } else if (items.get(i) == 3) {
-                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
-            } else if (items.get(i) == 4) {
-                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
-            } else if (items.get(i) == 5) {
-                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
-            } else if (items.get(i) == 6) {
-                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
-            }
-        }
-    }
+//    public void gotInventory(ArrayList<Integer> items) {
+//        Log.i("megan", "items in gotInventory" + items);
+//        Log.i("megan", "size " + items.size());
+//
+//        for(int i = 0; i < items.size(); i++) {
+//            Log.i("megan", "index " + i);
+//            Log.i("megan", "index got " + items.get(i));
+//
+//            if (items.get(i) == (1)) {
+//                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+//            } else if (items.get(i) == 2) {
+//                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
+//            } else if (items.get(i) == 3) {
+//                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
+//            } else if (items.get(i) == 4) {
+//                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
+//            } else if (items.get(i) == 5) {
+//                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
+//            } else if (items.get(i) == 6) {
+//                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
+//            }
+//        }
+//    }
 
 
     public void toStore(View v){
@@ -116,64 +116,140 @@ public class Pet extends AppCompatActivity {
                     ImageView hat1= (ImageView)findViewById(R.id.octopusPet);
                     hat1.setImageResource(R.drawable.octopusblue);
                 }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.hat2:
-                if(hat.contains(2)) {
+                if(hats.contains(2)) {
                     imageBorderShow(findViewById(R.id.hat2));
                     ImageView hat2 = (ImageView) findViewById(R.id.octopusPet);
                     hat2.setImageResource(R.drawable.octopuscowboy);
                 }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.hat3:
-                imageBorderShow(findViewById(R.id.hat3));
-                ImageView hat3= (ImageView)findViewById(R.id.octopusPet);
-                hat3.setImageResource(R.drawable.octopuspink);
+                if(hats.contains(3)) {
+                    imageBorderShow(findViewById(R.id.hat3));
+                    ImageView hat3 = (ImageView) findViewById(R.id.octopusPet);
+                    hat3.setImageResource(R.drawable.octopuspink);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.hat4:
-                imageBorderShow(findViewById(R.id.hat4));
-                ImageView hat4= (ImageView)findViewById(R.id.octopusPet);
-                hat4.setImageResource(R.drawable.octopussanta);
+                if(hats.contains(4)) {
+                    imageBorderShow(findViewById(R.id.hat4));
+                    ImageView hat4 = (ImageView) findViewById(R.id.octopusPet);
+                    hat4.setImageResource(R.drawable.octopussanta);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.hat5:
-                imageBorderShow(findViewById(R.id.hat5));
-                ImageView hat5= (ImageView)findViewById(R.id.octopusPet);
-                hat5.setImageResource(R.drawable.octopuswitch);
+                if(hats.contains(5)) {
+                    imageBorderShow(findViewById(R.id.hat5));
+                    ImageView hat5 = (ImageView) findViewById(R.id.octopusPet);
+                    hat5.setImageResource(R.drawable.octopuswitch);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.hat6:
-                imageBorderShow(findViewById(R.id.hat6));
-                ImageView hat6= (ImageView)findViewById(R.id.octopusPet);
-                hat6.setImageResource(R.drawable.octopusyellow);
+                if(hats.contains(6)) {
+                    imageBorderShow(findViewById(R.id.hat6));
+                    ImageView hat6 = (ImageView) findViewById(R.id.octopusPet);
+                    hat6.setImageResource(R.drawable.octopusyellow);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture1:
-                imageBorderShow(findViewById(R.id.furniture1));
-                ImageView furniture1= (ImageView)findViewById(R.id.bgpet);
-                furniture1.setImageResource(R.drawable.bed);
+                if(furniture.contains(1)) {
+                    imageBorderShow(findViewById(R.id.furniture1));
+                    ImageView furniture1 = (ImageView) findViewById(R.id.bgpet);
+                    furniture1.setImageResource(R.drawable.bed);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture2:
-                imageBorderShow(findViewById(R.id.furniture2));
-                ImageView furniture2= (ImageView)findViewById(R.id.bgpet2);
-                furniture2.setImageResource(R.drawable.chair);
+                if(furniture.contains(2)) {
+                    imageBorderShow(findViewById(R.id.furniture2));
+                    ImageView furniture2 = (ImageView) findViewById(R.id.bgpet2);
+                    furniture2.setImageResource(R.drawable.chair);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture3:
-                imageBorderShow(findViewById(R.id.furniture3));
-                ImageView furniture3= (ImageView)findViewById(R.id.bgpet);
-                furniture3.setImageResource(R.drawable.desk1);
+                if(furniture.contains(3)) {
+                    imageBorderShow(findViewById(R.id.furniture3));
+                    ImageView furniture3 = (ImageView) findViewById(R.id.bgpet);
+                    furniture3.setImageResource(R.drawable.desk1);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture4:
-                imageBorderShow(findViewById(R.id.furniture4));
-                ImageView furniture4= (ImageView)findViewById(R.id.bgpet2);
-                furniture4.setImageResource(R.drawable.desk2);
+                if(furniture.contains(4)) {
+                    imageBorderShow(findViewById(R.id.furniture4));
+                    ImageView furniture4 = (ImageView) findViewById(R.id.bgpet2);
+                    furniture4.setImageResource(R.drawable.desk2);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture5:
-                imageBorderShow(findViewById(R.id.furniture5));
-                ImageView furniture5= (ImageView)findViewById(R.id.bgpet);
-                furniture5.setImageResource(R.drawable.dresser);
+                if(furniture.contains(5)) {
+                    imageBorderShow(findViewById(R.id.furniture5));
+                    ImageView furniture5 = (ImageView) findViewById(R.id.bgpet);
+                    furniture5.setImageResource(R.drawable.dresser);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
             case R.id.furniture6:
-                imageBorderShow(findViewById(R.id.furniture6));
-                ImageView furniture6= (ImageView)findViewById(R.id.bgpet2);
-                furniture6.setImageResource(R.drawable.sofa);
+                if(furniture.contains(6)) {
+                    imageBorderShow(findViewById(R.id.furniture6));
+                    ImageView furniture6 = (ImageView) findViewById(R.id.bgpet2);
+                    furniture6.setImageResource(R.drawable.sofa);
+                }
+                else{
+                    dontOwn();
+                }
                 break;
+        }
+    }
+
+    public void dontOwn(){
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View dontOwnview = inflater.inflate(R.layout.unable_buy, null);
+        TextView errorMessage = submitPopupView.findViewById(R.id.popupMessageTV);
+        errorMessage.setText("Sorry! You don't yet own this item!");
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, false);
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+            popupView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    popupWindow.dismiss();
+                    return true;
+                }
+            });
         }
     }
 
