@@ -29,6 +29,7 @@ import android.widget.Spinner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Data extends AppCompatActivity
@@ -107,8 +108,19 @@ public class Data extends AppCompatActivity
 
       ArrayList<String> spinnerArray = new ArrayList<String>();
 
+      SimpleDateFormat range = new SimpleDateFormat("MM/dd");
+      Calendar cal = Calendar.getInstance();
+
       for(int i = idAL.size() - 1; i >= 0; i--) {
-          spinnerArray.add("Week" + (i + 1));
+          cal.set(Calendar.WEEK_OF_YEAR, idAL.get(i));
+          cal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+          String firstDateStr = range.format(cal.getTime());
+
+          cal.set(Calendar.WEEK_OF_YEAR, idAL.get(i));
+          cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+          String secondDateStr = range.format(cal.getTime());
+
+          spinnerArray.add(firstDateStr + " - " + secondDateStr);
       }
 
       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, spinnerArray);
