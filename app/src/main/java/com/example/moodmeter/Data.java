@@ -126,7 +126,7 @@ public class Data extends AppCompatActivity
                   public void onWeekCallback(Week week) {
                       getScatterData(week);
                   }
-              }, firebaseUser.getEmail(), idAL.get(position));
+              }, firebaseUser.getEmail(), idAL.get((idAL.size() - 1) - position));
           }
 
           @Override
