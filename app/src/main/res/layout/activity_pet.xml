@@ -20,7 +20,6 @@
         android:layout_toLeftOf="@id/moneyPetTV"
         android:background="@drawable/button_style"
         android:onClick="toStore"
-
         android:paddingLeft="@dimen/leftPaddingPetBtn"
         android:paddingTop="@dimen/topPaddingPetBtn"
         android:paddingRight="@dimen/rightPaddingPetBtn"
@@ -37,6 +36,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         app:srcCompat="@drawable/octopusorangehat" />
+
 
 
     <TextView
@@ -261,6 +261,27 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/bgpet"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:layout_alignTop="@id/octopusPet"
+        android:layout_marginTop="38dp"
+        android:layout_marginRight="3dp"
+        android:layout_toLeftOf="@id/octopusPet"
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/bgpet" />
+
+    <ImageView
+        android:id="@+id/bgpet2"
+        android:layout_toRightOf="@id/octopusPet"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:layout_alignTop="@id/octopusPet"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="3dp"
+        app:srcCompat="@drawable/bgpet2" />
 
 
 </RelativeLayout>
