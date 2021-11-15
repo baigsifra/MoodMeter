@@ -67,9 +67,8 @@ public class Pet extends AppCompatActivity {
                 hats = (ArrayList<Integer>) data.get("hats");
                 furniture = (ArrayList<Integer>) data.get("furniture");
                 backgrounds = (ArrayList<Integer>) data.get("backgrounds");
-//                gotInventory(hats);
-                Log.i("megan", "hats " + hats);
-
+                Log.i("megan", "hats before gotInventory" + hats);
+                gotInventory(hats);
             }
         }, firebaseUser.getEmail());
 
@@ -84,23 +83,23 @@ public class Pet extends AppCompatActivity {
 
     public void gotInventory(ArrayList<Integer> items) {
 
-        Log.i("megan", "hats " + hats);
+        Log.i("megan", "hats in gotInventory" + hats);
         Log.i("megan", "size " + items.size());
-//        for(int i = 0; i < items.size(); i++) {
-//            if (items.get(i) == (1)) {
-//                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
-//            } else if (items.get(i) == 2) {
-//                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
-//            } else if (items.get(i) == 3) {
-//                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
-//            } else if (items.get(i) == 4) {
-//                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
-//            } else if (items.get(i) == 5) {
-//                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
-//            } else if (items.get(i) == 6) {
-//                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
-//            }
-//        }
+        for(int i = 0; i < items.size(); i++) {
+            if (items.get(i) == (1)) {
+                findViewById(R.id.hat1).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 2) {
+                findViewById(R.id.hat2).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 3) {
+                findViewById(R.id.hat3).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 4) {
+                findViewById(R.id.hat4).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 5) {
+                findViewById(R.id.hat5).setVisibility(View.VISIBLE);
+            } else if (items.get(i) == 6) {
+                findViewById(R.id.hat6).setVisibility(View.VISIBLE);
+            }
+        }
         if (items.get(0) == (1)) {
                 findViewById(R.id.hat1).setVisibility(View.VISIBLE);
 
