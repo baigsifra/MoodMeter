@@ -13,11 +13,11 @@
         android:layout_width="@dimen/widthPetBtn"
         android:layout_height="@dimen/heightPetBtn"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/leftMarginPetBtn"
+        android:layout_marginLeft="1dp"
         android:layout_marginTop="@dimen/topMarginPetBtn"
         android:layout_marginRight="@dimen/rightMarginPetBtn"
         android:layout_marginBottom="@dimen/bottomMarginPetBtn"
-        android:layout_toLeftOf="@id/moneyPetTV"
+        android:layout_toRightOf="@id/octopusPet"
         android:background="@drawable/button_style"
         android:onClick="toStore"
         android:paddingLeft="@dimen/leftPaddingPetBtn"
@@ -28,7 +28,6 @@
         android:textColor="@color/black"
         android:textSize="15sp" />
 
-
     <ImageView
         android:id="@+id/octopusPet"
         android:layout_width="210dp"
@@ -36,16 +35,6 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
         app:srcCompat="@drawable/octopusorangehat" />
-
-
-    <TextView
-        android:id="@+id/moneyPetTV"
-        android:layout_width="40dp"
-        android:layout_height="25dp"
-        android:layout_alignParentRight="true"
-        android:paddingLeft="5dp"
-        android:text="$____"
-        android:textColor="@color/black" />
 
 
     <TextView
