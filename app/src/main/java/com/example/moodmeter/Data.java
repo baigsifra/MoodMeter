@@ -1,6 +1,7 @@
 package com.example.moodmeter;
 
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -287,12 +288,16 @@ public class Data extends AppCompatActivity
             cardView.setVisibility(View.VISIBLE);
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
+            
+            //https://stackoverflow.com/questions/1748977/making-textview-scrollable-on-android
+            journalEntry.setMovementMethod(new ScrollingMovementMethod());
         } else {
           Log.d("ifra", "running the else statement");
           journalEntry.setText(allJournEntr);
           cardView.setVisibility(View.VISIBLE);
           journalEntry.setVisibility(View.VISIBLE);
           exitJournal.setVisibility(View.VISIBLE);
+          journalEntry.setMovementMethod(new ScrollingMovementMethod());
         }
     }
 
