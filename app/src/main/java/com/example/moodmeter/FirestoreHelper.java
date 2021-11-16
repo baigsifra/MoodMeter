@@ -125,7 +125,7 @@ public class FirestoreHelper {
                 });
 
     }
-    
+
 
     public void getWeek(MyWeek myWeek, String email, int weekNum) {
         Log.d("pranav", "inside getWeek FirestoreHelper before grabbing data");
@@ -151,18 +151,8 @@ public class FirestoreHelper {
                             Week week = new Week(dayAL);
                             myWeek.onWeekCallback(week);
                         }
-                        else{
+                        else {
                             ArrayList<Day> dayAL = new ArrayList<Day>();
-                            for(QueryDocumentSnapshot qdr: queryDocumentSnapshots) {
-                                String journalEntry = "";
-                                String date = "";
-                                double energy = 0;
-                                double happiness = 0;
-                                double peacefulness = 0;
-                                double dayId = 0;
-                                Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
-                                dayAL.add(day);
-                            }
                             Week week = new Week(dayAL);
                             myWeek.onWeekCallback(week);
                         }
