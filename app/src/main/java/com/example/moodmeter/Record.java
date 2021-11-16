@@ -88,6 +88,11 @@ public class Record extends AppCompatActivity {
                     getDayIds(week);
                 }
             }, firebaseUser.getEmail(), weekNum-i);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
