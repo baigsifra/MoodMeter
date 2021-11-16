@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -119,6 +120,9 @@ public class Pet extends AppCompatActivity {
                 if(1 == 1){
                     Log.i("megan", "inside if");
                     Log.i("megan", "hat val " + hats.get(0));
+                    Log.i("megan", "type " + hats.getClass().getName());
+//                    Log.i("megan", "val type " + (hats.get(0)).getClass().getName());
+                    Log.i("megan", "my contains contains " + contains(hats, 1));
                     Log.i("megan", "hat contains " + hats.contains(1));
                     imageBorderShow(findViewById(R.id.hat1));
                     octopus.setImageResource(R.drawable.octopusblue);
@@ -227,6 +231,15 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
         }
+    }
+
+    public boolean contains(ArrayList<Integer> arrList, int num){
+        for (int i = 0; i < arrList.size(); i++){
+            if(arrList.get(i) == num){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void dontOwn(){
