@@ -64,6 +64,7 @@ public class Data extends AppCompatActivity
     FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
     String journ = "";
+    String allJournEntr = "";
     ArrayList<Integer> weekIdAL = new ArrayList<Integer>();
 
     @Override
@@ -248,6 +249,7 @@ public class Data extends AppCompatActivity
                 double xCoord = dataPoint.getX();
                 Day d = new Day();
                 for(Day dIW : dayAL) {
+                    allJournEntr += dIW.getDate() + "\n" + dIW.getJournalEntry() + "\n";
                     if(dIW.getDayNumId() == xCoord) {
                         d = new Day(dIW.getDate(), dIW.getJournalEntry(), dIW.getHappiness(), dIW.getEnergy(), dIW.getPeacefulness(), dIW.getDayNumId());
                     }
@@ -283,6 +285,11 @@ public class Data extends AppCompatActivity
             cardView.setVisibility(View.VISIBLE);
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
+        } else {
+          journalEntry.setText(allJournEntr);
+          cardView.setVisibility(View.VISIBLE);
+          journalEntry.setVisibility(View.VISIBLE);
+          exitJournal.setVisibility(View.VISIBLE);
         }
     }
 
