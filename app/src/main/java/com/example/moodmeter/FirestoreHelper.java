@@ -118,7 +118,7 @@ public class FirestoreHelper {
                         if (documentSnapshot.exists()) {
                             ArrayList<String> items;
                             Map<String, Object> dataToLoad = (HashMap<String, Object>) documentSnapshot.getData();
-
+                            Log.d("ifra", "dataToLoad inside getInventory: " + dataToLoad.toString());
                             myInventory.onInvCallback(dataToLoad);
                         }
                     }
