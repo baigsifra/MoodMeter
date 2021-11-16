@@ -288,7 +288,7 @@ public class Data extends AppCompatActivity
             cardView.setVisibility(View.VISIBLE);
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
-            
+
             //https://stackoverflow.com/questions/1748977/making-textview-scrollable-on-android
             journalEntry.setMovementMethod(new ScrollingMovementMethod());
         } else {
