@@ -9,10 +9,11 @@
     <TextView
         android:id="@+id/popupMessageTV"
         android:layout_width="@dimen/widthTVPopUp"
-        android:layout_height="@dimen/heightTVPopUp"
+        android:layout_height="90dp"
         android:layout_centerInParent="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_mono_bold"
         android:gravity="center"
         android:paddingLeft="0dp"
         android:paddingRight="80dp"
@@ -22,6 +23,8 @@
 
     <Button
         android:id="@+id/noPetBtn"
+        android:fontFamily="@font/roboto_mono_bold"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@id/popupMessageTV"
@@ -32,6 +35,8 @@
 
     <Button
         android:id="@+id/yesPetBtn"
+        android:fontFamily="@font/roboto_mono_bold"
+        android:textSize="20dp"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_alignRight="@id/popupMessageTV"

@@ -19,6 +19,7 @@
         android:layout_marginBottom="@dimen/bottomMarginPetBtn"
         android:layout_toRightOf="@id/octopusPet"
         android:background="@drawable/button_style"
+        android:fontFamily="@font/roboto_mono_bold"
         android:onClick="toStore"
         android:paddingLeft="@dimen/leftPaddingPetBtn"
         android:paddingTop="@dimen/topPaddingPetBtn"

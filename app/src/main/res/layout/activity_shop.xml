@@ -12,8 +12,9 @@
 
     <TextView
         android:id="@+id/storeTV"
-        android:layout_width="70dp"
+        android:layout_width="80dp"
         android:layout_height="30dp"
+        android:fontFamily="@font/roboto_mono_bold"
         android:text="Store"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -30,6 +31,7 @@
         android:id="@+id/moneyTV"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:fontFamily="@font/roboto_mono_bold"
         android:layout_gravity="center"
         android:gravity="center"
         android:text="$"

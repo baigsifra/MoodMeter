@@ -8,6 +8,7 @@
 
     <EditText
         android:id="@+id/loginPasswordET"
+        android:fontFamily="@font/roboto_mono_bold"
         android:layout_width="@dimen/editTextWidth"
         android:layout_height="@dimen/editTextHeight"
         android:layout_marginTop="@dimen/topMarginET"
@@ -30,6 +31,7 @@
 
     <EditText
         android:id="@+id/loginEmailET"
+        android:fontFamily="@font/roboto_mono_bold"
         android:layout_width="@dimen/editTextWidth"
         android:layout_height="@dimen/editTextHeight"
         android:layout_marginTop="@dimen/topMarginET"
@@ -52,6 +54,7 @@
 
     <TextView
         android:id="@+id/loginTV"
+        android:fontFamily="@font/roboto_mono_bold"
         android:layout_width="@dimen/textWidthlog"
         android:layout_height="@dimen/textHeightlog"
         android:paddingTop="@dimen/topPaddingTV"
@@ -74,6 +77,7 @@
 
     <Button
         android:id="@+id/submitLoginBtn"
+        android:fontFamily="@font/roboto_mono_bold"
         android:layout_width="@dimen/buttonWidth"
         android:layout_height="@dimen/buttonHeight"
         android:layout_marginLeft="@dimen/leftMarginBtn"
