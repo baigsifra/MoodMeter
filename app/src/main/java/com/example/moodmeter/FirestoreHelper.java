@@ -36,10 +36,28 @@ public class FirestoreHelper {
     private static ArrayList<Integer> hats = new ArrayList<Integer>();
     private static ArrayList<Integer> furniture = new ArrayList<Integer>();
     private static ArrayList<Integer> backgrounds = new ArrayList<Integer>();
+    FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
 
 
     public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
+        getInventory(new FirestoreHelper.MyInventory() {
+            @Override
+            public void onInvCallback(Map<String, Object> data) {
+                hats = (ArrayList<Integer>) data.get("hats");
+                furniture = (ArrayList<Integer>) data.get("furniture");
+                backgrounds = (ArrayList<Integer>) data.get("backgrounds");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.i("megan", "hats in on create" + hats);
+//                gotInventory(hats);
+            }
+        }, firebaseUser.getEmail());
+
     }
 
     // will create a new user with the email as id and all basic information
