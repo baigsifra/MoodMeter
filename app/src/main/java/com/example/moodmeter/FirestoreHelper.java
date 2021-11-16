@@ -117,6 +117,7 @@ public class FirestoreHelper {
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                           Map<String, Object> map = documentSnapshot.getData();
+                          Log.d("ifra", "b4 for loop");
                           for (Map.Entry<String, Object> entry : map.entrySet()) {
                             if (entry.getKey().equals("dungeon_group")) {
                                 Log.d("ifra", entry.getValue().toString());
