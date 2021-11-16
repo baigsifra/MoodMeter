@@ -156,20 +156,6 @@ public class Record extends AppCompatActivity {
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
-        int streak = 0;
-
-       for(int i = 0; i < allDayIds.size() - 1; i++){
-           int currentDayId = allDayIds.get(i);
-           int nextDayId = allDayIds.get(i+1);
-           if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
-                coinsEarned += 10;
-                streak++;
-           }
-           Log.d("ifra", "coins earned: " + coinsEarned);
-           Log.d("ifra", "streak: " + streak);
-       }
-
-       Log.d("ifra", "total amount of coins earned: " + coinsEarned);
 
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -192,6 +178,13 @@ public class Record extends AppCompatActivity {
 
         }
         else {
+            for(int i = 0; i < allDayIds.size() - 1; i++){
+                int currentDayId = allDayIds.get(i);
+                int nextDayId = allDayIds.get(i+1);
+                if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
+                     coinsEarned += 10;
+                }
+            }
             submitText.setText("Congrats! You earned " + coinsEarned + " coins! View pet?");
             inflatePopup(submitPopupView, 0);
         }
