@@ -116,8 +116,10 @@ public class FirestoreHelper {
                     @Override
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                          Map<String, Object> map = documentSnapshot.getData();
-                          Log.d("ifra", ""+map.values().toArray().getClass());
+                            ArrayList<String> items;
+                            Map<String, Object> dataToLoad = (HashMap<String, Object>) documentSnapshot.getData();
+                            Log.d("ifra", "dataToLoad inside getInventory: " + dataToLoad.toString());
+                            myInventory.onInvCallback(dataToLoad);
                         }
                     }
                 });

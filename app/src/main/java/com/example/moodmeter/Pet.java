@@ -117,12 +117,12 @@ public class Pet extends AppCompatActivity {
 
         switch(v.getId()) {
             case R.id.hat1:
-                if(1 == 1){
+                if(hats.contains(1)){
                     Log.i("megan", "inside if");
                     Log.i("megan", "hat val " + hats.get(0));
                     Log.i("megan", "type " + hats.getClass().getName());
 //                    Log.i("megan", "val type " + (hats.get(0)).getClass().getName());
-                    Log.i("megan", "my contains contains " + contains(hats, 1));
+//                    Log.i("megan", "my contains contains " + contains(hats, 1));
                     Log.i("megan", "hat contains " + hats.contains(1));
                     imageBorderShow(findViewById(R.id.hat1));
                     octopus.setImageResource(R.drawable.octopusblue);
