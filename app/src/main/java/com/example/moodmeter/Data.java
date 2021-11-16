@@ -180,8 +180,6 @@ public class Data extends AppCompatActivity
         PointsGraphSeries<DataPoint> logSeries = new PointsGraphSeries<>(new DataPoint[]{});
         ArrayList<Day> dayAL = week.getDayArray();
 
-        Log.d("pranav", "inside getScatterData: " + week.toString());
-
         ArrayList<Integer> xPoints = new ArrayList<Integer>();
         ArrayList<Double> yPoints = new ArrayList<Double>();
 
@@ -194,6 +192,7 @@ public class Data extends AppCompatActivity
             int id = (int)(d.getDayNumId());
             xPoints.add(id);
             yPoints.add(avgMood);
+            allJournEntr += d.getDate() + "\n" + d.getJournalEntry() + "\n";
         }
 
         DataPoint[] dpa = new DataPoint[xPoints.size()];
@@ -249,7 +248,6 @@ public class Data extends AppCompatActivity
                 double xCoord = dataPoint.getX();
                 Day d = new Day();
                 for(Day dIW : dayAL) {
-                    allJournEntr += dIW.getDate() + "\n" + dIW.getJournalEntry() + "\n";
                     if(dIW.getDayNumId() == xCoord) {
                         d = new Day(dIW.getDate(), dIW.getJournalEntry(), dIW.getHappiness(), dIW.getEnergy(), dIW.getPeacefulness(), dIW.getDayNumId());
                     }
@@ -287,7 +285,6 @@ public class Data extends AppCompatActivity
             exitJournal.setVisibility(View.VISIBLE);
         } else {
           Log.d("ifra", "running the else statement");
-          Log.d("ifra", allJournEntr);
           journalEntry.setText(allJournEntr);
           cardView.setVisibility(View.VISIBLE);
           journalEntry.setVisibility(View.VISIBLE);
