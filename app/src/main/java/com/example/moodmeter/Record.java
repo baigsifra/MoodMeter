@@ -157,6 +157,17 @@ public class Record extends AppCompatActivity {
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
 
+       for(int i = 0; i < allDayIds.size() - 1; i++){
+           int currentDayId = allDayIds.get(i);
+           int nextDayId = allDayIds.get(i+1);
+           if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
+                coinsEarned += 10;
+           } else {
+                coinsEarned = 10;
+           }
+       }
+
+
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         View submitPopupView = inflater.inflate(R.layout.pop_up, null);
@@ -178,17 +189,10 @@ public class Record extends AppCompatActivity {
 
         }
         else {
-            for(int i = 0; i < allDayIds.size() - 1; i++){
-                int currentDayId = allDayIds.get(i);
-                int nextDayId = allDayIds.get(i+1);
-                if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
-                     coinsEarned += 10;
-                }
-            }
             submitText.setText("Congrats! You earned " + coinsEarned + " coins! View pet?");
             inflatePopup(submitPopupView, 0);
+            dbHelper.addMoney(firebaseUser.getEmail(), currentUser.getMoney() + coinsEarned);
         }
-        dbHelper.addMoney(firebaseUser.getEmail(), currentUser.getMoney() + coinsEarned);
 
     }
 
