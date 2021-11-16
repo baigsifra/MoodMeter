@@ -209,6 +209,7 @@ public class Data extends AppCompatActivity
 
         //Need to create a series (above) and add it too the scatterplot widget
         logScatterPlot.addSeries(logSeries);
+        logScatterPlot.setCursorMode(true);
 
         //Create viewport --> is essential
         Viewport vp = logScatterPlot.getViewport();
@@ -234,6 +235,7 @@ public class Data extends AppCompatActivity
             @Override
             public void onTap(Series series, DataPointInterface dataPoint)
             {
+
                 // Change color of the data point
                 //Sets all elements visible in XML
                 sadHappySliderDisplay.setVisibility(View.VISIBLE);
