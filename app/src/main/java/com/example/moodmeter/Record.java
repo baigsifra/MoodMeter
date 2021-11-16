@@ -156,29 +156,20 @@ public class Record extends AppCompatActivity {
         * */
         Day day = new Day(dateFormat.format(thisDate), journalEntry, sadHappyVal, lowHighVal, angryCalmVal, dayId);
         dbHelper.addDay(firebaseUser.getEmail(), day, dateFormat.format(thisDate));
+        int streak = 0;
 
-        double startPoint = dayId - 1;
+       for(int i = 0; i < allDayIds.size() - 1; i++){
+           int currentDayId = allDayIds.get(i);
+           int nextDayId = allDayIds.get(i+1);
+           if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
+                coinsEarned += 10;
+                streak++;
+           }
+           Log.d("ifra", "coins earned: " + coinsEarned);
+           Log.d("ifra", "streak: " + streak);
+       }
 
-        for(int i = 1; i < allDayIds.size(); i++) {
-            if(startPoint == 7) {
-                startPoint = 0;
-            }
-
-        }
-
-//        for(int i = 1; i < allDayIds.size() - 1; i++){
-//            if(startPoint == 0) {
-//                startPoint = 7;
-//            }
-//            Log.d("ifra", "startPoint: " + startPoint);
-//            if(startPoint == 7 && allDayIds.get(i - 1) == 1 || startPoint + 1 == allDayIds.get(i - 1)) {
-//                coinsEarned += 10;
-//            }
-//            Log.d("ifra", "coinsEarned: " + coinsEarned);
-//            startPoint = allDayIds.get(i + 1);
-//        }
-//
-//        Log.d("ifra", "total amount of coins earned: " + coinsEarned);
+       Log.d("ifra", "total amount of coins earned: " + coinsEarned);
 
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
