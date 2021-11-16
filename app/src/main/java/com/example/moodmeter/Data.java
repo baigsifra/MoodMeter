@@ -286,6 +286,8 @@ public class Data extends AppCompatActivity
             journalEntry.setVisibility(View.VISIBLE);
             exitJournal.setVisibility(View.VISIBLE);
         } else {
+          Log.d("ifra", "running the else statement");
+          Log.d("ifra", allJournEntr);
           journalEntry.setText(allJournEntr);
           cardView.setVisibility(View.VISIBLE);
           journalEntry.setVisibility(View.VISIBLE);
