@@ -117,7 +117,7 @@ public class FirestoreHelper {
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
                           Map<String, Object> map = documentSnapshot.getData();
-                          Log.d("ifra", map.toString());
+                          Log.d("ifra", ""+map.values().toArray().getClass());
                         }
                     }
                 });
