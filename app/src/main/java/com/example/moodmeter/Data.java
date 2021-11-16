@@ -193,6 +193,7 @@ public class Data extends AppCompatActivity
             xPoints.add(id);
             yPoints.add(avgMood);
             allJournEntr += d.getDate() + "\n" + d.getJournalEntry() + "\n";
+            Log.d("ifra", "allJournEntr: " + allJournEntr);
         }
 
         DataPoint[] dpa = new DataPoint[xPoints.size()];
