@@ -167,6 +167,8 @@ public class Record extends AppCompatActivity {
            }
        }
 
+       Log.d("ifra", "dayId: " + dayId);
+       Log.d("ifra", "all day Ids: " + allDayIds.toString);
 
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -186,7 +188,6 @@ public class Record extends AppCompatActivity {
             noBtn.setVisibility(View.GONE);
             inflatePopup(submitPopupView, 1);
             submitText.setText("Sorry! You already logged your mood today!");
-
         }
         else {
             submitText.setText("Congrats! You earned " + coinsEarned + " coins! View pet?");
