@@ -183,6 +183,10 @@ public class Data extends AppCompatActivity
         ArrayList<Integer> xPoints = new ArrayList<Integer>();
         ArrayList<Double> yPoints = new ArrayList<Double>();
 
+        allJournEntr = "";
+
+        Log.d("ifra", "dayAL: " + dayAL.toString());
+
         for(Day d : dayAL)
         {
             double happiness = d.getHappiness();
@@ -193,7 +197,6 @@ public class Data extends AppCompatActivity
             xPoints.add(id);
             yPoints.add(avgMood);
             allJournEntr += d.getDate() + "\n" + d.getJournalEntry() + "\n";
-            Log.d("ifra", "allJournEntr: " + allJournEntr);
         }
 
         DataPoint[] dpa = new DataPoint[xPoints.size()];
