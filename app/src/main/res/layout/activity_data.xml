@@ -230,6 +230,7 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone"
+            android:scrollbars = "vertical"
             />
 
         <Button
@@ -237,11 +238,13 @@
             android:layout_width="31dp"
             android:layout_height="32dp"
             android:layout_gravity="top|right"
+            android:background="@drawable/button_style"
+            android:fontFamily="@font/biorhyme_bold"
             android:onClick="closeJournal"
             android:text="X"
-            android:textColor="#EA6262"
-            android:textSize="12sp"
-            android:visibility="gone"/>
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+
     </androidx.cardview.widget.CardView>
 
     <Button
