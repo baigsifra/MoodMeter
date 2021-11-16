@@ -119,7 +119,7 @@ public class FirestoreHelper {
                           Map<String, Object> map = documentSnapshot.getData();
                           for (Map.Entry<String, Object> entry : map.entrySet()) {
                             if (entry.getKey().equals("dungeon_group")) {
-                                Log.d("TAG", entry.getValue().toString());
+                                Log.d("ifra", entry.getValue().toString());
                             }
                           }
                         }
