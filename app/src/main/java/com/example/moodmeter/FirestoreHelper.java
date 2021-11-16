@@ -125,27 +125,7 @@ public class FirestoreHelper {
                 });
 
     }
-
-    public void getDay(MyDay myDay, String email, int weekNum, String date)  {
-
-        db.document("Users/"+email+"/Weeks/"+weekNum+"/Days/"+date).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            String journalEntry = documentSnapshot.getString("journalEntry");
-                            double energy = documentSnapshot.getDouble("energy");
-                            double happiness = documentSnapshot.getDouble("happiness");
-                            double peacefulness = documentSnapshot.getDouble("peacefulness");
-                            double dayId = documentSnapshot.getDouble("dayNumId");
-                            Day day = new Day(date, journalEntry, happiness, energy, peacefulness, dayId);
-
-                            myDay.onDayCallback(day);
-                        }
-                    }
-                });
-
-    }
+    
 
     public void getWeek(MyWeek myWeek, String email, int weekNum) {
         Log.d("pranav", "inside getWeek FirestoreHelper before grabbing data");

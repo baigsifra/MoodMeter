@@ -168,7 +168,7 @@ public class Record extends AppCompatActivity {
        }
 
        Log.d("ifra", "dayId: " + dayId);
-       Log.d("ifra", "all day Ids: " + allDayIds.toString);
+       Log.d("ifra", "all day Ids: " + allDayIds.toString());
 
         LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
