@@ -116,10 +116,12 @@ public class FirestoreHelper {
                     @Override
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists()) {
-                            ArrayList<String> items;
-                            Map<String, Object> dataToLoad = (HashMap<String, Object>) documentSnapshot.getData();
-                            Log.d("ifra", "dataToLoad inside getInventory: " + dataToLoad.toString());
-                            myInventory.onInvCallback(dataToLoad);
+                          Map<String, Object> map = documentSnapshot.getData();
+                          for (Map.Entry<String, Object> entry : map.entrySet()) {
+                            if (entry.getKey().equals("dungeon_group")) {
+                                Log.d("TAG", entry.getValue().toString());
+                            }
+                          }
                         }
                     }
                 });
