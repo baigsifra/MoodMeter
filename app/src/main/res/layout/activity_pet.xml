@@ -34,7 +34,7 @@
         android:layout_height="230dp"
         android:layout_centerHorizontal="true"
         android:paddingTop="10dp"
-        app:srcCompat="@drawable/octopusorangehat" />
+        app:srcCompat="@drawable/octopusnew" />
 
 
     <TextView
