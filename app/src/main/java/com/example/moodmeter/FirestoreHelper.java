@@ -43,6 +43,7 @@ public class FirestoreHelper {
     }
 
     // will create a new user with the email as id and all basic information
+    // https://firebase.google.com/docs/firestore/manage-data/add-data
     public void addUser(String email, User user) {
         db.collection("Users").document(email).set(user);
         Map<String, ArrayList<Integer>> docData = new HashMap<>();
@@ -92,6 +93,7 @@ public class FirestoreHelper {
         db.collection("Users").document(email).collection("Weeks").document(weekId).collection("Days").document(date).set(day);
     }
 
+    // https://stackoverflow.com/questions/47847694/how-to-return-datasnapshot-value-as-a-result-of-a-method
     public void getUser(MyCallback myCallback, String email) {
 
         db.collection("Users").document(email).get()
