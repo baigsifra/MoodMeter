@@ -175,9 +175,11 @@ public class Record extends AppCompatActivity {
                 }
            }
            else {
-                coinsEarned = 10;
+               coinsEarned += 10;
+               break;
            }
-           if(coinsEarned == 100){
+           if(coinsEarned >= 100){
+               coinsEarned = 100;
                break;
            }
        }
