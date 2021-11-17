@@ -64,11 +64,11 @@ public class Shop extends AppCompatActivity {
                 gotInventory(data);
             }
         }, firebaseUser.getEmail());
-
-        checkBought(hats);
-        checkBought(furniture);
-        checkBought(backgrounds);
-
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void finished(User user) {
@@ -85,57 +85,6 @@ public class Shop extends AppCompatActivity {
 
     }
 
-    public void checkBought(ArrayList<Integer> items){
-        if(items==null){
-            return;
-        }
-        for(int i = 0; i < items.size(); i++){
-//                String strId = "R.id.hatIV" + i;
-//                int id = this.getResources().getIdentifier(strId, "id", this.getPackageName());
-//                ImageView hatIV = findViewById(id);
-//                hatIV.setVisibility(View.GONE);
-                if(items.get(i) == 1){
-                    findViewById(R.id.hatIV1).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 2){
-                    findViewById(R.id.hatIV2).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 3){
-                    findViewById(R.id.hatIV3).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 4){
-                    findViewById(R.id.hatIV4).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 5){
-                    findViewById(R.id.hatIV5).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 6){
-                    findViewById(R.id.hatIV6).setVisibility(View.GONE);
-                }
-
-                if(items.get(i) == 7){
-                    findViewById(R.id.furniture1).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 8){
-                    findViewById(R.id.furniture2).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 9){
-                    findViewById(R.id.furniture3).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 10){
-                    findViewById(R.id.furniture4).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 11){
-                    findViewById(R.id.furniture5).setVisibility(View.GONE);
-                }
-                else if(items.get(i) == 12){
-                    findViewById(R.id.furniture6).setVisibility(View.GONE);
-                }
-
-
-        }
-    }
-
     public void itemSelected(View v){
        Button buyButton = findViewById(R.id.buyButton);
        buyButton.setVisibility(View.VISIBLE);
@@ -144,61 +93,73 @@ public class Shop extends AppCompatActivity {
             case R.id.hatIV1:
                 imageBorderShow(findViewById(R.id.hatIV1));
                 selectedItemID = 1;
+                hats.add(selectedItemID);
                 selectedItemCost = 50;
                 break;
             case R.id.hatIV2:
                 imageBorderShow(findViewById(R.id.hatIV2));
                 selectedItemID = 2;
+                hats.add(selectedItemID);
                 selectedItemCost = 100;
                 break;
             case R.id.hatIV3:
                 imageBorderShow(findViewById(R.id.hatIV3));
                 selectedItemID = 3;
+                hats.add(selectedItemID);
                 selectedItemCost = 200;
                 break;
             case R.id.hatIV4:
                 imageBorderShow(findViewById(R.id.hatIV4));
                 selectedItemID = 4;
+                hats.add(selectedItemID);
                 selectedItemCost = 200;
                 break;
             case R.id.hatIV5:
                 imageBorderShow(findViewById(R.id.hatIV5));
                 selectedItemID = 5;
+                hats.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.hatIV6:
                 imageBorderShow(findViewById(R.id.hatIV6));
                 selectedItemID = 6;
+                hats.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture1:
                 imageBorderShow(findViewById(R.id.furniture1));
                 selectedItemID = 7;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture2:
                 imageBorderShow(findViewById(R.id.furniture2));
                 selectedItemID = 8;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture3:
                 imageBorderShow(findViewById(R.id.furniture3));
                 selectedItemID = 9;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture4:
                 imageBorderShow(findViewById(R.id.furniture4));
                 selectedItemID = 10;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture5:
                 imageBorderShow(findViewById(R.id.furniture5));
                 selectedItemID = 11;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
             case R.id.furniture6:
                 imageBorderShow(findViewById(R.id.furniture6));
                 selectedItemID = 12;
+                furniture.add(selectedItemID);
                 selectedItemCost = 300;
                 break;
 
@@ -275,7 +236,12 @@ public class Shop extends AppCompatActivity {
 
     public void confirmBuy(View v){
         money -= selectedItemCost;
-        dbHelper.addInventory(selectedItemID);
+        if(selectedItemID <= 6){
+            dbHelper.addInventory(selectedItemID, hats, furniture);
+        }
+        else{
+            dbHelper.addInventory(selectedItemID, furniture, hats);
+        }
         TextView moneyTV = findViewById(R.id.moneyTV);
         moneyTV.setText("$" + (int)money);
         Intent petIntent = new Intent(this, Pet.class);

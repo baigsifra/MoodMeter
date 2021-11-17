@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -61,38 +62,20 @@ public class FirestoreHelper {
 
     }
 
-    public void addInventory(int itemID){
-        getInventory(new FirestoreHelper.MyInventory() {
-            @Override
-            public void onInvCallback(Map<String, Object> data) {
-                hats = (ArrayList<Integer>) data.get("hats");
-                furniture = (ArrayList<Integer>) data.get("furniture");
-                backgrounds = (ArrayList<Integer>) data.get("backgrounds");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Log.i("megan", "hats in on create" + hats);
-//                gotInventory(hats);
-            }
-        }, firebaseUser.getEmail());
+    public void addInventory(int itemID, ArrayList<Integer> newArrList, ArrayList<Integer> oldArrList){
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         Map<String, ArrayList<Integer>> docData = new HashMap<>();
         if(itemID <= 6){
-            hats.add(itemID);
-            docData.put("hats", hats);
-            docData.put("furniture", furniture);
+            docData.put("hats", newArrList);
+            docData.put("furniture", oldArrList);
             docData.put("backgrounds", backgrounds);
         }
         else if(itemID <= 12){
-            furniture.add(itemID);
-            docData.put("hats", hats);
-            docData.put("furniture", furniture);
+            docData.put("hats", oldArrList);
+            docData.put("furniture", newArrList);
             docData.put("backgrounds", backgrounds);
         }
         else if(itemID <= 18){
-            backgrounds.add(itemID);
             docData.put("hats", hats);
             docData.put("furniture", furniture);
             docData.put("backgrounds", backgrounds);
