@@ -117,7 +117,7 @@ public class Pet extends AppCompatActivity {
 
         switch(v.getId()) {
             case R.id.hat1:
-                if(hats.contains(1)){
+                if(true){
                     Log.i("megan", "inside if");
                     Log.i("megan", "hat val " + hats.get(0));
                     Log.i("megan", "type " + hats.getClass().getName());
@@ -132,7 +132,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.hat2:
-                if(hats.contains(2)) {
+                if(true) {
                     imageBorderShow(findViewById(R.id.hat2));
                     octopus.setImageResource(R.drawable.octopuscowboy);
                 }
@@ -177,7 +177,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture1:
-                if(furniture.contains(1)) {
+                if(furniture.contains(7)) {
                     imageBorderShow(findViewById(R.id.furniture1));
                     bgOne.setImageResource(R.drawable.bed);
                 }
@@ -186,7 +186,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture2:
-                if(furniture.contains(2)) {
+                if(furniture.contains(8)) {
                     imageBorderShow(findViewById(R.id.furniture2));
                     bgTwo.setImageResource(R.drawable.chair);
                 }
@@ -195,7 +195,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture3:
-                if(furniture.contains(3)) {
+                if(true) {
                     imageBorderShow(findViewById(R.id.furniture3));
                     bgOne.setImageResource(R.drawable.desk1);
                 }
@@ -204,7 +204,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture4:
-                if(furniture.contains(4)) {
+                if(furniture.contains(10)) {
                     imageBorderShow(findViewById(R.id.furniture4));
                     bgTwo.setImageResource(R.drawable.desk2);
                 }
@@ -213,7 +213,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture5:
-                if(furniture.contains(5)) {
+                if(furniture.contains(11)) {
                     imageBorderShow(findViewById(R.id.furniture5));
                     bgOne.setImageResource(R.drawable.dresser);
                 }
@@ -222,7 +222,7 @@ public class Pet extends AppCompatActivity {
                 }
                 break;
             case R.id.furniture6:
-                if(furniture.contains(6)) {
+                if(true) {
                     imageBorderShow(findViewById(R.id.furniture6));
                     bgTwo.setImageResource(R.drawable.sofa);
                 }

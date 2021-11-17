@@ -277,7 +277,7 @@ public class Shop extends AppCompatActivity {
         money -= selectedItemCost;
         dbHelper.addInventory(selectedItemID);
         TextView moneyTV = findViewById(R.id.moneyTV);
-        moneyTV.setText("$" + money);
+        moneyTV.setText("$" + (int)money);
         Intent petIntent = new Intent(this, Pet.class);
         startActivity(petIntent);
         dbHelper.addMoney(firebaseUser.getEmail(), money);

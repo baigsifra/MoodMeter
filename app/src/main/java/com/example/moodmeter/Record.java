@@ -110,6 +110,9 @@ public class Record extends AppCompatActivity {
         currentUser = new User(user.getUid(), user.getMoney());
     }
 
+    //https://developer.android.com/reference/android/widget/SeekBar
+    //https://stackoverflow.com/questions/8629535/implementing-a-slider-seekbar-in-android
+    //https://www.tutlane.com/tutorial/android/android-seekbar-with-examples
     public void sliderFunction(SeekBar SB, TextView TV){
         SB.setProgress(50);
         SB.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -167,6 +170,9 @@ public class Record extends AppCompatActivity {
            int nextDayId = allDayIds.get(i+1);
            if(currentDayId == 1 && nextDayId == 7 || (currentDayId - 1) == nextDayId) {
                 coinsEarned += 10;
+                if(i == allDayIds.size()-2){
+                    coinsEarned += 10;
+                }
            } else {
                 coinsEarned = 10;
            }
@@ -202,6 +208,7 @@ public class Record extends AppCompatActivity {
 
     }
 
+    //https://stackoverflow.com/questions/5944987/how-to-create-a-popup-window-popupwindow-in-android
     public void inflatePopup(View popupView, int dismiss){
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;

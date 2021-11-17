@@ -42,21 +42,6 @@ public class FirestoreHelper {
 
     public FirestoreHelper() {
         db = FirebaseFirestore.getInstance();
-        getInventory(new FirestoreHelper.MyInventory() {
-            @Override
-            public void onInvCallback(Map<String, Object> data) {
-                hats = (ArrayList<Integer>) data.get("hats");
-                furniture = (ArrayList<Integer>) data.get("furniture");
-                backgrounds = (ArrayList<Integer>) data.get("backgrounds");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                Log.i("megan", "hats in on create" + hats);
-//                gotInventory(hats);
-            }
-        }, firebaseUser.getEmail());
 
     }
 
@@ -77,6 +62,21 @@ public class FirestoreHelper {
     }
 
     public void addInventory(int itemID){
+        getInventory(new FirestoreHelper.MyInventory() {
+            @Override
+            public void onInvCallback(Map<String, Object> data) {
+                hats = (ArrayList<Integer>) data.get("hats");
+                furniture = (ArrayList<Integer>) data.get("furniture");
+                backgrounds = (ArrayList<Integer>) data.get("backgrounds");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Log.i("megan", "hats in on create" + hats);
+//                gotInventory(hats);
+            }
+        }, firebaseUser.getEmail());
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         Map<String, ArrayList<Integer>> docData = new HashMap<>();
         if(itemID <= 6){
