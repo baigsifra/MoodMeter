@@ -234,6 +234,7 @@ public class Data extends AppCompatActivity
             @Override
             public void onTap(Series series, DataPointInterface dataPoint)
             {
+
                 // Change color of the data point
                 //Sets all elements visible in XML
                 sadHappySliderDisplay.setVisibility(View.VISIBLE);
