@@ -173,8 +173,12 @@ public class Record extends AppCompatActivity {
                 if(i == allDayIds.size()-2){
                     coinsEarned += 10;
                 }
-           } else {
+           }
+           else {
                 coinsEarned = 10;
+           }
+           if(coinsEarned == 100){
+               break;
            }
        }
 
